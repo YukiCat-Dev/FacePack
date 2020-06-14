@@ -4,7 +4,8 @@
   "description": "Provide a face selector for Wordpress on HTML based on React.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "parcel index.html",
+    "build":"parcel build index.html"
   },
   "repository": {
     "type": "git",
