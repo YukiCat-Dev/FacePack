@@ -10,7 +10,7 @@ import * as React from 'react';
 export class FaceSelector extends React.Component{
 render(){
     return (<div>
-        
+
     </div>)
 }
 }

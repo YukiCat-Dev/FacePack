@@ -1,10 +1,10 @@
-import { Component } from 'react';
+import React from 'react';
 export interface TabProps {
+    name:string
+    selected:boolean
+    onClick:(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>void
 }
- 
-export interface TabState {
-    
-}
+
 /**
  * 选项卡的单个标签
  *
@@ -12,10 +12,12 @@ export interface TabState {
  * @class Tab
  * @extends {Component<TabProps, TabState>}
  */
-class Tab extends Component<TabProps, TabState> {
-    state = { :  }
+class Tab extends React.Component<TabProps> {
     render() { 
-        return ();
+        return (
+            
+            <button onClick={this.props.onClick}>{/*TODO:selected为true的时候为选中状态*/this.props.name}</button>
+        );
     }
 }
  
