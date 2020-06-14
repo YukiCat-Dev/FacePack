@@ -1,8 +1,9 @@
 import React from 'react';
 export interface TabProps {
+    id:string
     name:string
     selected:boolean
-    onClick:(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>void
+    onClick:(id:string)=>void
 }
 
 /**
@@ -14,9 +15,8 @@ export interface TabProps {
  */
 class Tab extends React.Component<TabProps> {
     render() { 
-        return (
-            
-            <button onClick={this.props.onClick}>{/*TODO:selected为true的时候为选中状态*/this.props.name}</button>
+        return (          
+            <button onClick={()=>{this.props.onClick(this.props.id)}}>{/*TODO:selected为true的时候为选中状态*/this.props.name}</button>
         );
     }
 }
