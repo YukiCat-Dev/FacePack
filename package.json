@@ -1,0 +1,32 @@
+{
+  "name": "face-selector",
+  "version": "1.0.0",
+  "description": "Provide a face selector for Wordpress on HTML based on React.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KotoriK/face-selector.git"
+  },
+  "keywords": [
+    "face"
+  ],
+  "author": "KotoriK",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/KotoriK/face-selector/issues"
+  },
+  "homepage": "https://github.com/KotoriK/face-selector#readme",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.36",
+    "@types/react-dom": "^16.9.8",
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.9.5"
+  }
+}
