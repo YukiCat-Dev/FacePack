@@ -1,6 +1,6 @@
 import React from 'react';
 import { FacePackage } from './base/FacePackage';
-import Image from './Image'
+import FaceView from './FaceView'
 export interface TableViewProps {
 
     /**
@@ -18,6 +18,7 @@ export interface TableViewProps {
      * @memberof TableViewProps
      */
     facePackage: FacePackage
+    onImageSelected: (face_pos:number) => void
 }
 
 export interface TableViewState {
@@ -26,9 +27,12 @@ export interface TableViewState {
 
 export default class TableView extends React.Component<TableViewProps, TableViewState> {
     state = {}
+    handleImageClick(e, pos: number) {
+        this.props.onImageSelected(pos)
+    }
     render() {
         let faces = this.props.facePackage.faces.map((value, index) => {
-            return (<td key={index} style={{ textAlign: "center", border: "solid"}}><Image src={value.url} id={value.id} imgInlineStyle={{width:"100px",height:"100px"}} /></td>)
+            return (<td key={index} style={{ textAlign: "center", border: "solid" }}><FaceView src={value.url} pos={index} imgInlineStyle={{ width: "100px", height: "100px" }} onClick={this.handleImageClick.bind(this)} /></td>)
         })
         let colCount = this.props.colCount
         let rowCount = Math.ceil((faces.length / colCount))

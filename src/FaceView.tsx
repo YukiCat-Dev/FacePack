@@ -1,18 +1,18 @@
 import BaseComponentProps from './BaseComponentProps';
 import React from 'react';
 import { IndicatorProps, Indicator, IndicateLevel } from './Indicator';
-export interface ImageProps extends BaseComponentProps {
-    id?: string
+export interface FaceViewProps extends BaseComponentProps {
+    pos: number
     src: string
     alt?: string
-    onClick?: (e: React.MouseEvent<HTMLImageElement, MouseEvent>, id?: string) => void
+    onClick?: (e: React.MouseEvent<HTMLImageElement, MouseEvent>, pos?: number) => void
     refererPolicy?: ReferrerPolicy,
     imgInlineStyle?: React.CSSProperties,
     imgCSSClass?: string,
 
 
 }
-export interface ImageState {
+export interface FaceViewState {
     src: { url?: string, data?: string }
     showIndicator?: IndicatorProps
     hovering: boolean
@@ -21,11 +21,11 @@ export interface ImageState {
  * 显示图片
  *
  * @author KotoriK
- * @class Image
- * @extends {React.Component<ImageProps, ImageState>}
+ * @class FaceView
+ * @extends {React.Component<FaceViewProps, FaceViewState>}
  */
-export default class Image extends React.Component<ImageProps, ImageState> {
-    constructor(props: ImageProps) {
+export default class FaceView extends React.Component<FaceViewProps, FaceViewState> {
+    constructor(props: FaceViewProps) {
         super(props)
         this.state = {
             src: { url: props.src },
@@ -87,7 +87,7 @@ export default class Image extends React.Component<ImageProps, ImageState> {
         if (this.state.src.data) {
             return (
                 <img src={this.state.src.data}
-                    onClick={(e) => this.props.onClick(e, this.props.id)}
+                    onClick={(e) => this.props.onClick(e, this.props.pos)}
                     onPointerEnter={() => this.setState({ hovering: true })}
                     onPointerOut={() => this.setState({ hovering: false })} alt={this.props.alt} style={{ ...this.props.imgInlineStyle }} className={this.props.imgCSSClass}></img>
             );

@@ -22,15 +22,16 @@ export default class FaceSelectorDeployer {
      * @memberof FaceSelectorDeployer
      */
     render() {
-        ReactDOM.render(<FaceSelector facePacks={this._facePacks} colCount={3} handleHide={() => {
-            this._tooltip.setAttribute("hidden", "hidden")
-        }} onFaceSelected={this._onFaceSelected} />, this._tooltip)
+        ReactDOM.render(<FaceSelector facePacks={this._facePacks} colCount={3} handleHide={this._doHide.bind(this)} onFaceSelected={this._onFaceSelected} />, this._tooltip)
         createPopper(this._popcorn, this._tooltip)
         this._popcorn.addEventListener('click',this._handlePopcornClick.bind(this))
         return this
     }
     private _handlePopcornClick(e: MouseEvent) {
-       if(this._displayed) {
+       this._doHide()
+    }
+    private _doHide(){
+        if(this._displayed) {
            this._tooltip.setAttribute("hidden", "hidden")
            this._displayed=false
         }else{
