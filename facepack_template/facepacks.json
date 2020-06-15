@@ -1,8 +1,8 @@
 {
     "array": [
         {
-            "id": "114514",
-            "name": "parrots",
+            "id": "parrots",
+            "name": "party parrots",
             "faces": [
                 {
                     "id": "middle_parrot",
@@ -18,7 +18,7 @@
                 },
                 {
                     "id": "horizontal_parrot",
-                    "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/hd/horizontalparrot.gifs"
+                    "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/hd/horizontalparrot.gif"
                 },
                 {
                     "id": "async_parrot",
@@ -28,6 +28,45 @@
                     "id": "spinning_parrot",
                     "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/hd/spinningparrot.gif"
                 }
+            ]
+        },
+        {
+            "id": "ducks",
+            "name": "ducks",
+            "faces": [
+                {
+                    "id": "happyduck1",
+                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck1.jpg"
+                },
+                {
+                    "id": "happyduck2",
+                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck2.jpg"
+                }, {
+                    "id": "happyduck3",
+                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck3.jpg"
+                }, {
+                    "id": "happyduck4",
+                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck4.jpg"
+                }, {
+                    "id": "happyduck5",
+                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck5.jpg"
+                }, {
+                    "id": "happyduck6",
+                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck7.jpg"
+                },{
+                    "id": "happyduck7",
+                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck8.jpg"
+                },{
+                    "id": "happyduck8",
+                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck9.jpg"
+                },{
+                    "id": "happyduck9",
+                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck10.jpg"
+                },{
+                    "id": "happyduck10",
+                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck11.jpg"
+                }
+               
             ]
         }
     ]
