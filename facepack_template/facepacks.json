@@ -2,7 +2,7 @@
     "array": [
         {
             "id": "parrots",
-            "name": "party parrots",
+            "name": "鹦鹉派对",
             "faces": [
                 {
                     "id": "middle_parrot",
@@ -32,7 +32,7 @@
         },
         {
             "id": "ducks",
-            "name": "ducks",
+            "name": "鸭鸭",
             "faces": [
                 {
                     "id": "happyduck1",
@@ -71,7 +71,7 @@
         },
         {
             "id": "cats",
-            "name": "cats",
+            "name": "猫猫",
             "faces": [
                 {
                     "id": "cat0",

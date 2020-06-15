@@ -33,7 +33,7 @@ export default class TableView extends React.Component<TableViewProps, TableView
     }
     render() {
         let faces = this.props.facePackage.faces.map((value, index) => {
-            return (<td key={index} style={{ textAlign: "center", border: "solid" }}><FaceView src={value.url} face_pos={index} imgInlineStyle={{ width: "100px", height: "100px" }} onClick={this.handleImageClick.bind(this)} global={this.props.global}/></td>)
+            return (<td key={index} style={{ textAlign: "center", border: "1pt solid" }}><FaceView src={value.url} pos={index} imgInlineStyle={{ width: "30px", height: "30px" }} onClick={this.handleImageClick.bind(this)} /></td>)
         })
         let colCount = this.props.colCount
         let rowCount = Math.ceil((faces.length / colCount))
