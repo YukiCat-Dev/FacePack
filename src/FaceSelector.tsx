@@ -56,7 +56,7 @@ export class FaceSelector extends React.Component<FaceSelectorProps, FaceSelecto
         let nowPackagePos = this.state.nowPackagePos,
         maxPos = this.props.facePacks.length - 1
         if (nowPackagePos > maxPos) nowPackagePos = maxPos //防止prop发生改动带来越界
-        return (<div style={{border:"solid"}}>
+        return (<div style={{border:"1pt solid"}}>
             <Tabs facePackages={this.props.facePacks} onSelected={(pos) => this.handleTabSelectionChange(pos)} selectedPos={this.state.nowPackagePos} />
             <TableView facePackage={this.props.facePacks[nowPackagePos]} colCount={this.props.colCount} onImageSelected={this.handleFaceSelected.bind(this)}/>
         </div>)
