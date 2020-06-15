@@ -3,12 +3,11 @@ import React from 'react';
 import Tab from './Tab';
 import { FacePackage } from './base/FacePackage';
 export interface TabsProps {
-    facePackages: Array<FacePackage>
+    facePackages: Array<FacePackage>,
+    onSelected:(newPos:number)=>void,
+    selectedPos:number
 }
 
-export interface TabsState {
-    selectedId:string
-}
 /**
  * 选项卡的一行标签（一行Tab
  *
@@ -16,15 +15,14 @@ export interface TabsState {
  * @class Tab
  * @extends {React.Component<TabProps, TabState>}
  */
-class Tabs extends React.Component<TabsProps, TabsState> {
-    state = {selectedId:this.props.facePackages[0].id}
-    handleTabClick(id:string){
-
+class Tabs extends React.Component<TabsProps> {
+    handleTabClick(pos:number){
+        this.props.onSelected(pos)
     }
     render() {
         return (<div>
-            {this.props.facePackages.map((value) => {
-                return (<Tab key={value.id} id={value.id} name={value.name} selected={value.id===this.state.selectedId} onClick={(id)=>this.handleTabClick(id)}></Tab>)
+            {this.props.facePackages.map((value,index) => {
+                return (<Tab key={value.id} pos={index} name={value.name} selected={index===this.props.selectedPos} onClick={(id)=>this.handleTabClick(id)}></Tab>)
             })}
         </div>);
     }
