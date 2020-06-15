@@ -2,14 +2,14 @@ import BaseComponentProps from './BaseComponentProps';
 import React from 'react';
 import { IndicatorProps, Indicator, IndicateLevel } from './Indicator';
 export interface ImageProps extends BaseComponentProps {
-    id?:string
+    id?: string
     src: string
     alt?: string
-    onClick?: (e: React.MouseEvent<HTMLImageElement, MouseEvent>,id?:string) => void
+    onClick?: (e: React.MouseEvent<HTMLImageElement, MouseEvent>, id?: string) => void
     refererPolicy?: ReferrerPolicy,
-    imgInlineStyle?:React.CSSProperties,
-    imgCSSClass?:string,
-    
+    imgInlineStyle?: React.CSSProperties,
+    imgCSSClass?: string,
+
 
 }
 export interface ImageState {
@@ -28,7 +28,7 @@ export default class Image extends React.Component<ImageProps, ImageState> {
     constructor(props: ImageProps) {
         super(props)
         this.state = {
-            src: {url:props.src},
+            src: { url: props.src },
             showIndicator: { level: IndicateLevel.PRELOAD },
             hovering: false
         }
@@ -40,7 +40,7 @@ export default class Image extends React.Component<ImageProps, ImageState> {
      * @memberof Image
      */
     loadImg() {
-        let nowSrc = this.props.src
+        let nowSrc = this.state.src.url
         fetch(nowSrc, { method: "GET", referrerPolicy: this.props.refererPolicy || "no-referrer" })
             .then(async (response) => {
                 if (response.ok) {
@@ -57,34 +57,43 @@ export default class Image extends React.Component<ImageProps, ImageState> {
                             this.setState({ showIndicator: { level: IndicateLevel.ERROR, description: `HTTP ${response.status}:${response.statusText}` } })
                     }
                 }
-            },(reason)=>{
-                this.setState({showIndicator: { level: IndicateLevel.ERROR,description:reason}})
+            }, (reason) => {
+                this.setState({ showIndicator: { level: IndicateLevel.ERROR, description: reason } })
             })
-            
+
     }
     componentDidMount() {
         this.loadImg()
     }
     componentDidUpdate() {
         if (this.props.src !== this.state.src.url) {
-            this.loadImg()
+            this.revokeData()
+            this.setState({
+                src: { url: this.props.src, data: undefined },
+                showIndicator: { level: IndicateLevel.PRELOAD },
+            }, () => {
+                this.loadImg()
+            })
         }
     }
-    componentWillUnmount() {
+    revokeData() {
         //释放资源
         if (this.state.src.data) URL.revokeObjectURL(this.state.src.data)
+    }
+    componentWillUnmount() {
+        this.revokeData()
     }
     prerender() {
         if (this.state.src.data) {
             return (
                 <img src={this.state.src.data}
-                    onClick={(e)=>this.props.onClick(e,this.props.id)}
+                    onClick={(e) => this.props.onClick(e, this.props.id)}
                     onPointerEnter={() => this.setState({ hovering: true })}
                     onPointerOut={() => this.setState({ hovering: false })} alt={this.props.alt} style={{ ...this.props.imgInlineStyle }} className={this.props.imgCSSClass}></img>
             );
         }
         if (this.state.showIndicator) {
-            return (<Indicator {...this.state.showIndicator} />)
+            return (<Indicator {...this.state.showIndicator} inlineStyle={this.props.imgInlineStyle} />)
         }
     }
     render() {
