@@ -29,9 +29,9 @@ export class Indicator extends React.Component<IndicatorProps> {
     render() {
         let descr = this.props.description
         return (
-            <div>
-                <img src={IndicatorPicsArray[this.props.level] } alt={descr}/>
-            </div>
+
+                <img src={IndicatorPicsArray[this.props.level] } alt={descr} style={this.props.inlineStyle}/>
+
         )
     }
 }
