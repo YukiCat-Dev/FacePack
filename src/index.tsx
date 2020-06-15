@@ -1,7 +1,7 @@
 
 import React from 'react'
 import ReactDom from 'react-dom'
-import Tabs from './Tabs'
+import Tabs from './component/Tabs'
 /**部署FaceSelector的方法 */
 export function deployFaceSelector(ele: HTMLElement) {
     /* ReactDom.render(<FaceSelector/>,ele) */

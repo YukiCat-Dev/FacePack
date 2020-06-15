@@ -1,7 +1,8 @@
 import React from 'react';
-import { FacePackage } from './base/FacePackage';
+import { FacePackage } from '../FacePackage';
 import FaceView from './FaceView'
-export interface TableViewProps {
+import BaseComponentProps from './BaseComponentProps';
+export interface TableViewProps extends BaseComponentProps{
 
     /**
      * 设定一行显示多少列
@@ -32,7 +33,7 @@ export default class TableView extends React.Component<TableViewProps, TableView
     }
     render() {
         let faces = this.props.facePackage.faces.map((value, index) => {
-            return (<td key={index} style={{ textAlign: "center", border: "solid" }}><FaceView src={value.url} pos={index} imgInlineStyle={{ width: "100px", height: "100px" }} onClick={this.handleImageClick.bind(this)} /></td>)
+            return (<td key={index} style={{ textAlign: "center", border: "solid" }}><FaceView src={value.url} face_pos={index} imgInlineStyle={{ width: "100px", height: "100px" }} onClick={this.handleImageClick.bind(this)} global={this.props.global}/></td>)
         })
         let colCount = this.props.colCount
         let rowCount = Math.ceil((faces.length / colCount))

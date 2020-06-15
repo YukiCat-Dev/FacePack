@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Tab from './Tab';
-import { FacePackage } from './base/FacePackage';
+import { FacePackage } from '../FacePackage';
 export interface TabsProps {
     facePackages: Array<FacePackage>,
     onSelected:(newPos:number)=>void,

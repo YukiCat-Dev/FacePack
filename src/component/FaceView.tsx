@@ -2,7 +2,7 @@ import BaseComponentProps from './BaseComponentProps';
 import React from 'react';
 import { IndicatorProps, Indicator, IndicateLevel } from './Indicator';
 export interface FaceViewProps extends BaseComponentProps {
-    pos: number
+    face_pos: number
     src: string
     alt?: string
     onClick?: (e: React.MouseEvent<HTMLImageElement, MouseEvent>, pos?: number) => void
@@ -15,7 +15,6 @@ export interface FaceViewProps extends BaseComponentProps {
 export interface FaceViewState {
     src: { url?: string, data?: string }
     showIndicator?: IndicatorProps
-    hovering: boolean
 }
 /**
  * 显示图片
@@ -30,7 +29,6 @@ export default class FaceView extends React.Component<FaceViewProps, FaceViewSta
         this.state = {
             src: { url: props.src },
             showIndicator: { level: IndicateLevel.PRELOAD },
-            hovering: false
         }
     }
 
@@ -85,18 +83,19 @@ export default class FaceView extends React.Component<FaceViewProps, FaceViewSta
     }
     prerender() {
         if (this.state.src.data) {
+
             return (
                 <img src={this.state.src.data}
-                    onClick={(e) => this.props.onClick(e, this.props.pos)}
-                    onPointerEnter={() => this.setState({ hovering: true })}
-                    onPointerOut={() => this.setState({ hovering: false })} alt={this.props.alt} style={{ ...this.props.imgInlineStyle }} className={this.props.imgCSSClass}></img>
+                    onClick={(e) => this.props.onClick(e, this.props.face_pos)}
+                    onPointerEnter={() =>this.props.global.showPeak(this.state.src.data)}
+                    onPointerOut={() => this.props.global.hidePeak()} alt={this.props.alt} style={{ ...this.props.imgInlineStyle }} className={this.props.imgCSSClass}></img>
             );
         }
         if (this.state.showIndicator) {
-            return (<Indicator {...this.state.showIndicator} inlineStyle={this.props.imgInlineStyle} />)
+            return (<Indicator {...this.state.showIndicator} style={this.props.imgInlineStyle} />)
         }
     }
     render() {
-        return (<div className={this.props.cssClass} style={this.props.inlineStyle}>{this.prerender()}</div>)
+        return (<div className={this.props.className} style={this.props.style}>{this.prerender()}</div>)
     }
 }

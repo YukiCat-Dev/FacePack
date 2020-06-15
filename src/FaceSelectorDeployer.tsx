@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createPopper } from '@popperjs/core';
-import { FaceSelector } from './FaceSelector'
-import { Face, FacePackage } from './base/FacePackage';
+import { FaceSelector } from './component/FaceSelector'
+import { Face, FacePackage } from './FacePackage';
 export default class FaceSelectorDeployer {
     private _popcorn: HTMLElement
     private _tooltip: HTMLElement
@@ -22,7 +22,7 @@ export default class FaceSelectorDeployer {
      * @memberof FaceSelectorDeployer
      */
     render() {
-        ReactDOM.render(<FaceSelector facePacks={this._facePacks} colCount={3} handleHide={this._doHide.bind(this)} onFaceSelected={this._onFaceSelected} />, this._tooltip)
+        ReactDOM.render(<FaceSelector facePacks={this._facePacks} colCount={3} handleHide={this._doHide.bind(this)} onFaceSelected={this._onFaceSelected} refRoot={this._tooltip} />, this._tooltip)
         createPopper(this._popcorn, this._tooltip)
         this._popcorn.addEventListener('click',this._handlePopcornClick.bind(this))
         return this
