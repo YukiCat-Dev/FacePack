@@ -4,11 +4,14 @@ export enum IndicateLevel {
     PRELOAD,INFO, WARNING, ERROR
 }
 import PRELOAD from "../static/Ripple-1.3s-237px.svg"
+import WARNING from "../static/warning.svg"
+import INFO from "../static/info.svg"
+import ERROR from "../static/error.svg"
 /**
  * 按照IndicateLevel的顺序排列
  */
 const IndicatorPicsArray:Array<any>=[
-    PRELOAD,"",'',''
+    PRELOAD,INFO,WARNING,ERROR
 ]
 export interface IndicatorProps extends BaseComponentProps{
     level: IndicateLevel
@@ -27,8 +30,7 @@ export class Indicator extends React.Component<IndicatorProps> {
         let descr = this.props.description
         return (
             <div>
-                <img src={IndicatorPicsArray[this.props.level]}></img>
-                {descr && (<p>{descr}</p>)}
+                <img src={IndicatorPicsArray[this.props.level] } alt={descr}/>
             </div>
         )
     }
