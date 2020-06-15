@@ -1,0 +1,34 @@
+{
+    "array": [
+        {
+            "id": "114514",
+            "name": "parrots",
+            "faces": [
+                {
+                    "id": "middle_parrot",
+                    "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/hd/middleparrot.gif"
+                },
+                {
+                    "id": "bored_parrot",
+                    "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/hd/boredparrot.gif"
+                },
+                {
+                    "id": "slomo_parrot",
+                    "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/slomoparrot.gif"
+                },
+                {
+                    "id": "horizontal_parrot",
+                    "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/hd/horizontalparrot.gifs"
+                },
+                {
+                    "id": "async_parrot",
+                    "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/asyncparrot.gif"
+                },
+                {
+                    "id": "spinning_parrot",
+                    "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/hd/spinningparrot.gif"
+                }
+            ]
+        }
+    ]
+}
