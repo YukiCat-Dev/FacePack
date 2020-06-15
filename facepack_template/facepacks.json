@@ -68,6 +68,27 @@
                 }
                
             ]
+        },
+        {
+            "id": "cats",
+            "name": "cats",
+            "faces": [
+                {
+                    "id": "cat0",
+                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/060MurCat_Mur猫😺BQB/000000060.jpg"
+                },
+                {
+                    "id": "cat1",
+                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/060MurCat_Mur猫😺BQB/02.jpg"
+                }, {
+                    "id": "cat2",
+                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/060MurCat_Mur猫😺BQB/03.gif"
+                }, {
+                    "id": "cat3",
+                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/060MurCat_Mur猫😺BQB/04.jpg"
+                }
+               
+            ]
         }
     ]
 }
