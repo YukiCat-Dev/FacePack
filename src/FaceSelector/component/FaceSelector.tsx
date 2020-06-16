@@ -1,6 +1,6 @@
 import * as React from 'react';
 import TableView from './TableView';
-import { FacePackage, Face } from '../FacePackage';
+import { FacePackage, Face } from '../../FacePackage';
 import Tabs from './Tabs';
 import ReactDOM from 'react-dom';
 import Peak from './Peak';

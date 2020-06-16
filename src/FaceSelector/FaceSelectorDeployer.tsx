@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { createPopper } from '@popperjs/core';
 import { FaceSelector } from './component/FaceSelector'
-import { Face, FacePackage } from './FacePackage';
+import { Face, FacePackage } from '../FacePackage';
 export default class FaceSelectorDeployer {
     private _popcorn: HTMLElement
     private _tooltip: HTMLElement
