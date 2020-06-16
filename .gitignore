@@ -1,5 +1,5 @@
 node_modules
 .cache
-dist
 !.gitkeep
 package-lock.json
+dev
