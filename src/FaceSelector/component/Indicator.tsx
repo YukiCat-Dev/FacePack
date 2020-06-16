@@ -27,9 +27,7 @@ export class Indicator extends React.Component<IndicatorProps> {
     render() {
         let descr = this.props.description
         return (
-
             <img src={IndicateLevelSVG[this.props.level]} alt={descr} style={this.props.style} />
-
         )
     }
 }
