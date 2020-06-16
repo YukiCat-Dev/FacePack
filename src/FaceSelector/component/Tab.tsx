@@ -16,7 +16,7 @@ export interface TabProps {
 class Tab extends React.Component<TabProps> {
     render() { 
         return (          
-            <button onClick={()=>{this.props.onClick(this.props.pos)}}>{/*TODO:selected为true的时候为选中状态*/this.props.name}</button>
+            <div onClick={()=>{this.props.onClick(this.props.pos)}}>{/*TODO:selected为true的时候为选中状态*/this.props.name}</div>
         );
     }
 }
