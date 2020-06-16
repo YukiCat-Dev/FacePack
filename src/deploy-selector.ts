@@ -1,3 +1,4 @@
+/**部署样板 */
 import { importExternalFacePacks } from './FacePacksImporter'
 (async () => {
     const FaceSelectorDeployer = (await import('./FaceSelector/FaceSelectorDeployer')).default
@@ -6,5 +7,5 @@ import { importExternalFacePacks } from './FacePacksImporter'
 /*     const facePacks = DefaultFacePack
  */    new FaceSelectorDeployer(document.getElementById('show-fs'), document.getElementById('fs-c'), facePacks, (face) => {
         commentArea.value += `:${face.id}:`
-    }).render()
+    },{placement:'top'}).render().hide()
 })()
