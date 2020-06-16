@@ -1,26 +1,26 @@
 {
-  "name": "face-selector",
+  "name": "face-pack",
   "version": "1.0.0",
   "description": "Provide a face selector for Wordpress on HTML based on React.",
   "main": "index.js",
   "scripts": {
     "test": "parcel index.html",
     "dev": "parcel index.html --no-source-maps",
-    "build": "parcel build index.html"
-  },
+    "build": "parcel build src/index.tsx --out-dir build --experimental-scope-hoisting"  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KotoriK/face-selector.git"
+    "url": "git+https://github.com/YukiCat-Dev/FacePack.git"
   },
   "keywords": [
     "face"
   ],
-  "author": "KotoriK",
+  "author": {"name": "YukiCat-Dev","url": "https://github.com/YukiCat-Dev"},
+  "contributors": [{"name": "KotoriK","url": "https://github.com/KotoriK"},{"name": "DazaiYuki","url": "https://github.com/DazaiYuki"}],
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/KotoriK/face-selector/issues"
+    "url": "https://github.com/YukiCat-Dev/FacePack/issues"
   },
-  "homepage": "https://github.com/KotoriK/face-selector#readme",
+  "homepage": "https://github.com/YukiCat-Dev/FacePack#readme",
   "dependencies": {
     "@popperjs/core": "^2.4.2",
     "react": "^16.13.1",
