@@ -63,7 +63,7 @@ export default class FaceDisplay {
     replacePlaceHolder(placeHolder: string) {
         let url = this._faceMap.get(placeHolder)
         if (url) {
-            return `<img class="${this._className}" src="${url}" style="${this._inlineStyle}" alt="${placeHolder}"/>`
+            return `<img class="${this._className}" src="${url}" style="${this._inlineStyle} max-height:5vh;" alt="${placeHolder}"/>`
         } else {
             return placeHolder
         }
