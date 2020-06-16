@@ -1,12 +1,16 @@
 import React from 'react';
 import BaseComponentProps from './BaseComponentProps';
-import SVG_PRELOAD from "../../../static/Ripple-1.3s-237px.svg"
-import SVG_WARNING from "../../../static/warning.svg"
-import SVG_INFO from "../../../static/info.svg"
-import SVG_ERROR from "../../../static/error.svg"
+const SVG_PRELOAD = "https://cdn.jsdelivr.net/gh/YukiCat-Dev/FacePack/static/Ripple-1.3s-237px.svg"
+const SVG_WARNING = "https://cdn.jsdelivr.net/gh/YukiCat-Dev/FacePack/static/warning.svg"
+const SVG_INFO = "https://cdn.jsdelivr.net/gh/YukiCat-Dev/FacePack/static/info.svg"
+const SVG_ERROR = "https://cdn.jsdelivr.net/gh/YukiCat-Dev/FacePack/static/error.svg"
 export enum IndicateLevel {
-    PRELOAD = SVG_PRELOAD, INFO = SVG_INFO, WARNING = SVG_WARNING, ERROR = SVG_ERROR
+    PRELOAD , 
+    INFO , 
+    WARNING , 
+    ERROR 
 }
+const IndicateLevelSVG=[SVG_PRELOAD,SVG_WARNING,SVG_INFO,SVG_ERROR]
 export interface IndicatorProps extends BaseComponentProps {
     level: IndicateLevel
     description?: string
@@ -24,7 +28,7 @@ export class Indicator extends React.Component<IndicatorProps> {
         let descr = this.props.description
         return (
 
-            <img src={IndicateLevel[this.props.level]} alt={descr} style={this.props.style} />
+            <img src={IndicateLevelSVG[this.props.level]} alt={descr} style={this.props.style} />
 
         )
     }
