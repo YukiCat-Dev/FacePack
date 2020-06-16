@@ -1,20 +1,23 @@
 import { FacePackage } from "../FacePackage"
-const LEFT_BRACKET = ":"
-const RIGHT_BRACKET = ":"
+
 export default class FaceDisplay {
     private _className: string
     private _inlineStyle: string
-    private _faceMap: Map<string, string>=new Map()
-    constructor(facePackages: Array<FacePackage>, imgClassName: string = '', imgInlineStyle: string = '') {
+    private _faceMap: Map<string, string> = new Map()
+    LEFT_BRACKET: string
+    RIGHT_BRACKET: string
+    constructor(facePackages: Array<FacePackage>, imgClassName: string = '', imgInlineStyle: string = '', leftBracket: string = ':', rightBracket: string = ':') {
         this._className = imgClassName
         this._inlineStyle = imgInlineStyle
+        this.LEFT_BRACKET = leftBracket
+        this.RIGHT_BRACKET = rightBracket
         for (const pack of facePackages) {
             for (const face of pack.faces) {
                 this._faceMap.set(face.id, face.url)
             }
         }
     }
-    render(onElement: HTMLElement) {
+    render(onElement: HTMLElement|Element) {
         onElement.innerHTML = this.processInnerHTML(onElement.innerHTML)
     }
     processInnerHTML(innerHTML: string) {
@@ -23,22 +26,22 @@ export default class FaceDisplay {
         let bracketContent = ""
         for (const char of innerHTML) {
             switch (char) {
-                case LEFT_BRACKET:
+                case this.LEFT_BRACKET:
                     if (inBracket) {
-                        if (LEFT_BRACKET == RIGHT_BRACKET) {
+                        if (this.LEFT_BRACKET == this.RIGHT_BRACKET) {
                             inBracket = false
                             newInnerHTML += this.replacePlaceHolder(bracketContent)
                             bracketContent = ""
                         } else {
                             inBracket = false
-                            newInnerHTML += `${LEFT_BRACKET}bracketContent${LEFT_BRACKET}`
+                            newInnerHTML += `${this.LEFT_BRACKET}bracketContent${this.LEFT_BRACKET}`
                             bracketContent = ""
                         }
                     } else {
                         inBracket = true
                     }
                     break
-                case RIGHT_BRACKET:
+                case this.RIGHT_BRACKET:
                     if (inBracket) {
                         inBracket = false
                         newInnerHTML += this.replacePlaceHolder(bracketContent)
@@ -63,7 +66,7 @@ export default class FaceDisplay {
     replacePlaceHolder(placeHolder: string) {
         let url = this._faceMap.get(placeHolder)
         if (url) {
-            return `<img class="${this._className}" src="${url}" style="${this._inlineStyle} max-height:5vh;" alt="${placeHolder}"/>`
+            return `<img class="${this._className}" src="${url}" style="${this._inlineStyle} max-height:5vh;" alt="${this.LEFT_BRACKET}${placeHolder}${this.RIGHT_BRACKET}"/>`
         } else {
             return placeHolder
         }
