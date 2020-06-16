@@ -4,7 +4,8 @@ import { FacePackage, Face } from '../../FacePackage';
 import Tabs from './Tabs';
 import ReactDOM from 'react-dom';
 import Peak from './Peak';
-import Popper, { createPopper } from '@popperjs/core'
+import Popper, { createPopper, OptionsGeneric, Modifier } from '@popperjs/core'
+export type TModifier= Partial<Modifier<any, any>>
 export interface FaceSelectorProps {
     /**
      *  指示选项卡标签条停靠的位置
@@ -30,6 +31,7 @@ export interface FaceSelectorProps {
      * 指向正挂载在的HTML元素
      */
     refRoot: HTMLElement
+    popperOptions?:Partial<OptionsGeneric<TModifier>>
 }
 export interface FaceSelectorState {
     /**
