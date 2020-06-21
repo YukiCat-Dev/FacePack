@@ -14,7 +14,7 @@ export default class FaceDisplay {
         this.RIGHT_BRACKET = rightBracket
         for (const pack of facePackages) {
             for (const face of pack.faces) {
-                this._faceMap.set(face.id,face.url)
+                this._faceMap.set(`${pack.id}.${face.id}`,face.url)
             }
         }
     }

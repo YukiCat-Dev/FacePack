@@ -27,7 +27,7 @@ export interface FaceSelectorProps extends BaseComponentProps {
     /**
     *  当用户选中一个表情时触发
     */
-    onFaceSelected: (face: Face) => void
+    onFaceSelected: (parentPack:FacePackage, face: Face) => void
     /**
      * 指向正挂载在的HTML元素
      */
@@ -68,7 +68,8 @@ export class FaceSelector extends React.Component<FaceSelectorProps, FaceSelecto
         this.setState({ nowPackagePos: newPos })
     }
     handleFaceSelected(face_pos: number) {
-        this.props.onFaceSelected(this.props.facePacks[this.state.nowPackagePos].faces[face_pos])
+        const nowPackage=this.props.facePacks[this.state.nowPackagePos]
+        this.props.onFaceSelected(nowPackage,nowPackage.faces[face_pos])
         this.props.handleHide()
     }
     createPeakContainer() {

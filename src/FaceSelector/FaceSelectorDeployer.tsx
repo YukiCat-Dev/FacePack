@@ -25,12 +25,12 @@ export interface FaceSelectorDeployerProps {
      * @type {Array<FacePackage>}
      * @memberof FaceSelectorDeployerProps
      */
-    facePackages: Array<FacePackage>, onFaceSelected: (face: Face) => void, style?: CSSProperties, popperOptions?: Partial<OptionsGeneric<TModifier>>
+    facePackages: Array<FacePackage>, onFaceSelected: (parentPack:FacePackage, face: Face) => void, style?: CSSProperties, popperOptions?: Partial<OptionsGeneric<TModifier>>
 }
 export default class FaceSelectorDeployer {
     private _popcorn: HTMLElement
     private _tooltip: HTMLElement
-    private _onFaceSelected: (face: Face) => void
+    private _onFaceSelected: (parentPack:FacePackage, face: Face) => void
     private _facePacks: Array<FacePackage>
     private _popperOption: Partial<OptionsGeneric<TModifier>>
     private _style: CSSProperties

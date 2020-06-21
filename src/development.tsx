@@ -5,8 +5,8 @@ import DefaultFacePack from './DefaultFacePacksImporter'
     const commentArea = document.getElementById('comment') as HTMLTextAreaElement
     const facePacks = DefaultFacePack
     new FaceSelectorDeployer({
-        popcorn: document.getElementById('show-fs'), tooltip: document.getElementById('fs-c'), facePackages: facePacks, onFaceSelected: (face) => {
-            commentArea.value += `:${face.id}:`
+        popcorn: document.getElementById('show-fs'), tooltip: document.getElementById('fs-c'), facePackages: facePacks, onFaceSelected:  (pack,face) => {
+            commentArea.value += `:${pack.id}.${face.id}:`
         }
     }).render()
 
