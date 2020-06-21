@@ -32,12 +32,13 @@ export default class TableView extends React.Component<TableViewProps, TableView
         this.props.onImageSelected(pos)
     }
     render() {
-        let faces = this.props.facePackage.faces.map((value, index) => {
-            return (<td key={index} style={{ textAlign: "center", border: "1pt solid" }}><FaceView src={value.url} face_pos={index} style={{ width: "30px", height: "30px" }} onClick={this.handleImageClick.bind(this)} global={this.props.global} /></td>)
+        const facePackName=this.props.facePackage.name
+        const faces = this.props.facePackage.faces.map((value, index) => {
+            return (<td key={facePackName+'_'+index} style={{ textAlign: "center", border: "1pt solid" }}><FaceView src={value.url} face_pos={index} style={{ width: "30px", height: "30px" }} onClick={this.handleImageClick.bind(this)} global={this.props.global} /></td>)
         })
-        let colCount = this.props.colCount
-        let rowCount = Math.ceil((faces.length / colCount))
-        let rows: Array<JSX.Element> = []
+        const colCount = this.props.colCount
+        const rowCount = Math.ceil((faces.length / colCount))
+        const rows: Array<JSX.Element> = []
         for (let i = 0; i < rowCount; i++) {
             rows.push((<tr key={i}>{faces.slice(i * colCount, i * colCount + colCount)}</tr>))
         }
