@@ -8,7 +8,7 @@ class Peak extends React.Component<PeakProps> {
     
     render() { 
         return (<img src={this.props.imgUrl} 
-            style={{...this.props.style,borderWidth:"10px",borderColor:"#000000",borderStyle:"solid",aspectRatio:"1",height:"200px"}} 
+            style={{...this.props.style,borderWidth:"10px",borderColor:"#000000",borderStyle:"solid",height:"200px"}} 
             className={this.props.className} ></img>);
     }
 }
