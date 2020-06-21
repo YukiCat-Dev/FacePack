@@ -26,7 +26,7 @@ export default class FaceDisplay {
         if (url) {
             return `<img class="${this._className}" src="${url}" style="${this._inlineStyle} max-height:5vh;" alt="${this.LEFT_BRACKET}${placeHolder}${this.RIGHT_BRACKET}"/>`
         } else {
-            return placeHolder
+            return `${this.LEFT_BRACKET}${placeHolder}${this.RIGHT_BRACKET}`
         }
     }
 }
