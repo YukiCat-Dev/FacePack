@@ -2,68 +2,82 @@
         {
             "id": "parrots",
             "name": "鹦鹉派对",
+            "p_url":"https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/",
             "faces": [
                 {
                     "id": "middle_parrot",
-                    "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/hd/middleparrot.gif"
+                    "url": "{p_url}hd/middleparrot.gif"
                 },
                 {
                     "id": "bored_parrot",
-                    "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/hd/boredparrot.gif"
+                    "url": "{p_url}hd/boredparrot.gif"
                 },
                 {
                     "id": "slomo_parrot",
-                    "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/slomoparrot.gif"
+                    "url": "{p_url}slomoparrot.gif"
                 },
                 {
                     "id": "horizontal_parrot",
-                    "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/hd/horizontalparrot.gif"
+                    "url": "{p_url}hd/horizontalparrot.gif"
                 },
                 {
                     "id": "async_parrot",
-                    "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/asyncparrot.gif"
+                    "url": "{p_url}asyncparrot.gif"
                 },
                 {
                     "id": "spinning_parrot",
-                    "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/hd/spinningparrot.gif"
+                    "url": "{p_url}hd/spinningparrot.gif"
+                },
+                {
+                    "id":"60fps",
+                    "url":"{p_url}hd/60fpsparrot.gif"
+                },
+                {
+                    "id":"backward",
+                    "url":"{p_url}hd/backwardsparrot.gif"
+                },
+                {
+                    "id":"angry",
+                    "url":"{p_url}hd/angryparrot.gif"
                 }
             ]
         },
         {
             "id": "ducks",
             "name": "鸭鸭",
+            "p_url":"https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/",
             "faces": [
                 {
                     "id": "happyduck1",
-                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck1.jpg"
+                    "url": "{p_url}HappyDuck1.jpg"
                 },
                 {
                     "id": "happyduck2",
-                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck2.jpg"
+                    "url": "{p_url}HappyDuck2.jpg"
                 }, {
                     "id": "happyduck3",
-                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck3.jpg"
+                    "url": "{p_url}HappyDuck3.jpg"
                 }, {
                     "id": "happyduck4",
-                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck4.jpg"
+                    "url": "{p_url}HappyDuck4.jpg"
                 }, {
                     "id": "happyduck5",
-                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck5.jpg"
+                    "url": "{p_url}HappyDuck5.jpg"
                 }, {
                     "id": "happyduck6",
-                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck7.jpg"
+                    "url": "{p_url}HappyDuck7.jpg"
                 },{
                     "id": "happyduck7",
-                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck8.jpg"
+                    "url": "{p_url}HappyDuck8.jpg"
                 },{
                     "id": "happyduck8",
-                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck9.jpg"
+                    "url": "{p_url}HappyDuck9.jpg"
                 },{
                     "id": "happyduck9",
-                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck10.jpg"
+                    "url": "{p_url}HappyDuck10.jpg"
                 },{
                     "id": "happyduck10",
-                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck11.jpg"
+                    "url": "{p_url}HappyDuck11.jpg"
                 }
                
             ]
