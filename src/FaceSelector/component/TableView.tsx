@@ -3,7 +3,6 @@ import { FacePackage } from '../../FacePackage';
 import FaceView from './FaceView'
 import BaseComponentProps from './BaseComponentProps';
 export interface TableViewProps extends BaseComponentProps {
-
     /**
      * 设定一行显示多少列
      *
@@ -22,12 +21,7 @@ export interface TableViewProps extends BaseComponentProps {
     onImageSelected: (face_pos: number) => void
 }
 
-export interface TableViewState {
-
-}
-
-export default class TableView extends React.Component<TableViewProps, TableViewState> {
-    state = {}
+export default class TableView extends React.Component<TableViewProps> {
     handleImageClick(e, pos: number) {
         this.props.onImageSelected(pos)
     }
