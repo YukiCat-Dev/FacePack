@@ -5,8 +5,9 @@ import Tabs from './Tabs';
 import ReactDOM from 'react-dom';
 import Peak from './Peak';
 import Popper, { createPopper, OptionsGeneric, Modifier } from '@popperjs/core'
+import BaseComponentProps from './BaseComponentProps';
 export type TModifier= Partial<Modifier<any, any>>
-export interface FaceSelectorProps {
+export interface FaceSelectorProps extends BaseComponentProps {
     /**
      *  指示选项卡标签条停靠的位置
      */
@@ -114,7 +115,7 @@ export class FaceSelector extends React.Component<FaceSelectorProps, FaceSelecto
         let nowPackagePos = this.state.nowPackagePos,
             maxPos = this.props.facePacks.length - 1
         if (nowPackagePos > maxPos) nowPackagePos = maxPos //防止prop发生改动带来越界
-        return (<div style={{ border: "solid" }}>
+        return (<div style={{...this.props.style, border: "solid" }}>
             <Tabs facePackages={this.props.facePacks} onSelected={(pos) => this.handleTabSelectionChange(pos)} selectedPos={this.state.nowPackagePos} />
             <TableView facePackage={this.props.facePacks[nowPackagePos]} colCount={this.props.colCount} onImageSelected={this.handleFaceSelected.bind(this)} global={this.global} />
         </div>)
