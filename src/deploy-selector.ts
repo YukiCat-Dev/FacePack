@@ -5,7 +5,9 @@ import { importExternalFacePacks } from './FacePacksImporter'
     const commentArea = document.getElementById('comment') as HTMLTextAreaElement
     const facePacks = await importExternalFacePacks('https://cdn.jsdelivr.net/gh/YukiCat-Dev/yukicat.facepack/facepacks.json')
 /*     const facePacks = DefaultFacePack
- */    new FaceSelectorDeployer(document.getElementById('show-fs'), document.getElementById('fs-c'), facePacks, (face) => {
-        commentArea.value += `:${face.id}:`
-    },{placement:'top'}).render().hide()
+ */    new FaceSelectorDeployer({
+        popcorn: document.getElementById('show-fs'), tooltip: document.getElementById('fs-c'), facePackages: facePacks, onFaceSelected: (face) => {
+            commentArea.value += `:${face.id}:`
+        }, popperOptions: { placement: 'top' }
+    }).render().hide()
 })()
