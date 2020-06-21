@@ -7,10 +7,6 @@ export interface FaceViewProps extends BaseComponentProps {
     alt?: string
     onClick?: (e: React.MouseEvent<HTMLImageElement, MouseEvent>, pos?: number) => void
     refererPolicy?: ReferrerPolicy,
-    imgInlineStyle?: React.CSSProperties,
-    imgCSSClass?: string,
-
-
 }
 export interface FaceViewState {
     src: { url?: string, data?: string }
@@ -31,7 +27,6 @@ export default class FaceView extends React.Component<FaceViewProps, FaceViewSta
             showIndicator: { level: IndicateLevel.PRELOAD },
         }
     }
-
     /**
      * 懒加载图片
      * @author KotoriK
@@ -81,21 +76,16 @@ export default class FaceView extends React.Component<FaceViewProps, FaceViewSta
     componentWillUnmount() {
         this.revokeData()
     }
-    prerender() {
+    render() {
         if (this.state.src.data) {
-
             return (
                 <img src={this.state.src.data}
                     onClick={(e) => this.props.onClick(e, this.props.face_pos)}
-                    onPointerEnter={() =>this.props.global.showPeak(this.state.src.data)}
-                    onPointerOut={() => this.props.global.hidePeak()} alt={this.props.alt} style={{ ...this.props.imgInlineStyle }} className={this.props.imgCSSClass}></img>
+                    onPointerEnter={() => this.props.global.showPeak(this.state.src.data)}
+                    onPointerOut={() => this.props.global.hidePeak()} alt={this.props.alt} style={{ ...this.props.style }} className={this.props.className}></img>
             );
+        } else {
+            return (<Indicator {...this.state.showIndicator} style={this.props.style} className={this.props.className} />)
         }
-        if (this.state.showIndicator) {
-            return (<Indicator {...this.state.showIndicator} style={this.props.imgInlineStyle} />)
-        }
-    }
-    render() {
-        return (<div className={this.props.className} style={this.props.style}>{this.prerender()}</div>)
     }
 }
