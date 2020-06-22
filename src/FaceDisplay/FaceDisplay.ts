@@ -24,7 +24,7 @@ export default class FaceDisplay {
     replacePlaceHolder(placeHolder: string) {
         const url = this._faceMap.get(placeHolder)
         if (url) {
-            return `<img class="${this._className}" src="${url}" style="${this._inlineStyle} max-height:5vh;" alt="${this.LEFT_BRACKET}${placeHolder}${this.RIGHT_BRACKET}"/>`
+            return `<img class="${this._className}" src="${url}" style="${this._inlineStyle} max-height:10vh;" alt="${this.LEFT_BRACKET}${placeHolder}${this.RIGHT_BRACKET}"/>`
         } else {
             return `${this.LEFT_BRACKET}${placeHolder}${this.RIGHT_BRACKET}`
         }
