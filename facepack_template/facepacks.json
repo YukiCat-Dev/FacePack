@@ -1,106 +1,158 @@
-[
-        {
-            "id": "parrots",
-            "name": "鹦鹉派对",
-            "p_url":"https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/",
-            "faces": [
-                {
-                    "id": "middle_parrot",
-                    "url": "{p_url}hd/middleparrot.gif"
-                },
-                {
-                    "id": "bored_parrot",
-                    "url": "{p_url}hd/boredparrot.gif"
-                },
-                {
-                    "id": "slomo_parrot",
-                    "url": "{p_url}slomoparrot.gif"
-                },
-                {
-                    "id": "horizontal_parrot",
-                    "url": "{p_url}hd/horizontalparrot.gif"
-                },
-                {
-                    "id": "async_parrot",
-                    "url": "{p_url}asyncparrot.gif"
-                },
-                {
-                    "id": "spinning_parrot",
-                    "url": "{p_url}hd/spinningparrot.gif"
-                },
-                {
-                    "id":"60fps",
-                    "url":"{p_url}hd/60fpsparrot.gif"
-                },
-                {
-                    "id":"backward",
-                    "url":"{p_url}hd/backwardsparrot.gif"
-                },
-                {
-                    "id":"angry",
-                    "url":"{p_url}hd/angryparrot.gif"
-                }
-            ]
-        },
-        {
-            "id": "ducks",
-            "name": "鸭鸭",
-            "p_url":"https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/",
-            "faces": [
-                {
-                    "id": "happyduck1",
-                    "url": "{p_url}HappyDuck1.jpg"
-                },
-                {
-                    "id": "happyduck2",
-                    "url": "{p_url}HappyDuck2.jpg"
-                }, {
-                    "id": "happyduck3",
-                    "url": "{p_url}HappyDuck3.jpg"
-                }, {
-                    "id": "happyduck4",
-                    "url": "{p_url}HappyDuck4.jpg"
-                }, {
-                    "id": "happyduck5",
-                    "url": "{p_url}HappyDuck5.jpg"
-                }, {
-                    "id": "happyduck6",
-                    "url": "{p_url}HappyDuck7.jpg"
-                },{
-                    "id": "happyduck7",
-                    "url": "{p_url}HappyDuck8.jpg"
-                },{
-                    "id": "happyduck8",
-                    "url": "{p_url}HappyDuck9.jpg"
-                },{
-                    "id": "happyduck9",
-                    "url": "{p_url}HappyDuck10.jpg"
-                },{
-                    "id": "happyduck10",
-                    "url": "{p_url}HappyDuck11.jpg"
-                }
-               
-            ]
-        },
-        {
-            "id": "cats",
-            "name": "猫猫",
-            "faces": [
-                {
-                    "id": "cat0",
-                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/060MurCat_Mur猫😺BQB/000000060.jpg"
-                },
-                {
-                    "id": "cat1",
-                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/060MurCat_Mur猫😺BQB/02.jpg"
-                }, {
-                    "id": "cat2",
-                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/060MurCat_Mur猫😺BQB/03.gif"
-                }, {
-                    "id": "cat3",
-                    "url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/060MurCat_Mur猫😺BQB/04.jpg"
-                }
-               
-            ]
-        }
-    ]
+[{
+    "id": "parrots",
+    "name": "鹦鹉派对",
+    "p_url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/",
+    "faces": [{
+        "id": "middle",
+        "url": "{p_url}hd/middleparrot.gif"
+    }, {
+        "id": "bored",
+        "url": "{p_url}hd/boredparrot.gif"
+    }, {
+        "id": "slomo",
+        "url": "{p_url}slomoparrot.gif"
+    }, {
+        "id": "horizontal",
+        "url": "{p_url}hd/horizontalparrot.gif"
+    }, {
+        "id": "async",
+        "url": "{p_url}asyncparrot.gif"
+    }, {
+        "id": "spinning",
+        "url": "{p_url}hd/spinningparrot.gif"
+    }, {
+        "id": "60fps",
+        "url": "{p_url}hd/60fpsparrot.gif"
+    }, {
+        "id": "backward",
+        "url": "{p_url}hd/backwardsparrot.gif"
+    }, {
+        "id": "angry",
+        "url": "{p_url}hd/angryparrot.gif"
+    }, {
+        "id": "thumbsup",
+        "url": "{p_url}hd/thumbsupparrot.gif"
+    }, {
+        "id": "hmm",
+        "url": "{p_url}hd/hmmparrot.gif"
+    }, {
+        "id": "stable",
+        "url": "{p_url}hd/stableparrot.gif"
+    }, {
+        "id": "dad",
+        "url": "{p_url}hd/dadparrot.gif"
+    }, {
+        "id": "php",
+        "url": "{p_url}hd/phparrot.gif"
+    }, {
+        "id": "sleepy",
+        "url": "{p_url}hd/sleepingparrot.gif"
+    }, {
+        "id": "node",
+        "url": "{p_url}hd/nodeparrot.gif"
+    }, {
+        "id": "transparent",
+        "url": "{p_url}hd/transparront.gif"
+    }, {
+        "id": "portalblue",
+        "url": "{p_url}hd/portalblueparrot.gif"
+    }, {
+        "id": "reverseportalblue",
+        "url": "{p_url}hd/reverseportalblueparrot.gif"
+    }, {
+        "id": "reverseportalorange",
+        "url": "{p_url}hd/reverseportalorangeparrot.gif"
+    }, {
+        "id": "portalorange",
+        "url": "{p_url}hd/portalorangeparrot.gif"
+    }, {
+        "id": "original",
+        "url": "{p_url}hd/originalparrot.gif"
+    }, {
+        "id": "notfound",
+        "url": "{p_url}hd/parrotnotfound.gif"
+    }, {
+        "id": "short",
+        "url": "{p_url}hd/shortparrot.gif"
+    }, {
+        "id": "bouncing",
+        "url": "{p_url}hd/bouncingparrot.gif"
+    }]
+}, {
+    "id": "ducks",
+    "name": "鸭鸭",
+    "p_url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/",
+    "faces": [{
+        "id": "1",
+        "url": "{p_url}HappyDuck1.jpg"
+    }, {
+        "id": "2",
+        "url": "{p_url}HappyDuck2.jpg"
+    }, {
+        "id": "3",
+        "url": "{p_url}HappyDuck3.jpg"
+    }, {
+        "id": "4",
+        "url": "{p_url}HappyDuck4.jpg"
+    }, {
+        "id": "5",
+        "url": "{p_url}HappyDuck5.jpg"
+    }, {
+        "id": "6",
+        "url": "{p_url}HappyDuck7.jpg"
+    }, {
+        "id": "7",
+        "url": "{p_url}HappyDuck8.jpg"
+    }, {
+        "id": "8",
+        "url": "{p_url}HappyDuck9.jpg"
+    }, {
+        "id": "9",
+        "url": "{p_url}HappyDuck10.jpg"
+    }]
+}, {
+    "id": "mur_cat",
+    "name": "Mur猫",
+    "p_url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/060MurCat_Mur猫😺BQB/",
+    "faces": [{
+        "id": "0",
+        "url": "{p_url}000000060.jpg"
+    }, {
+        "id": "1",
+        "url": "{p_url}02.jpg"
+    }, {
+        "id": "2",
+        "url": "{p_url}03.gif"
+    }, {
+        "id": "3",
+        "url": "{p_url}04.jpg"
+    }]
+}, {
+    "id": "kaguya",
+    "name": "輝夜様は告らせたい",
+    "p_url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/071辉夜大小姐🎀BQB/",
+    "faces": [{
+        "id": "藤原敲打",
+        "url": "{p_url}000000071.gif"
+    }, {
+        "id": "抖",
+        "url": "{p_url}79814979309c40c6825abb37748390230ef923bf45032-3YH3yy_fw658.gif"
+    }]
+}, {
+    "id": "yukicat",
+    "name": "站上表情包",
+    "p_url": "https://www.yukicat.net/wp-content/uploads/",
+    "faces": [{
+        "id": "e_wu",
+        "url": "{p_url}2020/04/XA9N0LG@G8HDSD0HZ_9.jpg"
+    }, {
+        "id": "jesus",
+        "url": "{p_url}2019/12/Jesus.jpg"
+    }, {
+        "id": "急いですね",
+        "url": "{p_url}2020/04/50Q@J3EU27WLPO0H1IF.jpg"
+    }, {
+        "id": "是这样啊",
+        "url": "{p_url}2020/06/20200603221559.png"
+    }]
+}]
