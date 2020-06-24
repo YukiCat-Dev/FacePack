@@ -1,5 +1,6 @@
 import React from 'react';
-export interface TabProps {
+import BaseComponentProps from './BaseComponentProps';
+export interface TabProps extends BaseComponentProps{
     pos:number
     name:string
     selected:boolean
@@ -16,7 +17,7 @@ export interface TabProps {
 class Tab extends React.Component<TabProps> {
     render() { 
         return (          
-            <div onClick={()=>{this.props.onClick(this.props.pos)}}>{/*TODO:selected为true的时候为选中状态*/this.props.name}</div>
+            <div style={{...this.props.style,borderRight:"1pt solid",}} className={this.props.className} onClick={()=>{this.props.onClick(this.props.pos)}}>{/*TODO:selected为true的时候为选中状态*/this.props.name}</div>
         );
     }
 }
