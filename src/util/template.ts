@@ -7,7 +7,7 @@ export default class Template {
         this.RIGHT_BRACKET = right_bracket
     }
     replacePlaceHolder: (str: string) => Promise<string>
-   async process(text: string) {
+    async process(text: string) {
         let inBracket = false
         let newText = ""
         let bracketContent = ""
@@ -46,7 +46,7 @@ export default class Template {
             }
         }
         if (bracketContent != '') {
-            newText += bracketContent
+            newText += this.LEFT_BRACKET + bracketContent
         }
         return newText
     }
@@ -88,7 +88,7 @@ export function processTemplate(left_bracket: string, right_bracket: string, rep
         }
     }
     if (bracketContent != '') {
-        newText += bracketContent
+        newText += left_bracket + bracketContent
     }
     return newText
 }
