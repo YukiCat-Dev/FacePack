@@ -2,13 +2,11 @@ import * as React from 'react';
 import TableView from './TableView';
 import { FacePackage, Face } from '../../FacePackage';
 import Tabs from './Tabs';
-import ReactDOM from 'react-dom';
 import Peak from './Peak';
 import Popper, { createPopper, OptionsGeneric, Modifier } from '@popperjs/core'
 import BaseComponentProps from './BaseComponentProps';
 import '../../facepack.css'
-
-export type TModifier= Partial<Modifier<any, any>>
+export type TModifier = Partial<Modifier<any, any>>
 export interface FaceSelectorProps extends BaseComponentProps {
     /**
      *  指示选项卡标签条停靠的位置
@@ -29,12 +27,12 @@ export interface FaceSelectorProps extends BaseComponentProps {
     /**
     *  当用户选中一个表情时触发
     */
-    onFaceSelected: (parentPack:FacePackage, face: Face) => void
+    onFaceSelected: (parentPack: FacePackage, face: Face) => void
     /**
      * 指向正挂载在的HTML元素
      */
     refRoot: HTMLElement
-    popperOptions?:Partial<OptionsGeneric<TModifier>>
+    popperOptions?: Partial<OptionsGeneric<TModifier>>
 }
 export interface FaceSelectorState {
     /**
@@ -62,7 +60,7 @@ export class FaceSelector extends React.Component<FaceSelectorProps, FaceSelecto
             this.renderPeak(imgUrl)
             this.showPeak()
         },
-        hidePeak:this.hidePeak.bind(this)
+        hidePeak: this.hidePeak.bind(this)
     }
     peakContainer: HTMLDivElement
     peakPopper: Popper.Instance
@@ -70,8 +68,8 @@ export class FaceSelector extends React.Component<FaceSelectorProps, FaceSelecto
         this.setState({ nowPackagePos: newPos })
     }
     handleFaceSelected(face_pos: number) {
-        const nowPackage=this.props.facePacks[this.state.nowPackagePos]
-        this.props.onFaceSelected(nowPackage,nowPackage.faces[face_pos])
+        const nowPackage = this.props.facePacks[this.state.nowPackagePos]
+        this.props.onFaceSelected(nowPackage, nowPackage.faces[face_pos])
         this.props.handleHide()
     }
     createPeakContainer() {
@@ -79,24 +77,28 @@ export class FaceSelector extends React.Component<FaceSelectorProps, FaceSelecto
         this.peakContainer.setAttribute('id', 'peak-container')
         this.hidePeak()
         this.props.refRoot.append(this.peakContainer)
-        this.peakPopper = createPopper(this.props.refRoot, this.peakContainer,{placement:"left-start",modifiers: [
-            {
-              name: 'offset',
-              options: {
-                offset: [10, 20],
-              },
-            },
-          ],})
+        this.peakPopper = createPopper(this.props.refRoot, this.peakContainer, {
+            placement: "left-start", modifiers: [
+                {
+                    name: 'offset',
+                    options: {
+                        offset: [10, 20],
+                    },
+                },
+            ],
+        })
     }
     removePeakContainer() {
-        ReactDOM.unmountComponentAtNode(this.peakContainer)
-        this.peakPopper.destroy()
-        this.peakPopper = undefined
-        document.removeChild(this.peakContainer)
-        this.peakContainer = undefined
+        import('react-dom').then((ReactDOM) => {
+            ReactDOM.unmountComponentAtNode(this.peakContainer)
+            this.peakPopper.destroy()
+            this.peakPopper = undefined
+            document.removeChild(this.peakContainer)
+            this.peakContainer = undefined
+        })
     }
     renderPeak(imgUrl: string) {
-        ReactDOM.render(<Peak imgUrl={imgUrl} />, this.peakContainer)
+        import('react-dom').then((ReactDOM) => { ReactDOM.render(<Peak imgUrl={imgUrl} />, this.peakContainer) })
     }
     hidePeak() {
         this.peakContainer.setAttribute("hidden", "hidden")
@@ -108,17 +110,17 @@ export class FaceSelector extends React.Component<FaceSelectorProps, FaceSelecto
             console.warn(e)
         }
     }
-    componentDidMount(){
+    componentDidMount() {
         this.createPeakContainer()
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         this.removePeakContainer()
     }
     render() {
         let nowPackagePos = this.state.nowPackagePos,
             maxPos = this.props.facePacks.length - 1
         if (nowPackagePos > maxPos) nowPackagePos = maxPos //防止prop发生改动带来越界
-        return (<div style={{...this.props.style }} className={'fp-border-shadow'+(this.props.className?this.props.className:'')}>
+        return (<div style={{ ...this.props.style }} className={'fp-border-shadow' + (this.props.className ? this.props.className : '')}>
             <Tabs facePackages={this.props.facePacks} onSelected={(pos) => this.handleTabSelectionChange(pos)} selectedPos={this.state.nowPackagePos} />
             <TableView facePackage={this.props.facePacks[nowPackagePos]} colCount={this.props.colCount} onImageSelected={this.handleFaceSelected.bind(this)} global={this.global} />
         </div>)
