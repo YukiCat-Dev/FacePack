@@ -11,6 +11,5 @@ import FaceSelectorDeployer from './FaceSelector/FaceSelectorDeployer'
         onFaceSelected: 
         (pack,face) => {
             commentArea.value += `:${pack.id}.${face.id}:`
-        }, popperOptions: { placement: 'top' }
-    }).render().hide()
+        }, popperOptions: { placement: 'top' },style:{backgroundColor:"#FFFFFF"}   }).render().hide()
 })()

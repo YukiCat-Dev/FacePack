@@ -18,7 +18,7 @@ export interface FaceSelectorDeployerProps {
      * @memberof FaceSelectorDeployerProps
      */
     tooltip: HTMLElement, 
-    
+    className?:string
     /**
      * 要加载的表情包
      *
@@ -34,6 +34,7 @@ export default class FaceSelectorDeployer {
     private _facePacks: Array<FacePackage>
     private _popperOption: Partial<OptionsGeneric<TModifier>>
     private _style: CSSProperties
+    private _className:string
     constructor(props: FaceSelectorDeployerProps) {
         this._popcorn = props.popcorn
         this._tooltip = props.tooltip
@@ -41,6 +42,7 @@ export default class FaceSelectorDeployer {
         this._facePacks = props.facePackages
         this._popperOption = props.popperOptions
         this._style = props.style
+        this._className=props.className
     }
     private _displayed: boolean = true
     /**
@@ -50,7 +52,7 @@ export default class FaceSelectorDeployer {
      * @memberof FaceSelectorDeployer
      */
     render() {
-        ReactDOM.render(<FaceSelector facePacks={this._facePacks} colCount={3} handleHide={this.hide.bind(this)} onFaceSelected={this._onFaceSelected} refRoot={this._tooltip} popperOptions={this._popperOption} style={this._style} />, this._tooltip)
+        ReactDOM.render(<FaceSelector facePacks={this._facePacks} colCount={3} handleHide={this.hide.bind(this)} onFaceSelected={this._onFaceSelected} refRoot={this._tooltip} popperOptions={this._popperOption} style={this._style} className={this._className}/>, this._tooltip)
         createPopper(this._popcorn, this._tooltip)
         this._popcorn.addEventListener('click', this._handlePopcornClick.bind(this))
         return this

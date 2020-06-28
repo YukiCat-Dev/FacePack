@@ -6,6 +6,8 @@ import ReactDOM from 'react-dom';
 import Peak from './Peak';
 import Popper, { createPopper, OptionsGeneric, Modifier } from '@popperjs/core'
 import BaseComponentProps from './BaseComponentProps';
+import '../../facepack.css'
+
 export type TModifier= Partial<Modifier<any, any>>
 export interface FaceSelectorProps extends BaseComponentProps {
     /**
@@ -116,7 +118,7 @@ export class FaceSelector extends React.Component<FaceSelectorProps, FaceSelecto
         let nowPackagePos = this.state.nowPackagePos,
             maxPos = this.props.facePacks.length - 1
         if (nowPackagePos > maxPos) nowPackagePos = maxPos //防止prop发生改动带来越界
-        return (<div style={{...this.props.style, border: "solid" }} className={this.props.className}>
+        return (<div style={{...this.props.style }} className={'fp-border-shadow'+(this.props.className?this.props.className:'')}>
             <Tabs facePackages={this.props.facePacks} onSelected={(pos) => this.handleTabSelectionChange(pos)} selectedPos={this.state.nowPackagePos} />
             <TableView facePackage={this.props.facePacks[nowPackagePos]} colCount={this.props.colCount} onImageSelected={this.handleFaceSelected.bind(this)} global={this.global} />
         </div>)

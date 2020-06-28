@@ -7,7 +7,7 @@ import DefaultFacePack from './DefaultFacePacksImporter'
     new FaceSelectorDeployer({
         popcorn: document.getElementById('show-fs'), tooltip: document.getElementById('fs-c'), facePackages: facePacks, onFaceSelected:  (pack,face) => {
             commentArea.value += `:${pack.id}.${face.id}:`
-        }
+        },style:{backgroundColor:"#FFFFFF",border: "solid"} 
     }).render()
 
     let display = new FaceDisplay(facePacks)
