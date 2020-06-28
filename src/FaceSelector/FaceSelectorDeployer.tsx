@@ -24,14 +24,15 @@ export interface FaceSelectorDeployerProps {
      * @type {Array<FacePackage>}
      * @memberof FaceSelectorDeployerProps
      */
-    facePackages: Array<FacePackage>, onFaceSelected: (parentPack: FacePackage, face: Face) => void, style?: CSSProperties, popperOptions?: Partial<OptionsGeneric<TModifier>>
+    facePackages: Array<FacePackage>, onFaceSelected: (parentPack: FacePackage, face: Face) => void, style?: CSSProperties, popperOptions?: Partial<OptionsGeneric<TModifier>>,peakPopperOptions?:Partial<OptionsGeneric<TModifier>>
 }
 export default class FaceSelectorDeployer {
     private _popcorn: HTMLElement
     private _tooltip: HTMLElement
     private _onFaceSelected: (parentPack: FacePackage, face: Face) => void
     private _facePacks: Array<FacePackage>
-    private _popperOption: Partial<OptionsGeneric<TModifier>>
+    private _popperOptions: Partial<OptionsGeneric<TModifier>>
+    private _peakPopperOptions:Partial<OptionsGeneric<TModifier>>
     private _style: CSSProperties
     private _className: string
     constructor(props: FaceSelectorDeployerProps) {
@@ -39,9 +40,10 @@ export default class FaceSelectorDeployer {
         this._tooltip = props.tooltip
         this._onFaceSelected = props.onFaceSelected || function () { }
         this._facePacks = props.facePackages
-        this._popperOption = props.popperOptions
+        this._popperOptions = props.popperOptions
         this._style = props.style
         this._className = props.className
+        this._peakPopperOptions=props.peakPopperOptions
     }
     private _displayed: boolean = true
     /**
@@ -53,9 +55,9 @@ export default class FaceSelectorDeployer {
     async render() {
         const ReactDOM = await import('react-dom');
         const React=await import('react')
-        ReactDOM.render(<FaceSelector facePacks={this._facePacks} colCount={3} handleHide={this.hide.bind(this)} onFaceSelected={this._onFaceSelected} refRoot={this._tooltip} popperOptions={this._popperOption}
+        ReactDOM.render(<FaceSelector facePacks={this._facePacks} colCount={3} handleHide={this.hide.bind(this)} onFaceSelected={this._onFaceSelected} refRoot={this._tooltip} peakPopperOptions={this._peakPopperOptions}
             style={this._style} className={this._className} />, this._tooltip);
-        createPopper(this._popcorn, this._tooltip);
+        createPopper(this._popcorn, this._tooltip,this._popperOptions);
         this._popcorn.addEventListener('click', this._handlePopcornClick.bind(this));
         return this
     }

@@ -32,7 +32,7 @@ export interface FaceSelectorProps extends BaseComponentProps {
      * 指向正挂载在的HTML元素
      */
     refRoot: HTMLElement
-    popperOptions?: Partial<OptionsGeneric<TModifier>>
+    peakPopperOptions?: Partial<OptionsGeneric<TModifier>>
 }
 export interface FaceSelectorState {
     /**
@@ -77,16 +77,7 @@ export class FaceSelector extends React.Component<FaceSelectorProps, FaceSelecto
         this.peakContainer.setAttribute('id', 'peak-container')
         this.hidePeak()
         this.props.refRoot.append(this.peakContainer)
-        this.peakPopper = createPopper(this.props.refRoot, this.peakContainer, {
-            placement: "left-start", modifiers: [
-                {
-                    name: 'offset',
-                    options: {
-                        offset: [10, 20],
-                    },
-                },
-            ],
-        })
+        this.peakPopper = createPopper(this.props.refRoot, this.peakContainer, this.props.peakPopperOptions)
     }
     removePeakContainer() {
         import('react-dom').then((ReactDOM) => {

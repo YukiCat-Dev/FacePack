@@ -11,6 +11,15 @@ import FaceSelectorDeployer from './FaceSelector/FaceSelectorDeployer'
         onFaceSelected:
             (pack, face) => {
                 commentArea.value += `:${pack.id}.${face.id}:`
-            }, popperOptions: { placement: 'top' }, style: { backgroundColor: "#FFFFFF", padding: '2px', borderWidth: '3px' }
+            }, popperOptions: { placement: 'top' },peakPopperOptions:{
+                placement: "right-start", modifiers: [
+                    {
+                        name: 'offset',
+                        options: {
+                            offset: [10, 20],
+                        },
+                    },
+                ],
+            }, style: { backgroundColor: "#FFFFFF", padding: '2px', borderWidth: '3px' }
     }).render().then((deployer) => { deployer.hide() })
 })()
