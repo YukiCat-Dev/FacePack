@@ -6,6 +6,7 @@ import Peak from './Peak';
 import Popper, { createPopper, OptionsGeneric, Modifier } from '@popperjs/core'
 import BaseComponentProps from './BaseComponentProps';
 import '../../facepack.css'
+import ReactDOM from 'react-dom';
 export type TModifier = Partial<Modifier<any, any>>
 export interface FaceSelectorProps extends BaseComponentProps {
     /**
@@ -89,7 +90,7 @@ export class FaceSelector extends React.Component<FaceSelectorProps, FaceSelecto
         })
     }
     renderPeak(imgUrl: string,imgCaption:string) {
-        import('react-dom').then((ReactDOM) => { ReactDOM.render(<Peak imgUrl={imgUrl} imgCaption={imgCaption}/>, this.peakContainer) })
+        ReactDOM.render(<Peak imgUrl={imgUrl} imgCaption={imgCaption}/>, this.peakContainer) 
     }
     hidePeak() {
         this.peakContainer.setAttribute("hidden", "hidden")

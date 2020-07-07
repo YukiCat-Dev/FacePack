@@ -21,5 +21,5 @@ import FaceSelectorDeployer from './FaceSelector/FaceSelectorDeployer'
                     },
                 ],
             }, style: { backgroundColor: "#FFFFFF", padding: '2px', borderWidth: '3px' }
-    }).render().then((deployer) => { deployer.hide() })
+    }).render().hide()
 })()
