@@ -28,7 +28,7 @@ export default class TableView extends React.Component<TableViewProps> {
     render() {
         const facePackId = this.props.facePackage.id
         const faces = this.props.facePackage.faces.map((value, index) => {
-            return (<td key={facePackId + '_' + index} style={{ textAlign: "center", border: "1pt solid" }}><FaceView src={value.url} face_pos={index} style={{ width: "40px", height: "40px" }} onClick={this.handleImageClick.bind(this)} global={this.props.global} /></td>)
+            return (<td key={facePackId + '_' + index} style={{ textAlign: "center", border: "1pt solid" }}><FaceView src={value.url} alt={value.id} face_pos={index} style={{ width: "40px", height: "40px" }} onClick={this.handleImageClick.bind(this)} global={this.props.global} /></td>)
         })
         const colCount = this.props.colCount
         const rowCount = Math.ceil((faces.length / colCount))

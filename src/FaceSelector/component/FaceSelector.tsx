@@ -56,8 +56,8 @@ export class FaceSelector extends React.Component<FaceSelectorProps, FaceSelecto
         nowPackagePos: 0
     }
     global: FaceSelectorGlobal = {
-        showPeak: (imgUrl) => {
-            this.renderPeak(imgUrl)
+        showPeak: (imgUrl: string,imgCaption:string) => {
+            this.renderPeak(imgUrl,imgCaption)
             this.showPeak()
         },
         hidePeak: this.hidePeak.bind(this)
@@ -88,8 +88,8 @@ export class FaceSelector extends React.Component<FaceSelectorProps, FaceSelecto
             this.peakContainer = undefined
         })
     }
-    renderPeak(imgUrl: string) {
-        import('react-dom').then((ReactDOM) => { ReactDOM.render(<Peak imgUrl={imgUrl} />, this.peakContainer) })
+    renderPeak(imgUrl: string,imgCaption:string) {
+        import('react-dom').then((ReactDOM) => { ReactDOM.render(<Peak imgUrl={imgUrl} imgCaption={imgCaption}/>, this.peakContainer) })
     }
     hidePeak() {
         this.peakContainer.setAttribute("hidden", "hidden")
@@ -118,6 +118,6 @@ export class FaceSelector extends React.Component<FaceSelectorProps, FaceSelecto
     }
 }
 export interface FaceSelectorGlobal {
-    showPeak: (imgUrl: string) => void
+    showPeak: (imgUrl: string,imgCaption:string) => void
     hidePeak: Function
 }

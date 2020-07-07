@@ -33,7 +33,7 @@ export default class FaceView extends React.Component<FaceViewProps, FaceViewSta
                 {this.state.showIndicator && <Indicator {...this.state.showIndicator} style={{ ...this.props.style, transition: "opacity 2s ease" }} className={this.props.className} />}
                 <img src={this.props.src}
                     onClick={(e) => this.props.onClick(e, this.props.face_pos)}
-                    onPointerEnter={() => this.props.global.showPeak(this.props.src)}
+                    onPointerEnter={() => this.props.global.showPeak(this.props.src,this.props.alt)}
                     onPointerOut={() => this.props.global.hidePeak()} alt={this.props.alt} style={{ ...this.props.style }} className={this.props.className}
                     onLoad={() => {
                         this.setState({ loaded: true, showIndicator: null })
