@@ -3,4 +3,5 @@
 .fp-border-shadow{
     box-shadow: 2px 2px 15px #888888;
     border: 1px #888888 solid;
+    z-index:999;
 }
