@@ -15,7 +15,7 @@ export default class Peak extends React.Component<PeakProps> {
             style={{ ...this.props.style, height: "200px" }}
         />
         <hr style={{marginTop:"0",marginBottom:"0"}}/>
-            <figcaption style={{ textAlign: "center",marginBottom:"3px" }}>{caption}</figcaption>
+            <figcaption style={{ textAlign: "center",marginBottom:"3px",backgroundColor:'#FFFFFF' }}>{caption}</figcaption>
         </figure>);
     }
 }
