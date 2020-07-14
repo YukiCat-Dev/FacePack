@@ -1,1 +1,2 @@
-export * from './FaceDisplay'
+import FaceDisplay from './FaceDisplay'
+export {FaceDisplay}

@@ -1,2 +1,2 @@
-export * from './FaceDisplay/FaceDisplay'
-export * from './FaceSelector/index'
+export * from './FaceDisplay/index'
+export *  from './FaceSelector/index'

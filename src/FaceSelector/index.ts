@@ -1,2 +1,3 @@
-export * from "./FaceSelectorDeployer";
-export * from "./component/FaceSelector"
+import FaceSelectorDeployer from "./FaceSelectorDeployer";
+import FaceSelector from "./component/FaceSelector"
+export { FaceSelectorDeployer, FaceSelector }
