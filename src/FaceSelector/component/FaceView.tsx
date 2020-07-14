@@ -1,5 +1,5 @@
 import BaseComponentProps from './BaseComponentProps';
-import React from 'react';
+import React, { useState } from 'react';
 import { IndicatorProps, Indicator, IndicateLevel } from './Indicator';
 export interface FaceViewProps extends BaseComponentProps {
     face_pos: number
@@ -8,40 +8,31 @@ export interface FaceViewProps extends BaseComponentProps {
     onClick?: (e: React.MouseEvent<HTMLImageElement, MouseEvent>, pos?: number) => void
     refererPolicy?: ReferrerPolicy,
 }
-export interface FaceViewState {
-    loaded: boolean
-    showIndicator?: IndicatorProps
-}
 /**
- * 显示图片
+ * 处理表情显示
  *
  * @author KotoriK
- * @class FaceView
- * @extends {React.Component<FaceViewProps, FaceViewState>}
+ * @param {FaceViewProps} props
+ * @returns
  */
-export default class FaceView extends React.Component<FaceViewProps, FaceViewState> {
-    constructor(props: FaceViewProps) {
-        super(props)
-        this.state = {
-            showIndicator: { level: IndicateLevel.PRELOAD },
-            loaded: false
-        }
-    }
-    render() {
-        return (
-            <div>
-                {this.state.showIndicator && <Indicator {...this.state.showIndicator} style={{ ...this.props.style, transition: "opacity 2s ease" }} className={this.props.className} />}
-                <img src={this.props.src}
-                    onClick={(e) => this.props.onClick(e, this.props.face_pos)}
-                    onPointerEnter={() => this.props.global.showPeak(this.props.src,this.props.alt)}
-                    onPointerOut={() => this.props.global.hidePeak()} alt={this.props.alt} style={{ ...this.props.style }} className={this.props.className}
-                    onLoad={() => {
-                        this.setState({ loaded: true, showIndicator: null })
-                    }}
-                    hidden={!this.state.loaded}
-                    onError={() => {
-                        this.setState({ showIndicator: { level: IndicateLevel.ERROR }, loaded: false })
-                    }} /></div>
-        )
-    }
+export default function fv(props:FaceViewProps){
+    const [loaded,setLoaded]= useState(false)
+    const [showIndicator,setShowIndicator]=useState({level: IndicateLevel.PRELOAD} as IndicatorProps)
+    return (
+        <>
+            {showIndicator && <Indicator {...showIndicator} style={{ ...props.style, transition: "opacity 2s ease" }} className={props.className} />}
+            <img src={props.src}
+                onClick={(e) => props.onClick(e, props.face_pos)}
+                onPointerEnter={() => props.global.showPeak(props.src,props.alt)}
+                onPointerOut={() => props.global.hidePeak()} alt={props.alt} style={{ ...props.style }} className={props.className}
+                onLoad={() => {
+                    setShowIndicator(null)
+                    setLoaded(true)
+                }}
+                hidden={!loaded}
+                onError={() => {
+                    setLoaded(false)
+                    setShowIndicator({ level: IndicateLevel.ERROR })
+                }} /></>
+    )
 }
