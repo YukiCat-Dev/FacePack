@@ -1,4 +1,4 @@
-import { FacePackage, getFaceFullUrl } from "../FacePackage"
+import { FacePackage } from "../FacePackage"
 import { processTemplate } from "../util/template"
 
 export default class FaceDisplay {
