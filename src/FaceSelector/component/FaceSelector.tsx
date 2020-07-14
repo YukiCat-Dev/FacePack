@@ -52,7 +52,7 @@ export interface FaceSelectorState {
  * @class FaceSelector
  * @extends {React.Component}
  */
-export class FaceSelector extends React.Component<FaceSelectorProps, FaceSelectorState>{
+export default class FaceSelector extends React.Component<FaceSelectorProps, FaceSelectorState>{
     state = {
         nowPackagePos: 0
     }
