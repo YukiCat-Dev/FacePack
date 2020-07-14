@@ -44,6 +44,8 @@ export interface FaceSelectorState {
      */
     nowPackagePos: number
 }
+const Global: React.Context<FaceSelectorGlobal> = React.createContext({} as FaceSelectorGlobal)
+export { Global  };
 /**
  * 表情包选择器的完整主体
  *
@@ -55,13 +57,6 @@ export interface FaceSelectorState {
 export default class FaceSelector extends React.Component<FaceSelectorProps, FaceSelectorState>{
     state = {
         nowPackagePos: 0
-    }
-    global: FaceSelectorGlobal = {
-        showPeak: (imgUrl: string,imgCaption:string) => {
-            this.renderPeak(imgUrl,imgCaption)
-            this.showPeak()
-        },
-        hidePeak: this.hidePeak.bind(this)
     }
     peakContainer: HTMLDivElement
     peakPopper: Popper.Instance
@@ -89,8 +84,8 @@ export default class FaceSelector extends React.Component<FaceSelectorProps, Fac
             this.peakContainer = undefined
         })
     }
-    renderPeak(imgUrl: string,imgCaption:string) {
-        ReactDOM.render(<Peak imgUrl={imgUrl} imgCaption={imgCaption}/>, this.peakContainer) 
+    renderPeak(imgUrl: string, imgCaption: string) {
+        ReactDOM.render(<Peak imgUrl={imgUrl} imgCaption={imgCaption} />, this.peakContainer)
     }
     hidePeak() {
         this.peakContainer.setAttribute("hidden", "hidden")
@@ -109,16 +104,24 @@ export default class FaceSelector extends React.Component<FaceSelectorProps, Fac
         this.removePeakContainer()
     }
     render() {
-        let nowPackagePos = this.state.nowPackagePos,
-            maxPos = this.props.facePacks.length - 1
+        let nowPackagePos = this.state.nowPackagePos
+        const maxPos = this.props.facePacks.length - 1
         if (nowPackagePos > maxPos) nowPackagePos = maxPos //防止prop发生改动带来越界
         return (<div style={{ ...this.props.style }} className={'fp-border-shadow' + (this.props.className ? this.props.className : '')}>
             <Tabs facePackages={this.props.facePacks} onSelected={(pos) => this.handleTabSelectionChange(pos)} selectedPos={this.state.nowPackagePos} />
-            <TableView facePackage={this.props.facePacks[nowPackagePos]} colCount={this.props.colCount} onImageSelected={this.handleFaceSelected.bind(this)} global={this.global} />
+            <Global.Provider value={{
+                showPeak: (imgUrl: string, imgCaption: string) => {
+                    this.renderPeak(imgUrl, imgCaption)
+                    this.showPeak()
+                },
+                hidePeak: this.hidePeak.bind(this)
+            } as FaceSelectorGlobal}>
+                <TableView facePackage={this.props.facePacks[nowPackagePos]} colCount={this.props.colCount} onImageSelected={this.handleFaceSelected.bind(this)} />
+            </Global.Provider>
         </div>)
     }
 }
 export interface FaceSelectorGlobal {
-    showPeak: (imgUrl: string,imgCaption:string) => void
+    showPeak: (imgUrl: string, imgCaption: string) => void
     hidePeak: Function
 }

@@ -8,18 +8,17 @@ export interface TabProps extends BaseComponentProps{
 }
 
 /**
- * 选项卡的单个标签
+ *选项卡的单个标签
  *
  * @author KotoriK
- * @class Tab
- * @extends {Component<TabProps, TabState>}
+ * @export
+ * @param {TabProps} props
+ * @returns
  */
-class Tab extends React.Component<TabProps> {
-    render() { 
-        return (          
-            <div style={{borderRight:"1pt solid",backgroundColor:this.props.selected?'#1559ed':undefined,color:this.props.selected?'white':undefined,...this.props.style,}} className={this.props.className} onClick={()=>{this.props.onClick(this.props.pos)}}>{/*TODO:selected为true的时候为选中状态*/this.props.name}</div>
-        );
-    }
+export default function Tab(props:TabProps){
+    return (          
+        <div style={{borderRight:"1pt solid",backgroundColor:props.selected?'#1559ed':undefined,color:props.selected?'white':undefined,...props.style,}} 
+        className={props.className} 
+        onClick={()=>{props.onClick(props.pos)}}>{props.name}</div>
+    )
 }
- 
-export default Tab;
