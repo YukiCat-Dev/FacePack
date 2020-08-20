@@ -1,4 +1,4 @@
-export default class Template {
+/* export default class Template {
     LEFT_BRACKET: string
     RIGHT_BRACKET: string
     constructor(left_bracket: string, right_bracket: string, replacePlaceHolder: (str: string) => Promise<string>) {
@@ -21,7 +21,7 @@ export default class Template {
                             bracketContent = ""
                         } else {
                             inBracket = false
-                            newText += `${this.LEFT_BRACKET}bracketContent${this.LEFT_BRACKET}`
+                            newText += `${this.LEFT_BRACKET}${bracketContent}${this.LEFT_BRACKET}`
                             bracketContent = ""
                         }
                     } else {
@@ -50,7 +50,7 @@ export default class Template {
         }
         return newText
     }
-}
+} */
 export function processTemplate(left_bracket: string, right_bracket: string, replacePlaceHolder: (str: string) => string, str: string) {
     let inBracket = false, newText = "", bracketContent = ""
     for (const char of str) {
@@ -63,7 +63,7 @@ export function processTemplate(left_bracket: string, right_bracket: string, rep
                         bracketContent = ""
                     } else {
                         inBracket = false
-                        newText += `${left_bracket}bracketContent${left_bracket}`
+                        newText += `${left_bracket}${bracketContent}${left_bracket}`
                         bracketContent = ""
                     }
                 } else {
