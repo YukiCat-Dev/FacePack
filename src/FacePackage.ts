@@ -12,6 +12,7 @@ export interface FacePackage {
     name: string
     faces: Array<Face>
     p_url?: string
+    default?:string
 }
 export interface Face {
 
@@ -32,12 +33,18 @@ export interface Face {
     url: string
 
 }
-export function getFaceFullUrl(face: Face, parentPack: FacePackage) {
-    return processTemplate('{', '}', (str) => {
+export interface FaceDefine{
+    id:string
+    url?:string
+}
+export function getFaceFullUrl(face: FaceDefine, parentPack: FacePackage) {
+       return processTemplate('{', '}', (str) => {
         if (str == 'p_url') {
             return parentPack.p_url
-        } else {
+        } else if(str == 'id'){
+            return face.id
+        }else{
             return `{${str}}`
-        }
-    }, face.url)
+        }      
+    }, face.url ?? parentPack.default)   
 }
