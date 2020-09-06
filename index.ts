@@ -1,3 +1,3 @@
-export * from './FaceDisplay/index'
-export *  from './FaceSelector/index'
-export {importExternalFacePacks} from './FacePacksImporter'
+export * from './src/FaceDisplay/index'
+export *  from './src/FaceSelector/index'
+export {importExternalFacePacks} from './src/FacePacksImporter'
