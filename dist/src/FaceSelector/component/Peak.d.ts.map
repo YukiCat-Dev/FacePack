@@ -1,0 +1,1 @@
+{"version":3,"file":"Peak.d.ts","sourceRoot":"","sources":["../../../../src/FaceSelector/component/Peak.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAC;AAC/B,OAAO,kBAAkB,MAAM,sBAAsB,CAAC;AACtD,OAAO,oBAAoB,CAAA;AAE3B,MAAM,WAAW,SAAU,SAAQ,kBAAkB;IACjD,MAAM,EAAE,MAAM,CAAA;IACd,UAAU,EAAE,MAAM,CAAA;CACrB;AAED,QAAA,MAAM,IAAI,oCAAsB,SAAS,iBAOvC,CAAA;AACF,eAAe,IAAI,CAAA"}
