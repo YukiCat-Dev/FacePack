@@ -19,8 +19,11 @@ export default class FaceDisplay {
         }
     }
     render(onElement: HTMLElement | Element) {
-        const raw = onElement.innerHTML, result = processTemplate(this.LEFT_BRACKET, this.RIGHT_BRACKET, this.replacePlaceHolder.bind(this), raw)
-        if (result !== raw) onElement.innerHTML = result
+        const raw = onElement.innerHTML,result = this.renderHTML(raw)
+        if (result!==raw) onElement.innerHTML = result
+    }
+    renderHTML(html: string) {
+        return processTemplate(this.LEFT_BRACKET, this.RIGHT_BRACKET, this.replacePlaceHolder.bind(this), html)
     }
     replacePlaceHolder(placeHolder: string) {
         const url = this._faceMap.get(placeHolder)
