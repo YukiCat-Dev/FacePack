@@ -2,6 +2,8 @@ import React from 'react';
 import Tab from './Tab';
 import { FacePackage } from '../../FacePackage';
 import { createUseStyles } from 'react-jss';
+import clsx from 'clsx';
+import useGenericStyle from '../style';
 export interface TabsProps {
     facePackages: Array<FacePackage>,
     onSelected: (newPos: number) => void,
@@ -9,27 +11,8 @@ export interface TabsProps {
 }
 const useStyles = createUseStyles({
     root:{
-        overflowX:'auto',
-        overflowY:'hidden',
-        '&>ul': {
-        display: "block",
-        listStyle: 'none',
-        marginBlockStart: '5px',
-        marginBlockEnd: '5px',
-        paddingInlineStart: '5px',
-        width:'max-content',
-        '& li': {
-            display: 'inline', marginRight: 1.5
-            ,
-            '&:after': {
-                content: '"|"',
-                marginLeft: 1.5,
-                color:"#888"
-            }
-        }
-    }
-    }
-    
+       width:"100%",border:0
+    } 
 })
 /**
  * 选项卡的一行标签（一行Tab
@@ -38,13 +21,12 @@ const useStyles = createUseStyles({
  */
 const Tabs = React.memo((props: TabsProps) => {
     return (
-        <div className={useStyles().root}> 
-        <ul>
+        <select className={clsx(useStyles().root,useGenericStyle().bgWhiteBlur)} onChange={(e)=>props.onSelected(e.target.value as any)}>
             {props.facePackages.map((value, index) => {
-                return (<Tab key={value.id} pos={index} name={value.name} selected={index === props.selectedPos} onClick={(id: number) => props.onSelected(id)} />)
+                return (<Tab key={value.id} pos={index} name={value.name} selected={index === props.selectedPos} 
+                     />)
             })}
-        </ul>
-        </div>
+        </select>
     )
 })
 export default Tabs

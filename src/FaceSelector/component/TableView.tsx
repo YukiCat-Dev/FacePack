@@ -28,7 +28,7 @@ const useStyles = createUseStyles({
     },
     pic: { width: "40px", height: "40px" },
     wrap: {
-        overflowY: "auto",overflowX:'hidden',height:"80%"
+        overflowY: "auto",overflowX:'hidden',height:"90%"
     }
 })
 export default function TableView({ facePackage, onImageSelected, colCount }: TableViewProps) {
