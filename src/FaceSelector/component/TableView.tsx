@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, forwardRef } from 'react';
 import { FacePackage } from '../../FacePackage';
 import FaceView from './FaceView'
 import BaseComponentProps from './BaseComponentProps';
@@ -24,14 +24,15 @@ export interface TableViewProps extends BaseComponentProps {
 
 const useStyles = createUseStyles({
     td: {
-        textAlign: "center", border: "1pt solid #888"
+        textAlign: "center", border: "1pt solid #888",padding:"1.5px"
     },
     pic: { width: "40px", height: "40px" },
     wrap: {
-        overflowY: "auto",overflowX:'hidden',height:"90%"
+        overflowY: "auto",overflowX:'hidden'
     }
 })
-export default function TableView({ facePackage, onImageSelected, colCount }: TableViewProps) {
+const TableView = forwardRef<HTMLDivElement,TableViewProps>(
+    function TableView({ facePackage, onImageSelected, colCount },ref) {
     const classes = useStyles()
     const facePackId = facePackage.id
     const handleImageClick = (e, pos: number) => {
@@ -51,7 +52,7 @@ export default function TableView({ facePackage, onImageSelected, colCount }: Ta
         }
         return array
     }, [faces, colCount])
-    return (<div className={classes.wrap}>
+    return (<div className={classes.wrap} ref={ref}>
         <table >
             <tbody>
                 {rows}
@@ -59,3 +60,5 @@ export default function TableView({ facePackage, onImageSelected, colCount }: Ta
         </table>
     </div>);
 }
+) 
+export default  TableView

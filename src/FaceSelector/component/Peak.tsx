@@ -1,4 +1,4 @@
-import React, { forwardRef, MutableRefObject } from 'react';
+import React, { forwardRef,memo } from 'react';
 import BaseComponentProps from './BaseComponentProps';
 import { createUseStyles } from 'react-jss'
 import clsx from 'clsx'
@@ -17,7 +17,7 @@ const useStyles = createUseStyles({
         marginTop: 0, marginBottom: 0
     }
 })
-const Peak = React.memo(forwardRef<HTMLDivElement, PeakProps>((props, ref) => {
+const Peak = memo(forwardRef<HTMLDivElement, PeakProps>((props, ref) => {
     const classes = useStyles(), generic = useGenericStyle()
     return (<figure style={{ display: props.show ? 'block' : 'none', ...props.style }}
         className={clsx(generic.borderShadow, props.className, generic.bgWhiteBlur)} ref={ref}>

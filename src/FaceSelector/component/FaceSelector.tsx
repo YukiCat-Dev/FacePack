@@ -1,11 +1,11 @@
-import React,{ useState, useCallback, useMemo }  from 'react';
+import React, { useState, useCallback, useMemo, useRef, useEffect,createContext } from 'react';
 import TableView from './TableView';
 import { FacePackage, Face } from '../../FacePackage';
 import Tabs from './Tabs';
 import Peak from './Peak';
-import {OptionsGeneric, Modifier } from '@popperjs/core'
+import { OptionsGeneric, Modifier } from '@popperjs/core'
 import BaseComponentProps from './BaseComponentProps';
-import useGenericStyle from '../style';
+import useGenericStyle, { mainHeight } from '../style';
 import clsx from 'clsx';
 import { usePopper } from 'react-popper'
 export type TModifier = Partial<Modifier<any, any>>
@@ -41,32 +41,37 @@ export interface FaceSelectorState {
      */
     nowPackagePos: number
 }
-const Global: React.Context<FaceSelectorGlobal> = React.createContext({} as FaceSelectorGlobal)
+const Global: React.Context<FaceSelectorGlobal> = createContext({} as FaceSelectorGlobal)
 export { Global };
 /**
- * 表情包选择器的完整主体
+ *表情包选择器的完整主体
  *
  * @author KotoriK
  * @export
- * @class FaceSelector
- * @extends {React.Component}
+ * @param { children }
+ * @returns
  */
 export function GenericStyle({ children }: { children: (classes: Record<"borderShadow" | "bgWhiteBlur" | "main", string>) => React.ReactElement }) {
     return children(useGenericStyle())
 }
-export default function FaceSelector({peakPopperOptions, facePacks, style, className, colCount, onFaceSelected, handleHide }: FaceSelectorProps) {
+export default function FaceSelector({ peakPopperOptions, facePacks, style, className, colCount, onFaceSelected, handleHide }: FaceSelectorProps) {
     const [_nowPackagePos, setPos] = useState(0)
     const [isShowPeak, setShowPeak] = useState(false)
     const [peak_url, set_url] = useState<string>()
     const [peak_caption, set_caption] = useState<string>()
     const [main, setMain] = useState<HTMLDivElement>()
     const [peak, setPeak] = useState<HTMLDivElement>()
-    const { styles, update } = usePopper(main, peak,peakPopperOptions)
+    const head = useRef<HTMLSelectElement>()
+    const body = useRef<HTMLDivElement>()
+    const { styles, update } = usePopper(main, peak, peakPopperOptions)
     const handleFaceSelected = useCallback((face_pos: number) => {
         const nowPackage = facePacks[_nowPackagePos]
         onFaceSelected(nowPackage, nowPackage.faces[face_pos])
         handleHide()
     }, [handleHide, onFaceSelected, facePacks, _nowPackagePos])
+    useEffect(() => {
+        body.current.style.height = mainHeight - head.current.clientHeight + 'px'
+    },[])
     let nowPackagePos = _nowPackagePos
     const maxPos = facePacks.length - 1
     if (nowPackagePos > maxPos) nowPackagePos = maxPos //防止prop发生改动带来越界
@@ -75,20 +80,20 @@ export default function FaceSelector({peakPopperOptions, facePacks, style, class
             {classes => (
                 <div ref={setMain} style={{ ...style }} className={clsx(classes.borderShadow, className, classes.bgWhiteBlur, classes.main)}>
                     <Tabs facePackages={facePacks}
-                        onSelected={(pos) => setPos(pos)} selectedPos={nowPackagePos} />
+                        onSelected={(pos) => setPos(pos)} selectedPos={nowPackagePos} ref={head} />
                     <Global.Provider value={useMemo(() => {
                         return {
                             showPeak: (imgUrl: string, imgCaption: string) => {
                                 set_url(imgUrl)
                                 set_caption(imgCaption)
                                 setShowPeak(true)
-                                if(update)update()
+                                if (update) update()
                             },
                             hidePeak: () => setShowPeak(false)
                         } as FaceSelectorGlobal
-                    }, [set_url, set_caption, setShowPeak,update])}>
+                    }, [set_url, set_caption, setShowPeak, update])}>
                         <TableView facePackage={facePacks[nowPackagePos]} colCount={colCount}
-                            onImageSelected={handleFaceSelected} />
+                            onImageSelected={handleFaceSelected} ref={body} />
                     </Global.Provider>
                 </div>)}
         </GenericStyle>

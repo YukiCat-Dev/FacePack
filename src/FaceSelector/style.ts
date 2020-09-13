@@ -1,5 +1,5 @@
 import { createUseStyles } from "react-jss";
-
+const mainHeight=325
 const useGenericStyle = createUseStyles({
     borderShadow: {
         boxShadow: '2px 2px 15px #888888',
@@ -10,7 +10,8 @@ const useGenericStyle = createUseStyles({
         backgroundColor:'rgba(255,255,255,0.6)',
         backdropFilter:'blur(3px)'
     },main:{
-        padding: '2px',width:200,height:256
+        padding: '2px',width:200,height:mainHeight
     }
 })
 export default useGenericStyle
+export {mainHeight}
