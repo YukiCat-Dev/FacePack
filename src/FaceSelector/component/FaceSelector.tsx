@@ -1,12 +1,13 @@
-import * as React from 'react';
+import React,{ useState, useCallback, useMemo }  from 'react';
 import TableView from './TableView';
 import { FacePackage, Face } from '../../FacePackage';
 import Tabs from './Tabs';
 import Peak from './Peak';
-import Popper, { createPopper, OptionsGeneric, Modifier } from '@popperjs/core'
+import {OptionsGeneric, Modifier } from '@popperjs/core'
 import BaseComponentProps from './BaseComponentProps';
-import '../../facepack.css'
-import ReactDOM from 'react-dom';
+import useGenericStyle from '../style';
+import clsx from 'clsx';
+import { usePopper } from 'react-popper'
 export type TModifier = Partial<Modifier<any, any>>
 export interface FaceSelectorProps extends BaseComponentProps {
     /**
@@ -29,10 +30,6 @@ export interface FaceSelectorProps extends BaseComponentProps {
     *  当用户选中一个表情时触发
     */
     onFaceSelected: (parentPack: FacePackage, face: Face) => void
-    /**
-     * 指向正挂载在的HTML元素
-     */
-    refRoot: HTMLElement
     peakPopperOptions?: Partial<OptionsGeneric<TModifier>>
 }
 export interface FaceSelectorState {
@@ -45,7 +42,7 @@ export interface FaceSelectorState {
     nowPackagePos: number
 }
 const Global: React.Context<FaceSelectorGlobal> = React.createContext({} as FaceSelectorGlobal)
-export { Global  };
+export { Global };
 /**
  * 表情包选择器的完整主体
  *
@@ -54,72 +51,49 @@ export { Global  };
  * @class FaceSelector
  * @extends {React.Component}
  */
-export default class FaceSelector extends React.Component<FaceSelectorProps, FaceSelectorState>{
-    state = {
-        nowPackagePos: 0
-    }
-    peakContainer: HTMLDivElement
-    peakPopper: Popper.Instance
-    handleTabSelectionChange(newPos: number) {
-        this.setState({ nowPackagePos: newPos })
-    }
-    handleFaceSelected(face_pos: number) {
-        const nowPackage = this.props.facePacks[this.state.nowPackagePos]
-        this.props.onFaceSelected(nowPackage, nowPackage.faces[face_pos])
-        this.props.handleHide()
-    }
-    createPeakContainer() {
-        this.peakContainer = document.createElement('div')
-        this.peakContainer.setAttribute('id', 'peak-container')
-        this.hidePeak()
-        this.props.refRoot.append(this.peakContainer)
-        this.peakPopper = createPopper(this.props.refRoot, this.peakContainer, this.props.peakPopperOptions)
-    }
-    removePeakContainer() {
-        import('react-dom').then((ReactDOM) => {
-            ReactDOM.unmountComponentAtNode(this.peakContainer)
-            this.peakPopper.destroy()
-            this.peakPopper = undefined
-            document.removeChild(this.peakContainer)
-            this.peakContainer = undefined
-        })
-    }
-    renderPeak(imgUrl: string, imgCaption: string) {
-        ReactDOM.render(<Peak imgUrl={imgUrl} imgCaption={imgCaption} />, this.peakContainer)
-    }
-    hidePeak() {
-        this.peakContainer.setAttribute("hidden", "hidden")
-    }
-    showPeak() {
-        try {
-            this.peakContainer.removeAttribute("hidden")
-        } catch (e) {
-            console.warn(e)
-        }
-    }
-    componentDidMount() {
-        this.createPeakContainer()
-    }
-    componentWillUnmount() {
-        this.removePeakContainer()
-    }
-    render() {
-        let nowPackagePos = this.state.nowPackagePos
-        const maxPos = this.props.facePacks.length - 1
-        if (nowPackagePos > maxPos) nowPackagePos = maxPos //防止prop发生改动带来越界
-        return (<div style={{ ...this.props.style }} className={'fp-border-shadow' + (this.props.className ? this.props.className : '')}>
-            <Tabs facePackages={this.props.facePacks} onSelected={(pos) => this.handleTabSelectionChange(pos)} selectedPos={this.state.nowPackagePos} />
-            <Global.Provider value={{
-                showPeak: (imgUrl: string, imgCaption: string) => {
-                    this.renderPeak(imgUrl, imgCaption)
-                    this.showPeak()
-                },
-                hidePeak: this.hidePeak.bind(this)
-            } as FaceSelectorGlobal}>
-                <TableView facePackage={this.props.facePacks[nowPackagePos]} colCount={this.props.colCount} onImageSelected={this.handleFaceSelected.bind(this)} />
-            </Global.Provider>
-        </div>)
-    }
+export function GenericStyle({ children }: { children: (classes: Record<"borderShadow" | "bgWhiteBlur" | "main", string>) => React.ReactElement }) {
+    return children(useGenericStyle())
+}
+export default function FaceSelector({peakPopperOptions, facePacks, style, className, colCount, onFaceSelected, handleHide }: FaceSelectorProps) {
+    const [_nowPackagePos, setPos] = useState(0)
+    const [isShowPeak, setShowPeak] = useState(false)
+    const [peak_url, set_url] = useState<string>()
+    const [peak_caption, set_caption] = useState<string>()
+    const [main, setMain] = useState<HTMLDivElement>()
+    const [peak, setPeak] = useState<HTMLDivElement>()
+    const { styles, update } = usePopper(main, peak,peakPopperOptions)
+    const handleFaceSelected = useCallback((face_pos: number) => {
+        const nowPackage = facePacks[_nowPackagePos]
+        onFaceSelected(nowPackage, nowPackage.faces[face_pos])
+        handleHide()
+    }, [handleHide, onFaceSelected, facePacks, _nowPackagePos])
+    let nowPackagePos = _nowPackagePos
+    const maxPos = facePacks.length - 1
+    if (nowPackagePos > maxPos) nowPackagePos = maxPos //防止prop发生改动带来越界
+    return (<>
+        <GenericStyle>
+            {classes => (
+                <div ref={setMain} style={{ ...style }} className={clsx(classes.borderShadow, className, classes.bgWhiteBlur, classes.main)}>
+                    <Tabs facePackages={facePacks}
+                        onSelected={(pos) => setPos(pos)} selectedPos={nowPackagePos} />
+                    <Global.Provider value={useMemo(() => {
+                        return {
+                            showPeak: (imgUrl: string, imgCaption: string) => {
+                                set_url(imgUrl)
+                                set_caption(imgCaption)
+                                setShowPeak(true)
+                                if(update)update()
+                            },
+                            hidePeak: () => setShowPeak(false)
+                        } as FaceSelectorGlobal
+                    }, [set_url, set_caption, setShowPeak,update])}>
+                        <TableView facePackage={facePacks[nowPackagePos]} colCount={colCount}
+                            onImageSelected={handleFaceSelected} />
+                    </Global.Provider>
+                </div>)}
+        </GenericStyle>
+        <Peak imgCaption={peak_caption} imgUrl={peak_url} ref={setPeak} show={isShowPeak} style={styles.popper} />
+    </>)
 }
 export interface FaceSelectorGlobal {
     showPeak: (imgUrl: string, imgCaption: string) => void

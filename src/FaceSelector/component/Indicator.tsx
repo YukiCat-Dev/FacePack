@@ -1,9 +1,10 @@
 import React from 'react';
 import BaseComponentProps from './BaseComponentProps';
-const SVG_PRELOAD = "https://cdn.jsdelivr.net/gh/YukiCat-Dev/FacePack/static/Ripple-1.3s-237px.svg"
+const SVG_PREFIX = "https://cdn.jsdelivr.net/gh/YukiCat-Dev/FacePack/static/"
+const SVG_PRELOAD = SVG_PREFIX+"Ripple-1.3s-237px.svg"
 /* const SVG_WARNING = "https://cdn.jsdelivr.net/gh/YukiCat-Dev/FacePack/static/warning.svg"
 const SVG_INFO = "https://cdn.jsdelivr.net/gh/YukiCat-Dev/FacePack/static/info.svg" */
-const SVG_ERROR = "https://cdn.jsdelivr.net/gh/YukiCat-Dev/FacePack/static/error.svg"
+const SVG_ERROR = SVG_PREFIX+"error.svg"
 export enum IndicateLevel {
     PRELOAD,
     /*     INFO , 
@@ -25,7 +26,7 @@ export interface IndicatorProps extends BaseComponentProps {
  */
 const Indicator=(props: IndicatorProps)=> {
     return (
-        <img src={IndicateLevelSVG[props.level]} alt={props.description} style={props.style} />
+        <img src={IndicateLevelSVG[props.level]} alt={props.description} style={props.style} className={props.className}/>
     )
 }
 export default Indicator

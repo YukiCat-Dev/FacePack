@@ -1,8 +1,8 @@
 import { CSSProperties } from 'react'
 import { createPopper, OptionsGeneric } from '@popperjs/core';
-import FaceSelector,{ TModifier } from './component/FaceSelector'
+import FaceSelector, { TModifier } from './component/FaceSelector'
 import { Face, FacePackage } from '../FacePackage';
-import ReactDOM from 'react-dom';
+import { render, unmountComponentAtNode } from 'react-dom';
 import React from 'react';
 export interface FaceSelectorDeployerProps {
     /**
@@ -55,7 +55,8 @@ export default class FaceSelectorDeployer {
      * @memberof FaceSelectorDeployer
      */
     render() {
-        ReactDOM.render(<FaceSelector facePacks={this._facePacks} colCount={3} handleHide={this.hide.bind(this)} onFaceSelected={this._onFaceSelected} refRoot={this._tooltip} peakPopperOptions={this._peakPopperOptions}
+        render(<FaceSelector facePacks={this._facePacks} colCount={4} handleHide={this.hide.bind(this)}
+            onFaceSelected={this._onFaceSelected} peakPopperOptions={this._peakPopperOptions}
             style={this._style} className={this._className} />, this._tooltip);
         createPopper(this._popcorn, this._tooltip, this._popperOptions);
         this._popcorn.addEventListener('click', this._handlePopcornClick.bind(this));
@@ -80,7 +81,7 @@ export default class FaceSelectorDeployer {
      * @memberof FaceSelectorDeployer
      */
     unload() {
-        ReactDOM.unmountComponentAtNode(this._tooltip);
+        unmountComponentAtNode(this._tooltip);
         this._popcorn.removeEventListener('click', this._handlePopcornClick);
         return this
     }

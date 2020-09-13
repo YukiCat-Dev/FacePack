@@ -1,12 +1,23 @@
 import React from 'react';
 import BaseComponentProps from './BaseComponentProps';
-export interface TabProps extends BaseComponentProps{
-    pos:number
-    name:string
-    selected:boolean
-    onClick:(id:number)=>void
+import { createUseStyles } from 'react-jss';
+import clsx from 'clsx';
+export interface TabProps extends BaseComponentProps {
+    pos: number
+    name: string
+    selected: boolean
+    onClick: (id: number) => void
 }
-
+const useStyles = createUseStyles({
+    selected: {}, item: {
+        marginRight: 1.5,
+        cursor:'pointer'
+        , '&$selected': {
+            borderBottom: '8px #1559ed solid',
+            borderTop: '8px #1559ed solid'
+        },
+    },
+})
 /**
  *选项卡的单个标签
  *
@@ -15,10 +26,10 @@ export interface TabProps extends BaseComponentProps{
  * @param {TabProps} props
  * @returns
  */
-export default function Tab(props:TabProps){
-    return (          
-        <div style={{borderRight:"1pt solid",backgroundColor:props.selected?'#1559ed':undefined,color:props.selected?'white':undefined,...props.style,}} 
-        className={props.className} 
-        onClick={()=>{props.onClick(props.pos)}}>{props.name}</div>
+export default function Tab(props: TabProps) {
+    const classes = useStyles()
+    return (
+        <li style={{ ...props.style }} className={ props.className}
+            onClick={() => { props.onClick(props.pos) }}><span className={clsx(classes.item, props.selected && classes.selected)}>{props.name}</span></li>
     )
 }

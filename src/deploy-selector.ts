@@ -12,14 +12,14 @@ import FaceSelectorDeployer from './FaceSelector/FaceSelectorDeployer'
             (pack, face) => {
                 commentArea.value += `:${pack.id}.${face.id}:`
             }, popperOptions: { placement: 'top' },peakPopperOptions:{
-                placement: "right-start", modifiers: [
+                placement: "right", modifiers: [
                     {
                         name: 'offset',
                         options: {
-                            offset: [10, 20],
+                            offset: [0, 20],
                         },
                     },
                 ],
-            }, style: { backgroundColor: "#FFFFFF", padding: '2px', borderWidth: '3px' }
+            }
     }).render().hide()
 })()

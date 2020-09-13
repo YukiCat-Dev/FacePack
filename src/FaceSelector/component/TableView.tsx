@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { FacePackage } from '../../FacePackage';
 import FaceView from './FaceView'
 import BaseComponentProps from './BaseComponentProps';
+import { createUseStyles } from 'react-jss';
 export interface TableViewProps extends BaseComponentProps {
     /**
      * 设定一行显示多少列
@@ -21,26 +22,40 @@ export interface TableViewProps extends BaseComponentProps {
     onImageSelected: (face_pos: number) => void
 }
 
-export default class TableView extends React.Component<TableViewProps> {
-    handleImageClick(e, pos: number) {
-        this.props.onImageSelected(pos)
+const useStyles = createUseStyles({
+    td: {
+        textAlign: "center", border: "1pt solid #888"
+    },
+    pic: { width: "40px", height: "40px" },
+    wrap: {
+        overflowY: "auto",overflowX:'hidden',height:"80%"
     }
-    render() {
-        const facePackId = this.props.facePackage.id
-        const faces = this.props.facePackage.faces.map((value, index) => {
-            return (<td key={facePackId + '_' + index} style={{ textAlign: "center", border: "1pt solid" }}><FaceView src={value.url} alt={value.id} face_pos={index} style={{ width: "40px", height: "40px" }} onClick={this.handleImageClick.bind(this)}/></td>)
-        })
-        const colCount = this.props.colCount
+})
+export default function TableView({ facePackage, onImageSelected, colCount }: TableViewProps) {
+    const classes = useStyles()
+    const facePackId = facePackage.id
+    const handleImageClick = (e, pos: number) => {
+        onImageSelected(pos)
+    }
+    const faces = useMemo(() => facePackage.faces.map((value, index) => {
+        return (<td key={facePackId + '_' + index} className={classes.td}>
+            <FaceView src={value.url} alt={value.id} face_pos={index} className={classes.pic} onClick={handleImageClick} />
+        </td>)
+    }), [facePackage])
+    const rows: Array<JSX.Element> = useMemo(() => {
         const rowCount = Math.ceil((faces.length / colCount))
-        const rows: Array<JSX.Element> = []
+        const array = new Array(rowCount)
         for (let i = 0; i < rowCount; i++) {
-            rows.push((<tr key={i}>{faces.slice(i * colCount, i * colCount + colCount)}</tr>))
+            const start = i * colCount
+            array[i] = ((<tr key={i}>{faces.slice(start, start + colCount)}</tr>))
         }
-        return (<div style={{maxHeight:"20vh",overflow:"auto" }}><table >
+        return array
+    }, [faces, colCount])
+    return (<div className={classes.wrap}>
+        <table >
             <tbody>
                 {rows}
             </tbody>
-        </table></div>);
-    }
+        </table>
+    </div>);
 }
-
