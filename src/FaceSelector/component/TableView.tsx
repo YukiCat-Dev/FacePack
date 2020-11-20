@@ -1,4 +1,4 @@
-import React, { useMemo, forwardRef } from 'react';
+import React, { useMemo, forwardRef, useCallback } from 'react';
 import { FacePackage } from '../../FacePackage';
 import FaceView from './FaceView'
 import BaseComponentProps from './BaseComponentProps';
@@ -24,41 +24,40 @@ export interface TableViewProps extends BaseComponentProps {
 
 const useStyles = createUseStyles({
     td: {
-        textAlign: "center", border: "1pt solid #888",padding:"1.5px"
+        textAlign: "center", border: "1pt solid #888", padding: "1.5px"
     },
     pic: { width: "40px", height: "40px" },
     wrap: {
-        overflowY: "auto",overflowX:'hidden'
+        overflowY: "auto", overflowX: 'hidden'
     }
 })
-const TableView = forwardRef<HTMLDivElement,TableViewProps>(
-    function TableView({ facePackage, onImageSelected, colCount },ref) {
-    const classes = useStyles()
-    const facePackId = facePackage.id
-    const handleImageClick = (e, pos: number) => {
-        onImageSelected(pos)
-    }
-    const faces = useMemo(() => facePackage.faces.map((value, index) => {
-        return (<td key={facePackId + '_' + index} className={classes.td}>
+const TableView = forwardRef<HTMLDivElement, TableViewProps>(
+    function TableView({ facePackage, onImageSelected, colCount }, ref) {
+        const classes = useStyles()
+        const facePackId = facePackage.id
+        const handleImageClick = useCallback((e, pos: number) => {
+            onImageSelected(pos)
+        }, [onImageSelected])
+        const faces = useMemo(() => facePackage.faces.map((value, index) => 
+        <td key={facePackId + index} className={classes.td}>
             <FaceView src={value.url} alt={value.id} face_pos={index} className={classes.pic} onClick={handleImageClick} />
-        </td>)
-    }), [facePackage])
-    const rows: Array<JSX.Element> = useMemo(() => {
-        const rowCount = Math.ceil((faces.length / colCount))
-        const array = new Array(rowCount)
-        for (let i = 0; i < rowCount; i++) {
-            const start = i * colCount
-            array[i] = ((<tr key={i}>{faces.slice(start, start + colCount)}</tr>))
-        }
-        return array
-    }, [faces, colCount])
-    return (<div className={classes.wrap} ref={ref}>
-        <table >
-            <tbody>
-                {rows}
-            </tbody>
-        </table>
-    </div>);
-}
-) 
-export default  TableView
+        </td>), [facePackage])
+        const rows: Array<JSX.Element> = useMemo(() => {
+            const rowCount = Math.ceil((faces.length / colCount))
+            const array = new Array<JSX.Element>(rowCount)
+            for (let i = 0; i < rowCount; i++) {
+                const start = i * colCount
+                array[i] = ((<tr key={facePackId+'r'+i}>{faces.slice(start, start + colCount)}</tr>))
+            }
+            return array
+        }, [faces, colCount])
+        return (<div className={classes.wrap} ref={ref}>
+            <table >
+                <tbody>
+                    {rows}
+                </tbody>
+            </table>
+        </div>);
+    }
+)
+export default TableView
