@@ -6,7 +6,6 @@ import FaceSelectorDeployer from './FaceSelector/FaceSelectorDeployer'
 /*     const facePacks = DefaultFacePack
  */   new FaceSelectorDeployer({
         popcorn: document.getElementById('show-fs'),
-        tooltip: document.getElementById('fs-c'),
         facePackages: await importExternalFacePacks('https://cdn.jsdelivr.net/gh/YukiCat-Dev/yukicat.facepack/facepacks.json'),
         onFaceSelected:
             (pack, face) => {
