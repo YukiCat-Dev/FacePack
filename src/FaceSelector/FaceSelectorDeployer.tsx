@@ -1,5 +1,5 @@
 import { CSSProperties } from 'react'
-import { createPopper, OptionsGeneric } from '@popperjs/core';
+import { createPopper, Instance, OptionsGeneric } from '@popperjs/core';
 import FaceSelector, { TModifier } from './component/FaceSelector'
 import { Face, FacePackage } from '../FacePackage';
 import { render, unmountComponentAtNode } from 'react-dom';
@@ -18,7 +18,7 @@ export interface FaceSelectorDeployerProps {
      * @type {HTMLElement}
      * @memberof FaceSelectorDeployerProps
      */
-    tooltip: HTMLElement,
+    tooltip?: HTMLElement,
     className?: string
     /**
      * 要加载的表情包
@@ -37,9 +37,10 @@ export default class FaceSelectorDeployer {
     private _peakPopperOptions: Partial<OptionsGeneric<TModifier>>
     private _style: CSSProperties
     private _className: string
+    private _popper: Instance
     constructor(props: FaceSelectorDeployerProps) {
         this._popcorn = props.popcorn
-        this._tooltip = props.tooltip
+        this._tooltip = props.tooltip ?? document.documentElement.appendChild(document.createElement('div'))
         this._onFaceSelected = props.onFaceSelected || function () { }
         this._facePacks = props.facePackages
         this._popperOptions = props.popperOptions
@@ -58,7 +59,7 @@ export default class FaceSelectorDeployer {
         render(<FaceSelector facePacks={this._facePacks} colCount={4} handleHide={this.hide.bind(this)}
             onFaceSelected={this._onFaceSelected} peakPopperOptions={this._peakPopperOptions}
             style={this._style} className={this._className} />, this._tooltip);
-        createPopper(this._popcorn, this._tooltip, this._popperOptions);
+        this._popper = createPopper(this._popcorn, this._tooltip, this._popperOptions);
         this._popcorn.addEventListener('click', this._handlePopcornClick.bind(this));
         return this
     }
@@ -71,6 +72,7 @@ export default class FaceSelectorDeployer {
             this._displayed = false
         } else {
             this._tooltip.removeAttribute("hidden")
+            this._popper.update()
             this._displayed = true
         }
     }
