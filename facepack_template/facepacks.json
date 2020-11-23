@@ -3,107 +3,68 @@
         "id": "parrots",
         "name": "鹦鹉派对",
         "p_url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/",
-        "default": "{p_url}hd/{id}parrot.gif",
-        "t":"parrot",
+        "p":"parrot",
+        "default": "{p_url}hd/{id}{p}.gif",
+        "nohd":"{p_url}{id}{p}.gif",
         "faces": [
-            {
-                "id": "60fps"
-            },
-            {
-                "id": "aussie"
-            },
-            {
-                "id": "middle"
-            },
-            {
-                "id": "bored"
-            },
-            {
-                "id": "bootleg"
-            },
+            "60fps",
+            "aussie",
+            "middle",
+            "bored",
+            "bootleg",
             {
                 "id": "birthday",
-                "url": "{p_url}hd/{id}party{t}.gif"
+                "url": "{p_url}hd/{id}party{p}.gif"
             },
-            {
-                "id": "bunny"
-            },
-            {
-                "id": "christmas"
-            },
-            {
-                "id": "confused"
-            },
-            {
-                "id": "ceiling"
-            },
-            {
-                "id": "disco"
-            },
-            {
-                "id": "twins"
-            },
+            "bunny",
+            "christmas",
+            "confused",
+            "ceiling",
+            "disco",
+            "twins",
             {
                 "id": "slomo",
-                "url": "{p_url}{id}parrot.gif"
+                "url": "{nohd}"
             },
-            {
-                "id": "horizontal"
-            },
+            "horizontal",
             {
                 "id": "async",
-                "url": "{p_url}{id}parrot.gif"
+                "url": "{nohd}"
             },
             {
                 "id": "database",
-                "url": "{p_url}{id}parrot.gif"
+                "url": "{nohd}"
             },
             {
-                "id": "node"
+                "id": "merged",
+                "url": "{nohd}"
             },
+            "node",
             {
                 "id": "php",
                 "url": "{p_url}hd/{id}arrot.gif"
             },
-            {
-                "id": "github"
-            },
+            "github",
             {
                 "id": "stub",
                 "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/guests/hd/stubparrot.gif"
             },
-            {
-                "id": "spinning"
-            },
+            "spinning",
             {
                 "id": "backward",
-                "url": "{p_url}hd/{id}sparrot.gif"
+                "url": "{p_url}hd/{id}s{p}.gif"
             },
-            {
-                "id": "angry"
-            },
-            {
-                "id": "thumbsup"
-            },
-            {
-                "id": "gentleman"
-            },
-            {
-                "id": "hmm"
-            },
-            {
-                "id": "headbanging"
-            },
+            "angry",
+            "thumbsup",
+            "gentleman",
+            "hmm",
+            "headbanging",
             "stable",
-            {
-                "id": "spy"
-            },
-            {
-                "id": "dad"
-            },
+            "spy",
+            "dad",
             {
                 "id": "sleepy",
-                "url": "{p_url}hd/sleepingparrot.gif"
+                "url": "{p_url}hd/sleeping{p}.gif"
             },
             {
                 "id": "transparent",
@@ -111,64 +72,47 @@
             },
             {
                 "id": "portal",
-                "url": "{p_url}{id}parrot.gif"
+                "url": "{nohd}"
             },
-            {
-                "id": "portalblue"
-            },
-            {
-                "id": "reverseportalblue"
-            },
-            {
-                "id": "reverseportalorange"
-            },
-            {
-                "id": "portalorange"
-            },
-            {
-                "id": "original"
-            },
-            {
-                "id": "reverseconga"
-            },
+            "portalblue",
+            "reverseportalblue",
+            "reverseportalorange",
+            "portalorange",
+            "original",
+            "reverseconga",
             {
                 "id": "notfound",
-                "url": "{p_url}hd/parrot{id}.gif"
+                "url": "{p_url}hd/{p}{id}.gif"
             },
-            {
-                "id": "short"
-            },
-            {
-                "id": "bouncing"
-            },
-            {
-                "id": "vertical"
-            },
-            {
-                "id": "darkmode"
-            },
-            {
-                "id": "sad"
-            },
-            {
-                "id": "invisible"
-            },
+            "short",
+            "bouncing",
+            "vertical",
+            "darkmode",
+            "sad",
+            "invisible",
             {
                 "id": "witnessprotect",
                 "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/guests/hd/{id}ionparrot.gif"
             },
-            {
-                "id": "ultrafast"
-            },
-            {
-                "id": "jumping"
-            },
-            {
-                "id": "quad"
-            },
+            "ultrafast",
+            "jumping",
+            "quad",
             {
                 "id": "dragonparrot",
                 "url": "https://cdn.jsdelivr.net/gh/DazaiYuki/PicStorage/img/{id}.png"
+            },
+            {
+                "id": "nyan",
+                "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/guests/hd/{id}parrot.gif"
+            },
+            {
+                "id": "dab",
+                "url": "{nohd}"
+            },
+            "poke",
+            {
+                "id": "jumping",
+                "url": "{p_url}hd/{id}{p}jr.gif"
             }
         ]
     },
@@ -228,6 +172,26 @@
             {
                 "id": "kyaru114",
                 "url": "{p_url}2020/07/Kyaru114.gif"
+            },
+            {
+                "id": "cat-on-washingmac",
+                "url": "https://image.yukicat.net/2020/08/20200830074811572.gif"
+            },
+            {
+                "id": "肥肥",
+                "url": "https://image.yukicat.net/2020/10/20201005053126611.jpg"
+            },
+            {
+                "id": "麻了",
+                "url": "https://image.yukicat.net/2020/10/20201005053156548.jpg"
+            },
+            {
+                "id": "peko笑",
+                "url": "https://image.yukicat.net/2020/10/20201005053156715.jpg"
+            },
+            {
+                "id": "catshake",
+                "url": "https://image.yukicat.net/2020/11/20201115065025288.gif"
             }
         ]
     },
@@ -236,113 +200,47 @@
         "name": "这河里吗？",
         "default": "https://cdn.jsdelivr.net/gh/KotoriK/facepack-is-that-reasonable/{id}.jpg",
         "faces": [
-            {
-                "id": "这河里吗"
-            },
-            {
-                "id": "这河里妈"
-            },
-            {
-                "id": "这河狸吗"
-            },
-            {
-                "id": "这核里吗"
-            },
-            {
-                "id": "这恒河里"
-            },
-            {
-                "id": "这合理吗"
-            },
-            {
-                "id": "这合理吗~1"
-            },
-            {
-                "id": "这真步河里"
-            },
-            {
-                "id": "这贞德河里吗"
-            }
+            "这河里吗",
+            "这河里妈",
+            "这河狸吗",
+            "这核里吗",
+            "这恒河里",
+            "这合理吗",
+            "这合理吗~1",
+            "这真步河里",
+            "这贞德河里吗",
+            "这补胎合理",
+            "这像画吗"
         ]
     },
     {
         "id": "programmer",
         "name": "程序员",
-        "p_url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/024Programmer_程序员👨\u200d💻\u200dBQB/",
+        "p_url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/024Programmer_程序员👨%E2%80%8D💻%E2%80%8DBQB/程序员000",
         "faces": [
             {
                 "id": "excited",
-                "url": "{p_url}Programmer0000117.JPG"
+                "url": "{p_url}42-我的内心非常{id}甚至还想再写两行代码.JPG"
             },
             {
                 "id": "deep_learning",
-                "url": "{p_url}Programmer00010.jpg"
+                "url": "{p_url}14-深度学习.jpg"
             },
             {
                 "id": "代码写完了吗？",
-                "url": "{p_url}webwxgetmsgimg-3.gif"
-            }
-        ]
-    },
-    {
-        "id": "spray",
-        "name": "喷雾",
-        "p_url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/016spray_喷雾🚿BQB/",
-        "faces": [
-            {
-                "id": "去污",
-                "url": "{p_url}spray00006.gif"
+                "url": "{p_url}49-{id}还在这儿装B.gif"
             },
             {
-                "id": "变傻",
-                "url": "{p_url}000000016.jpg"
+                "id": "反复滑稽",
+                "url": "{p_url}02-{id}.PNG"
             },
             {
-                "id": "变猪",
-                "url": "{p_url}spray00011.jpg"
-            }
-        ]
-    },
-    {
-        "id": "ducks",
-        "name": "鸭鸭",
-        "p_url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck",
-        "faces": [
-            {
-                "id": "1",
-                "url": "{p_url}1.jpg"
+                "id": "mycodeVsof",
+                "url": "{p_url}07-MyCodeCodeOnStackOverFlow.jpg"
             },
             {
-                "id": "2",
-                "url": "{p_url}2.jpg"
-            },
-            {
-                "id": "3",
-                "url": "{p_url}3.jpg"
-            },
-            {
-                "id": "4",
-                "url": "{p_url}4.jpg"
-            },
-            {
-                "id": "5",
-                "url": "{p_url}5.jpg"
-            },
-            {
-                "id": "6",
-                "url": "{p_url}7.jpg"
-            },
-            {
-                "id": "7",
-                "url": "{p_url}8.jpg"
-            },
-            {
-                "id": "8",
-                "url": "{p_url}9.jpg"
-            },
-            {
-                "id": "9",
-                "url": "{p_url}10.jpg"
+                "id": "摘要模型数据评估",
+                "url": "{p_url}33-{id}.jpg"
             }
         ]
     },
@@ -356,35 +254,39 @@
                 "url": "{p_url}000000060.jpg"
             },
             {
-                "id": "1",
-                "url": "{p_url}02.jpg"
+                "id": "glow",
+                "url": "{p_url}奇妙猫00002-炫光猫.gif"
             },
             {
-                "id": "2",
-                "url": "{p_url}03.gif"
+                "id": "?",
+                "url": "{p_url}奇妙猫00003-问号.jpg"
             },
             {
                 "id": "3",
-                "url": "{p_url}04.jpg"
+                "url": "{p_url}奇妙猫00004-口水猫.jpg"
             }
         ]
     },
     {
         "id": "kaguya",
         "name": "輝夜様は告らせたい",
-        "p_url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/071辉夜大小姐🎀BQB/",
+        "p_url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/071辉夜大小姐🎀BQB/辉夜大小姐想让我告白000",
         "faces": [
             {
                 "id": "藤原敲打",
-                "url": "{p_url}000000071.gif"
+                "url": "{p_url}20-卷报纸打人.gif"
             },
             {
                 "id": "抖",
-                "url": "{p_url}79814979309c40c6825abb37748390230ef923bf45032-3YH3yy_fw658.gif"
+                "url": "{p_url}07-惊慌.gif"
             },
             {
                 "id": "kimo",
-                "url": "{p_url}shiji.jpg"
+                "url": "{p_url}18-你好恶心喔.jpg"
+            },
+            {
+                "id": "naruhodo",
+                "url": "{p_url}19-原来如此-侦探.jpg"
             }
         ]
     }
