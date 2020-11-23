@@ -47,17 +47,17 @@ const TableView = forwardRef<HTMLDivElement, TableViewProps>(
             const array = new Array<JSX.Element>(rowCount)
             for (let i = 0; i < rowCount; i++) {
                 const start = i * colCount
-                array[i] = ((<tr key={facePackId+'r'+i}>{faces.slice(start, start + colCount)}</tr>))
+                array[i] = <tr key={facePackId+'r'+i}>{faces.slice(start, start + colCount)}</tr>
             }
             return array
         }, [faces, colCount])
-        return (<div className={classes.wrap} ref={ref}>
+        return <div className={classes.wrap} ref={ref}>
             <table >
                 <tbody>
                     {rows}
                 </tbody>
             </table>
-        </div>);
+        </div>;
     }
 )
 export default TableView
