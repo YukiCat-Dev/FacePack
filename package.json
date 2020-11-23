@@ -1,6 +1,6 @@
 {
   "name": "face-pack",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Provide a face selector for Wordpress on HTML based on React.",
   "main": "index.js",
   "scripts": {
