@@ -49,6 +49,7 @@ export default class FaceSelectorDeployer {
         this._peakPopperOptions = props.peakPopperOptions
     }
     private _displayed: boolean = true
+    private _loadContent: boolean = false
     /**
      *渲染FaceSelector
      *
@@ -56,12 +57,15 @@ export default class FaceSelectorDeployer {
      * @memberof FaceSelectorDeployer
      */
     render() {
-        render(<FaceSelector facePacks={this._facePacks} colCount={4} handleHide={this.hide.bind(this)}
-            onFaceSelected={this._onFaceSelected} peakPopperOptions={this._peakPopperOptions}
-            style={this._style} className={this._className} />, this._tooltip);
+        this._updateSelector()
         this._popper = createPopper(this._popcorn, this._tooltip, this._popperOptions);
         this._popcorn.addEventListener('click', this._handlePopcornClick.bind(this));
         return this
+    }
+    private _updateSelector() {
+        render(<FaceSelector facePacks={this._facePacks} colCount={4} handleHide={this.hide.bind(this)}
+            onFaceSelected={this._onFaceSelected} peakPopperOptions={this._peakPopperOptions}
+            style={this._style} className={this._className} loadContent={this._loadContent} />, this._tooltip);
     }
     private _handlePopcornClick(e: MouseEvent) {
         this.hide()
@@ -73,6 +77,7 @@ export default class FaceSelectorDeployer {
         } else {
             this._tooltip.removeAttribute("hidden")
             this._popper.update()
+            if (!this._loadContent) this._loadContent = true, this._updateSelector()
             this._displayed = true
         }
     }

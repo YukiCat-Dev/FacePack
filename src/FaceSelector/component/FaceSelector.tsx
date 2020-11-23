@@ -31,6 +31,7 @@ export interface FaceSelectorProps extends BaseComponentProps {
     */
     onFaceSelected: (parentPack: FacePackage, face: Face) => void
     peakPopperOptions?: Partial<OptionsGeneric<TModifier>>
+    loadContent:boolean
 }
 export interface FaceSelectorState {
     /**
@@ -54,7 +55,7 @@ export { Global };
 export function GenericStyle({ children }: { children: (classes: Record<"borderShadow" | "bgWhiteBlur" | "main", string>) => React.ReactElement }) {
     return children(useGenericStyle())
 }
-export default function FaceSelector({ peakPopperOptions, facePacks, style, className, colCount, onFaceSelected, handleHide }: FaceSelectorProps) {
+export default function FaceSelector({ peakPopperOptions, facePacks, style, className, colCount, onFaceSelected, handleHide,loadContent }: FaceSelectorProps) {
     const [_nowPackagePos, setPos] = useState(0)
     const [isShowPeak, setShowPeak] = useState(false)
     const [peak_url, set_url] = useState<string>()
@@ -70,8 +71,8 @@ export default function FaceSelector({ peakPopperOptions, facePacks, style, clas
         handleHide()
     }, [handleHide, onFaceSelected, facePacks, _nowPackagePos])
     useEffect(() => {
-        body.current.style.height = mainHeight - head.current.clientHeight + 'px'
-    },[])
+       if(loadContent) body.current.style.height = mainHeight - head.current.clientHeight + 'px'
+    },[loadContent])
     let nowPackagePos = _nowPackagePos
     const maxPos = facePacks.length - 1
     if (nowPackagePos > maxPos) nowPackagePos = maxPos //防止prop发生改动带来越界
@@ -92,8 +93,8 @@ export default function FaceSelector({ peakPopperOptions, facePacks, style, clas
                             hidePeak: () => setShowPeak(false)
                         } as FaceSelectorGlobal
                     }, [set_url, set_caption, setShowPeak, update])}>
-                        <TableView facePackage={facePacks[nowPackagePos]} colCount={colCount}
-                            onImageSelected={handleFaceSelected} ref={body} />
+                       {loadContent ? <TableView facePackage={facePacks[nowPackagePos]} colCount={colCount}
+                            onImageSelected={handleFaceSelected} ref={body} />:null} 
                     </Global.Provider>
                 </div>)}
         </GenericStyle>
