@@ -53,20 +53,17 @@ export type FaceDefine = {
 } | string
 export function getFaceFullUrl(face: FaceDefine, parentPack: FacePackageDefine | FacePackage) {
     const _face = typeof face == "string" ? { id: face } : face
-    const _process = (ph:string)=>processTemplate('{', '}', (str) => {
-        switch (str) {
-            case 'p_url': return parentPack.p_url
-            case 'id': return _face.id
-            default:
-                if (str in parentPack) {
-                    return parentPack[str]
-                } else {
-                    return `{${str}}`
-                }
+    const _process = (ph: string) => processTemplate('{', '}', (str) => {
+        if(str=='id'){
+            return _face.id
+        }else if (str in parentPack){
+            return parentPack[str]
+        }else{
+            return `{${str}}`
         }
     }, ph)
-    const {url,...other_key}=_face
+    const { url, ...other_key } = _face
     return {
-        ...other_key, url: _process( url && _process(url)  || parentPack.default)
+        ...other_key, url: _process(url && _process(url) || parentPack.default)
     }
 }
