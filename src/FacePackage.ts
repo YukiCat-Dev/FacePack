@@ -12,7 +12,21 @@ export interface FacePackage {
     name: string
     faces: Array<Face>
     p_url?: string
-    default?:string
+    default?: string
+}
+export interface FacePackageDefine {
+    id: string
+
+    /**
+     * 表情包的友好名称
+     *
+     * @type {string}
+     * @memberof FacePackage
+     */
+    name: string
+    faces: Array<FaceDefine>
+    p_url?: string
+    default?: string
 }
 export interface Face {
 
@@ -33,18 +47,24 @@ export interface Face {
     url: string
 
 }
-export interface FaceDefine{
-    id:string
-    url?:string
-}
-export function getFaceFullUrl(face: FaceDefine, parentPack: FacePackage) {
-       return processTemplate('{', '}', (str) => {
-        if (str == 'p_url') {
-            return parentPack.p_url
-        } else if(str == 'id'){
-            return face.id
-        }else{
-            return `{${str}}`
-        }      
-    }, face.url ?? parentPack.default)   
+export type FaceDefine = {
+    id: string
+    url?: string
+} | string
+export function getFaceFullUrl(face: FaceDefine, parentPack: FacePackageDefine | FacePackage) {
+    const _face = typeof face == "string" ? { id: face } : face
+    return {
+        ..._face, url: processTemplate('{', '}', (str) => {
+            switch (str) {
+                case 'p_url': return parentPack.p_url
+                case 'id': return _face.id
+                default:
+                    if (str in parentPack) {
+                        return parentPack[str]
+                    } else {
+                        return `{${str}}`
+                    }
+            }
+        }, _face.url ?? parentPack.default)
+    }
 }

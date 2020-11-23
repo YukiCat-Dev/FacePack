@@ -1,161 +1,391 @@
-[{
-    "id": "parrots",
-    "name": "鹦鹉派对",
-    "p_url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/",
-    "faces": [{
-        "id": "middle",
-        "url": "{p_url}hd/middleparrot.gif"
-    }, {
-        "id": "bored",
-        "url": "{p_url}hd/boredparrot.gif"
-    }, {
-        "id": "slomo",
-        "url": "{p_url}slomoparrot.gif"
-    }, {
-        "id": "horizontal",
-        "url": "{p_url}hd/horizontalparrot.gif"
-    }, {
-        "id": "async",
-        "url": "{p_url}asyncparrot.gif"
-    }, {
-        "id": "spinning",
-        "url": "{p_url}hd/spinningparrot.gif"
-    }, {
-        "id": "60fps",
-        "url": "{p_url}hd/60fpsparrot.gif"
-    }, {
-        "id": "backward",
-        "url": "{p_url}hd/backwardsparrot.gif"
-    }, {
-        "id": "angry",
-        "url": "{p_url}hd/angryparrot.gif"
-    }, {
-        "id": "thumbsup",
-        "url": "{p_url}hd/thumbsupparrot.gif"
-    }, {
-        "id": "hmm",
-        "url": "{p_url}hd/hmmparrot.gif"
-    }, {
-        "id": "stable",
-        "url": "{p_url}hd/stableparrot.gif"
-    }, {
-        "id": "dad",
-        "url": "{p_url}hd/dadparrot.gif"
-    }, {
-        "id": "php",
-        "url": "{p_url}hd/phparrot.gif"
-    }, {
-        "id": "sleepy",
-        "url": "{p_url}hd/sleepingparrot.gif"
-    }, {
-        "id": "node",
-        "url": "{p_url}hd/nodeparrot.gif"
-    }, {
-        "id": "transparent",
-        "url": "{p_url}hd/transparront.gif"
-    }, {
-        "id": "portalblue",
-        "url": "{p_url}hd/portalblueparrot.gif"
-    }, {
-        "id": "reverseportalblue",
-        "url": "{p_url}hd/reverseportalblueparrot.gif"
-    }, {
-        "id": "reverseportalorange",
-        "url": "{p_url}hd/reverseportalorangeparrot.gif"
-    }, {
-        "id": "portalorange",
-        "url": "{p_url}hd/portalorangeparrot.gif"
-    }, {
-        "id": "original",
-        "url": "{p_url}hd/originalparrot.gif"
-    }, {
-        "id": "notfound",
-        "url": "{p_url}hd/parrotnotfound.gif"
-    }, {
-        "id": "short",
-        "url": "{p_url}hd/shortparrot.gif"
-    }, {
-        "id": "bouncing",
-        "url": "{p_url}hd/bouncingparrot.gif"
-    }, {
-        "id": "dragonparrot",
-        "url": "https://cdn.jsdelivr.net/gh/DazaiYuki/PicStorage/img/dragonparrot.png"
-    }]
-}, {
-    "id": "ducks",
-    "name": "鸭鸭",
-    "p_url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/",
-    "faces": [{
-        "id": "1",
-        "url": "{p_url}HappyDuck1.jpg"
-    }, {
-        "id": "2",
-        "url": "{p_url}HappyDuck2.jpg"
-    }, {
-        "id": "3",
-        "url": "{p_url}HappyDuck3.jpg"
-    }, {
-        "id": "4",
-        "url": "{p_url}HappyDuck4.jpg"
-    }, {
-        "id": "5",
-        "url": "{p_url}HappyDuck5.jpg"
-    }, {
-        "id": "6",
-        "url": "{p_url}HappyDuck7.jpg"
-    }, {
-        "id": "7",
-        "url": "{p_url}HappyDuck8.jpg"
-    }, {
-        "id": "8",
-        "url": "{p_url}HappyDuck9.jpg"
-    }, {
-        "id": "9",
-        "url": "{p_url}HappyDuck10.jpg"
-    }]
-}, {
-    "id": "mur_cat",
-    "name": "Mur猫",
-    "p_url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/060MurCat_Mur猫😺BQB/",
-    "faces": [{
-        "id": "0",
-        "url": "{p_url}000000060.jpg"
-    }, {
-        "id": "1",
-        "url": "{p_url}02.jpg"
-    }, {
-        "id": "2",
-        "url": "{p_url}03.gif"
-    }, {
-        "id": "3",
-        "url": "{p_url}04.jpg"
-    }]
-}, {
-    "id": "kaguya",
-    "name": "輝夜様は告らせたい",
-    "p_url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/071辉夜大小姐🎀BQB/",
-    "faces": [{
-        "id": "藤原敲打",
-        "url": "{p_url}000000071.gif"
-    }, {
-        "id": "抖",
-        "url": "{p_url}79814979309c40c6825abb37748390230ef923bf45032-3YH3yy_fw658.gif"
-    }]
-}, {
-    "id": "yukicat",
-    "name": "站上表情包",
-    "p_url": "https://www.yukicat.net/wp-content/uploads/",
-    "faces": [{
-        "id": "e_wu",
-        "url": "{p_url}2020/04/XA9N0LG@G8HDSD0HZ_9.jpg"
-    }, {
-        "id": "jesus",
-        "url": "{p_url}2019/12/Jesus.jpg"
-    }, {
-        "id": "急いですね",
-        "url": "{p_url}2020/04/50Q@J3EU27WLPO0H1IF.jpg"
-    }, {
-        "id": "是这样啊",
-        "url": "{p_url}2020/06/20200603221559.png"
-    }]
-}]
+[
+    {
+        "id": "parrots",
+        "name": "鹦鹉派对",
+        "p_url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/parrots/",
+        "default": "{p_url}hd/{id}parrot.gif",
+        "t":"parrot",
+        "faces": [
+            {
+                "id": "60fps"
+            },
+            {
+                "id": "aussie"
+            },
+            {
+                "id": "middle"
+            },
+            {
+                "id": "bored"
+            },
+            {
+                "id": "bootleg"
+            },
+            {
+                "id": "birthday",
+                "url": "{p_url}hd/{id}party{t}.gif"
+            },
+            {
+                "id": "bunny"
+            },
+            {
+                "id": "christmas"
+            },
+            {
+                "id": "confused"
+            },
+            {
+                "id": "ceiling"
+            },
+            {
+                "id": "disco"
+            },
+            {
+                "id": "twins"
+            },
+            {
+                "id": "slomo",
+                "url": "{p_url}{id}parrot.gif"
+            },
+            {
+                "id": "horizontal"
+            },
+            {
+                "id": "async",
+                "url": "{p_url}{id}parrot.gif"
+            },
+            {
+                "id": "database",
+                "url": "{p_url}{id}parrot.gif"
+            },
+            {
+                "id": "node"
+            },
+            {
+                "id": "php",
+                "url": "{p_url}hd/{id}arrot.gif"
+            },
+            {
+                "id": "github"
+            },
+            {
+                "id": "stub",
+                "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/guests/hd/stubparrot.gif"
+            },
+            {
+                "id": "spinning"
+            },
+            {
+                "id": "backward",
+                "url": "{p_url}hd/{id}sparrot.gif"
+            },
+            {
+                "id": "angry"
+            },
+            {
+                "id": "thumbsup"
+            },
+            {
+                "id": "gentleman"
+            },
+            {
+                "id": "hmm"
+            },
+            {
+                "id": "headbanging"
+            },
+            "stable",
+            {
+                "id": "spy"
+            },
+            {
+                "id": "dad"
+            },
+            {
+                "id": "sleepy",
+                "url": "{p_url}hd/sleepingparrot.gif"
+            },
+            {
+                "id": "transparent",
+                "url": "{p_url}hd/transparront.gif"
+            },
+            {
+                "id": "portal",
+                "url": "{p_url}{id}parrot.gif"
+            },
+            {
+                "id": "portalblue"
+            },
+            {
+                "id": "reverseportalblue"
+            },
+            {
+                "id": "reverseportalorange"
+            },
+            {
+                "id": "portalorange"
+            },
+            {
+                "id": "original"
+            },
+            {
+                "id": "reverseconga"
+            },
+            {
+                "id": "notfound",
+                "url": "{p_url}hd/parrot{id}.gif"
+            },
+            {
+                "id": "short"
+            },
+            {
+                "id": "bouncing"
+            },
+            {
+                "id": "vertical"
+            },
+            {
+                "id": "darkmode"
+            },
+            {
+                "id": "sad"
+            },
+            {
+                "id": "invisible"
+            },
+            {
+                "id": "witnessprotect",
+                "url": "https://cdn.jsdelivr.net/gh/jmhobbs/cultofthepartyparrot.com/guests/hd/{id}ionparrot.gif"
+            },
+            {
+                "id": "ultrafast"
+            },
+            {
+                "id": "jumping"
+            },
+            {
+                "id": "quad"
+            },
+            {
+                "id": "dragonparrot",
+                "url": "https://cdn.jsdelivr.net/gh/DazaiYuki/PicStorage/img/{id}.png"
+            }
+        ]
+    },
+    {
+        "id": "yukicat",
+        "name": "站上表情包",
+        "p_url": "https://www.yukicat.net/wp-content/uploads/",
+        "faces": [
+            {
+                "id": "e_wu",
+                "url": "{p_url}2020/04/XA9N0LG@G8HDSD0HZ_9.jpg"
+            },
+            {
+                "id": "jesus",
+                "url": "{p_url}2019/12/Jesus.jpg"
+            },
+            {
+                "id": "急いですね",
+                "url": "{p_url}2020/04/50Q@J3EU27WLPO0H1IF.jpg"
+            },
+            {
+                "id": "是这样啊",
+                "url": "{p_url}2020/06/20200603221559.png"
+            },
+            {
+                "id": "?",
+                "url": "{p_url}2019/06/RN_R_WGEAFMY1GXH2PJ.jpg"
+            },
+            {
+                "id": "punch",
+                "url": "{p_url}2020/06/neptunepunch.jpg"
+            },
+            {
+                "id": "aaaa",
+                "url": "{p_url}2020/06/752ND9@QTWC2T7_PV1.jpg"
+            },
+            {
+                "id": "狐狸喝水",
+                "url": "{p_url}2020/07/狐狸喝水.jpg"
+            },
+            {
+                "id": "哈↑哈↑哈↑哈↑",
+                "url": "{p_url}2020/07/哈↑哈↑哈↑哈↑.jpg"
+            },
+            {
+                "id": "wtm惊讶",
+                "url": "https://image.yukicat.net/2020/08/20200830071200300.gif"
+            },
+            {
+                "id": "角羊笑",
+                "url": "{p_url}2020/07/角羊笑.gif"
+            },
+            {
+                "id": "遇到困难，睡大觉",
+                "url": "{p_url}2020/07/睡了.jpg"
+            },
+            {
+                "id": "kyaru114",
+                "url": "{p_url}2020/07/Kyaru114.gif"
+            }
+        ]
+    },
+    {
+        "id": "in-river",
+        "name": "这河里吗？",
+        "default": "https://cdn.jsdelivr.net/gh/KotoriK/facepack-is-that-reasonable/{id}.jpg",
+        "faces": [
+            {
+                "id": "这河里吗"
+            },
+            {
+                "id": "这河里妈"
+            },
+            {
+                "id": "这河狸吗"
+            },
+            {
+                "id": "这核里吗"
+            },
+            {
+                "id": "这恒河里"
+            },
+            {
+                "id": "这合理吗"
+            },
+            {
+                "id": "这合理吗~1"
+            },
+            {
+                "id": "这真步河里"
+            },
+            {
+                "id": "这贞德河里吗"
+            }
+        ]
+    },
+    {
+        "id": "programmer",
+        "name": "程序员",
+        "p_url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/024Programmer_程序员👨\u200d💻\u200dBQB/",
+        "faces": [
+            {
+                "id": "excited",
+                "url": "{p_url}Programmer0000117.JPG"
+            },
+            {
+                "id": "deep_learning",
+                "url": "{p_url}Programmer00010.jpg"
+            },
+            {
+                "id": "代码写完了吗？",
+                "url": "{p_url}webwxgetmsgimg-3.gif"
+            }
+        ]
+    },
+    {
+        "id": "spray",
+        "name": "喷雾",
+        "p_url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/016spray_喷雾🚿BQB/",
+        "faces": [
+            {
+                "id": "去污",
+                "url": "{p_url}spray00006.gif"
+            },
+            {
+                "id": "变傻",
+                "url": "{p_url}000000016.jpg"
+            },
+            {
+                "id": "变猪",
+                "url": "{p_url}spray00011.jpg"
+            }
+        ]
+    },
+    {
+        "id": "ducks",
+        "name": "鸭鸭",
+        "p_url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/057HappyDuck_开心鸭BQB/HappyDuck",
+        "faces": [
+            {
+                "id": "1",
+                "url": "{p_url}1.jpg"
+            },
+            {
+                "id": "2",
+                "url": "{p_url}2.jpg"
+            },
+            {
+                "id": "3",
+                "url": "{p_url}3.jpg"
+            },
+            {
+                "id": "4",
+                "url": "{p_url}4.jpg"
+            },
+            {
+                "id": "5",
+                "url": "{p_url}5.jpg"
+            },
+            {
+                "id": "6",
+                "url": "{p_url}7.jpg"
+            },
+            {
+                "id": "7",
+                "url": "{p_url}8.jpg"
+            },
+            {
+                "id": "8",
+                "url": "{p_url}9.jpg"
+            },
+            {
+                "id": "9",
+                "url": "{p_url}10.jpg"
+            }
+        ]
+    },
+    {
+        "id": "mur_cat",
+        "name": "Mur猫",
+        "p_url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/060MurCat_Mur猫😺BQB/",
+        "faces": [
+            {
+                "id": "0",
+                "url": "{p_url}000000060.jpg"
+            },
+            {
+                "id": "1",
+                "url": "{p_url}02.jpg"
+            },
+            {
+                "id": "2",
+                "url": "{p_url}03.gif"
+            },
+            {
+                "id": "3",
+                "url": "{p_url}04.jpg"
+            }
+        ]
+    },
+    {
+        "id": "kaguya",
+        "name": "輝夜様は告らせたい",
+        "p_url": "https://cdn.jsdelivr.net/gh/zhaoolee/ChineseBQB/071辉夜大小姐🎀BQB/",
+        "faces": [
+            {
+                "id": "藤原敲打",
+                "url": "{p_url}000000071.gif"
+            },
+            {
+                "id": "抖",
+                "url": "{p_url}79814979309c40c6825abb37748390230ef923bf45032-3YH3yy_fw658.gif"
+            },
+            {
+                "id": "kimo",
+                "url": "{p_url}shiji.jpg"
+            }
+        ]
+    }
+]
