@@ -89,6 +89,12 @@ export function processTemplate(left_bracket: string, right_bracket: string, rep
     }
     if (bracketContent != '') {
         newText += left_bracket + bracketContent
+        inBracket=false
+    }
+    if(inBracket){
+        newText+=left_bracket
     }
     return newText
 }
+//@ts-ignore
+window.PROCESS = processTemplate
