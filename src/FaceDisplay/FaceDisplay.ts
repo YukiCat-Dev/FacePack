@@ -18,14 +18,9 @@ export default class FaceDisplay {
             }
         }
     }
-    render(node: Node) {
-        if (node instanceof HTMLElement) {
-            const raw = node.innerHTML, result = this.renderText(raw)
-            if (result !== raw) node.innerHTML = result
-        } else if (node instanceof Text) {
-            const raw = node.data, result = this.renderText(raw)
-            if (result !== raw) node.data = result
-        }
+    render(node: Element) {
+        const raw = node.innerHTML, result = this.renderText(raw)
+        if (result !== raw) node.innerHTML = result
     }
     renderText(text: string) {
         return processTemplate(this.LEFT_BRACKET, this.RIGHT_BRACKET, this.replacePlaceHolder.bind(this), text)
