@@ -18,12 +18,17 @@ export default class FaceDisplay {
             }
         }
     }
-    render(onElement: HTMLElement | Element) {
-        const raw = onElement.innerHTML,result = this.renderHTML(raw)
-        if (result!==raw) onElement.innerHTML = result
+    render(node: Node) {
+        if (node instanceof HTMLElement) {
+            const raw = node.innerHTML, result = this.renderText(raw)
+            if (result !== raw) node.innerHTML = result
+        } else if (node instanceof Text) {
+            const raw = node.data, result = this.renderText(raw)
+            if (result !== raw) node.data = result
+        }
     }
-    renderHTML(html: string) {
-        return processTemplate(this.LEFT_BRACKET, this.RIGHT_BRACKET, this.replacePlaceHolder.bind(this), html)
+    renderText(text: string) {
+        return processTemplate(this.LEFT_BRACKET, this.RIGHT_BRACKET, this.replacePlaceHolder.bind(this), text)
     }
     replacePlaceHolder(placeHolder: string) {
         const url = this._faceMap.get(placeHolder)
