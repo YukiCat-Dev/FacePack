@@ -4,8 +4,8 @@
   "description": "Provide a face selector for Wordpress on HTML based on React.",
   "main": "index.js",
   "scripts": {
-    "test": "parcel index.html --out-dir dev",
-    "dev": "parcel index.html --no-source-maps --out-dir dev",
+    "test": "jest",
+    "dev": "parcel index.html --out-dir dev",
     "build": "parcel build src/deploy-display.ts --out-dir dist/bundle --experimental-scope-hoisting && parcel build src/deploy-selector.ts --out-dir dist/bundle --experimental-scope-hoisting",
     "publish": "tsc"
   },
@@ -44,9 +44,13 @@
     "react-popper": "^2.2.4"
   },
   "devDependencies": {
-    "@types/react": "^16.9.56",
-    "@types/react-dom": "^16.9.9",
+    "@types/jest": "^26.0.16",
+    "@types/react": "^16.14.2",
+    "@types/react-dom": "^16.9.10",
+    "jest": "^26.6.3",
     "parcel-bundler": "^1.12.4",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.0",
     "typescript": "^3.9.7"
   },
   "browserslist": [
