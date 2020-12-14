@@ -1,38 +1,41 @@
 import { FacePackage } from "../FacePackage"
+import { processTemplate } from "../util/template"
 
 export default class FaceDisplay {
     private _className: string
-    private _style: string
-    private _map: Map<string, string> = new Map()
-    readonly regexp: RegExp
-    constructor(facePackages: Array<FacePackage>, imgClassName: string = '', imgInlineStyle: string = '', regExp: string | RegExp = /:(\S+):/) {
+    private _inlineStyle: string
+    private _faceMap: Map<string, string> = new Map()
+    LEFT_BRACKET: string
+    RIGHT_BRACKET: string
+    constructor(facePackages: Array<FacePackage>, imgClassName: string = '', imgInlineStyle: string = '', leftBracket: string = ':', rightBracket: string = ':') {
         this._className = imgClassName
-        this._style = imgInlineStyle
-        this.regexp = typeof regExp == 'string' ? new RegExp(regExp) : regExp
+        this._inlineStyle = imgInlineStyle
+        this.LEFT_BRACKET = leftBracket
+        this.RIGHT_BRACKET = rightBracket
         for (const pack of facePackages) {
             for (const face of pack.faces) {
-                this._map.set(`${pack.id}.${face.id}`, face.url)
+                this._faceMap.set(`${pack.id}.${face.id}`, face.url)
             }
         }
     }
-    render(element: HTMLElement) {
-        const raw = element.innerHTML, result = this.renderText(raw)
-        if (result !== raw) element.innerHTML = result
-    }
-    renderText(text: string) {
-        const placeholder = text.match(this.regexp)
-        if (placeholder) {
-            return this._replace(text,placeholder[1])
-        } else {
-            return text
+    render(node: Node) {
+        if (node instanceof HTMLElement) {
+            const raw = node.innerHTML, result = this.renderText(raw)
+            if (result !== raw) node.innerHTML = result
+        } else if (node instanceof Text) {
+            const raw = node.data, result = this.renderText(raw)
+            if (result !== raw) node.data = result
         }
     }
-    private _replace(raw:string,content: string) {
-        const url = this._map.get(content)
+    renderText(text: string) {
+        return processTemplate(this.LEFT_BRACKET, this.RIGHT_BRACKET, this.replacePlaceHolder.bind(this), text)
+    }
+    replacePlaceHolder(placeHolder: string) {
+        const url = this._faceMap.get(placeHolder)
         if (url) {
-            return `<img ${this._className ? ('class=' + this._className) : ''} src="${url}" style="${this._style ?? 'max-height:6vh;'}" alt="${raw}"/>`
+            return `<img class="${this._className}" src="${url}" style="${this._inlineStyle} max-height:6vh;" alt="${this.LEFT_BRACKET}${placeHolder}${this.RIGHT_BRACKET}"/>`
         } else {
-            return raw
+            return `${this.LEFT_BRACKET}${placeHolder}${this.RIGHT_BRACKET}`
         }
     }
 }
