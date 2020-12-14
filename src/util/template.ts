@@ -91,6 +91,8 @@ export function processTemplate(left_bracket: string, right_bracket: string, rep
                     inBracket = false
                     newText += `${left_bracket}${bracketContent}${char}`
                     bracketContent = ""
+                } else {
+                    newText += char
                 }
                 break
 
