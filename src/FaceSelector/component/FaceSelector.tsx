@@ -30,7 +30,13 @@ export interface FaceSelectorProps extends BaseComponentProps {
     *  当用户选中一个表情时触发
     */
     onFaceSelected: (parentPack: FacePackage, face: Face) => void
+    /**
+     * 传递给Peak的Popper Option
+     */
     peakPopperOptions?: Partial<OptionsGeneric<TModifier>>
+    /**
+     * 指示是否加载表情
+     */
     loadContent:boolean
 }
 export interface FaceSelectorState {

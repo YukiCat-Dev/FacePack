@@ -1,10 +1,10 @@
-import FaceSelectorDeployer from './FaceSelector/FaceSelectorDeployer'
+import PopcornFaceSelectorDeployer from './FaceSelector/deployer/PopcornFaceSelectorDeployer'
 import FaceDisplay from './FaceDisplay/FaceDisplay'
 import DefaultFacePack from './DefaultFacePacksImporter'
 (async () => {
     const commentArea = document.getElementById('comment') as HTMLTextAreaElement
-    const facePacks = DefaultFacePack
-    new FaceSelectorDeployer({
+    const facePacks = DefaultFacePack as any
+    new PopcornFaceSelectorDeployer({
         popcorn: document.getElementById('show-fs'),
         tooltip: document.getElementById('fs-c'),
         facePackages: facePacks,
@@ -21,7 +21,7 @@ import DefaultFacePack from './DefaultFacePacksImporter'
                     },
                 ],
             }
-    }).render().hide()
+    }).render().switchHide()
 
     let display = new FaceDisplay(facePacks)
     document.getElementById('comment')

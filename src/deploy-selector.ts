@@ -1,10 +1,10 @@
 /**部署样板 */
 import { importExternalFacePacks } from './FacePacksImporter'
-import FaceSelectorDeployer from './FaceSelector/FaceSelectorDeployer'
+import PopcornFaceSelectorDeployer from './FaceSelector/deployer/PopcornFaceSelectorDeployer'
 (async () => {
     const commentArea = document.getElementById('comment') as HTMLTextAreaElement
 /*     const facePacks = DefaultFacePack
- */   new FaceSelectorDeployer({
+ */   new PopcornFaceSelectorDeployer({
         popcorn: document.getElementById('show-fs'),
         facePackages: await importExternalFacePacks('https://cdn.jsdelivr.net/gh/YukiCat-Dev/yukicat.facepack/facepacks.json'),
         onFaceSelected:
@@ -20,5 +20,5 @@ import FaceSelectorDeployer from './FaceSelector/FaceSelectorDeployer'
                     },
                 ],
             }
-    }).render().hide()
+    }).render().switchHide()
 })()
