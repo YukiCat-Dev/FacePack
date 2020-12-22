@@ -1,5 +1,5 @@
 import { unmountComponentAtNode } from "react-dom";
-import { AbstractDeployer, AbstractDeployerOptions } from "./AbstractDeployer";
+import AbstractDeployer,{  AbstractDeployerOptions } from "./AbstractDeployer";
 
 export interface FaceSelectorDeployerOptions extends AbstractDeployerOptions {
     /**
@@ -20,7 +20,7 @@ export default class FaceSelectorDeployer extends AbstractDeployer {
             this._displayed = false
         } else {
             this._self.removeAttribute("hidden")
-            if (!this._loadContent) this._loadContent = true, this._updateSelector()
+            if (!this._loadContent) this._loadContent = true, this.render()
             this._displayed = true
         }
         return this
@@ -31,6 +31,6 @@ export default class FaceSelectorDeployer extends AbstractDeployer {
     }
     render() {
         this._render(this._self)
+        return this
     }
-
 }

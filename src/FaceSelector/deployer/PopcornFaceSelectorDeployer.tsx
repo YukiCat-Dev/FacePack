@@ -1,7 +1,7 @@
 import { createPopper, Instance, OptionsGeneric } from '@popperjs/core';
 import { TModifier } from '../component/FaceSelector'
 import { unmountComponentAtNode } from 'react-dom';
-import { AbstractDeployer, AbstractDeployerOptions } from './AbstractDeployer';
+import AbstractDeployer,{  AbstractDeployerOptions } from './AbstractDeployer';
 export interface PopcornFaceSelectorDeployerOptions extends AbstractDeployerOptions {
     /**
      * 停靠于哪个元素上(popper.js)
