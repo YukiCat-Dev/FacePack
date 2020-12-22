@@ -1,4 +1,7 @@
 import { createUseStyles } from "react-jss";
+/**
+ * 定义主体高度
+ */
 const mainHeight=325
 const useGenericStyle = createUseStyles({
     borderShadow: {
