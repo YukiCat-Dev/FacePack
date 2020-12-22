@@ -26,7 +26,8 @@ import DefaultFacePack from './DefaultFacePacksImporter'
     let display = new FaceDisplay(facePacks)
     document.getElementById('comment')
         .addEventListener('change', (e) => {
-            document.getElementById('display').innerText = e.target.value
+            const {target} =e 
+            if(target instanceof HTMLInputElement) document.getElementById('display').innerText = target.value
             display.render(document.getElementById('display'))
 
         })
