@@ -2,6 +2,8 @@
 ## 简介
   对博客、评论只有文字感到疲劳？使用FacePack，快速为您的博客添加好玩的表情。
   基于React与Popper.js，现代浏览器基本支持。
+### v1.5.0的破坏性修改:
+  v1.5中将React升级到了v17，并修改了React的引入方式。
 ## 感谢
 在我们的示例表情包中，使用了以下仓库的内容：
 * [zhaoolee/ChineseBQB](https://github.com/zhaoolee/ChineseBQB)
