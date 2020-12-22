@@ -1,9 +1,6 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importDefault(require("react"));
+const jsx_runtime_1 = require("react/jsx-runtime");
 /**
  *选项卡的单个标签
  *
@@ -13,7 +10,7 @@ const react_1 = __importDefault(require("react"));
  * @returns
  */
 function Tab(props) {
-    return (react_1.default.createElement("div", { style: { borderRight: "1pt solid", backgroundColor: props.selected ? '#1559ed' : undefined, color: props.selected ? 'white' : undefined, ...props.style, }, className: props.className, onClick: () => { props.onClick(props.pos); } }, props.name));
+    return (jsx_runtime_1.jsx("option", Object.assign({ selected: props.selected, style: { ...props.style }, className: props.className, value: props.pos }, { children: props.name }), void 0));
 }
 exports.default = Tab;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVGFiLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vc3JjL0ZhY2VTZWxlY3Rvci9jb21wb25lbnQvVGFiLnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7OztBQUFBLGtEQUEwQjtBQVMxQjs7Ozs7OztHQU9HO0FBQ0gsU0FBd0IsR0FBRyxDQUFDLEtBQWM7SUFDdEMsT0FBTyxDQUNILHVDQUFLLEtBQUssRUFBRSxFQUFDLFdBQVcsRUFBQyxXQUFXLEVBQUMsZUFBZSxFQUFDLEtBQUssQ0FBQyxRQUFRLENBQUEsQ0FBQyxDQUFBLFNBQVMsQ0FBQSxDQUFDLENBQUEsU0FBUyxFQUFDLEtBQUssRUFBQyxLQUFLLENBQUMsUUFBUSxDQUFBLENBQUMsQ0FBQSxPQUFPLENBQUEsQ0FBQyxDQUFBLFNBQVMsRUFBQyxHQUFHLEtBQUssQ0FBQyxLQUFLLEdBQUUsRUFDL0ksU0FBUyxFQUFFLEtBQUssQ0FBQyxTQUFTLEVBQzFCLE9BQU8sRUFBRSxHQUFFLEVBQUUsR0FBQyxLQUFLLENBQUMsT0FBTyxDQUFDLEtBQUssQ0FBQyxHQUFHLENBQUMsQ0FBQSxDQUFBLENBQUMsSUFBRyxLQUFLLENBQUMsSUFBSSxDQUFPLENBQzlELENBQUE7QUFDTCxDQUFDO0FBTkQsc0JBTUMifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVGFiLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vc3JjL0ZhY2VTZWxlY3Rvci9jb21wb25lbnQvVGFiLnRzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFPQTs7Ozs7OztHQU9HO0FBQ0gsU0FBd0IsR0FBRyxDQUFDLEtBQWU7SUFDdkMsT0FBTyxDQUNILDRDQUFRLFFBQVEsRUFBRSxLQUFLLENBQUMsUUFBUSxFQUFFLEtBQUssRUFBRSxFQUFFLEdBQUcsS0FBSyxDQUFDLEtBQUssRUFBRSxFQUFFLFNBQVMsRUFBRSxLQUFLLENBQUMsU0FBUyxFQUNuRixLQUFLLEVBQUUsS0FBSyxDQUFDLEdBQUcsZ0JBQ2YsS0FBSyxDQUFDLElBQUksWUFDTixDQUNaLENBQUE7QUFDTCxDQUFDO0FBUEQsc0JBT0MifQ==

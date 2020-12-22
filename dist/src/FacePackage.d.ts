@@ -11,6 +11,19 @@ export interface FacePackage {
     p_url?: string;
     default?: string;
 }
+export interface FacePackageDefine {
+    id: string;
+    /**
+     * 表情包的友好名称
+     *
+     * @type {string}
+     * @memberof FacePackage
+     */
+    name: string;
+    faces: Array<FaceDefine>;
+    p_url?: string;
+    default?: string;
+}
 export interface Face {
     /**
      * 与php方互通的表情id
@@ -27,9 +40,12 @@ export interface Face {
      */
     url: string;
 }
-export interface FaceDefine {
+export declare type FaceDefine = {
     id: string;
     url?: string;
-}
-export declare function getFaceFullUrl(face: FaceDefine, parentPack: FacePackage): string;
+} | string;
+export declare function getFaceFullUrl(face: FaceDefine, parentPack: FacePackageDefine | FacePackage): {
+    url: string;
+    id: string;
+};
 //# sourceMappingURL=FacePackage.d.ts.map

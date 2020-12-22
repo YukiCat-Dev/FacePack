@@ -1,8 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 import { FacePackage, Face } from '../../FacePackage';
-import Popper, { OptionsGeneric, Modifier } from '@popperjs/core';
+import { OptionsGeneric, Modifier } from '@popperjs/core';
 import BaseComponentProps from './BaseComponentProps';
-import '../../facepack.css';
 export declare type TModifier = Partial<Modifier<any, any>>;
 export interface FaceSelectorProps extends BaseComponentProps {
     /**
@@ -26,10 +25,13 @@ export interface FaceSelectorProps extends BaseComponentProps {
     */
     onFaceSelected: (parentPack: FacePackage, face: Face) => void;
     /**
-     * 指向正挂载在的HTML元素
+     * 传递给Peak的Popper Option
      */
-    refRoot: HTMLElement;
     peakPopperOptions?: Partial<OptionsGeneric<TModifier>>;
+    /**
+     * 指示是否加载表情
+     */
+    loadContent: boolean;
 }
 export interface FaceSelectorState {
     /**
@@ -43,30 +45,17 @@ export interface FaceSelectorState {
 declare const Global: React.Context<FaceSelectorGlobal>;
 export { Global };
 /**
- * 表情包选择器的完整主体
+ *表情包选择器的完整主体
  *
  * @author KotoriK
  * @export
- * @class FaceSelector
- * @extends {React.Component}
+ * @param { children }
+ * @returns
  */
-export default class FaceSelector extends React.Component<FaceSelectorProps, FaceSelectorState> {
-    state: {
-        nowPackagePos: number;
-    };
-    peakContainer: HTMLDivElement;
-    peakPopper: Popper.Instance;
-    handleTabSelectionChange(newPos: number): void;
-    handleFaceSelected(face_pos: number): void;
-    createPeakContainer(): void;
-    removePeakContainer(): void;
-    renderPeak(imgUrl: string, imgCaption: string): void;
-    hidePeak(): void;
-    showPeak(): void;
-    componentDidMount(): void;
-    componentWillUnmount(): void;
-    render(): JSX.Element;
-}
+export declare function GenericStyle({ children }: {
+    children: (classes: Record<"borderShadow" | "bgWhiteBlur" | "main", string>) => React.ReactElement;
+}): React.ReactElement<any, string | ((props: any) => React.ReactElement<any, string | any | (new (props: any) => React.Component<any, any, any>)>) | (new (props: any) => React.Component<any, any, any>)>;
+export default function FaceSelector({ peakPopperOptions, facePacks, style, className, colCount, onFaceSelected, handleHide, loadContent }: FaceSelectorProps): JSX.Element;
 export interface FaceSelectorGlobal {
     showPeak: (imgUrl: string, imgCaption: string) => void;
     hidePeak: Function;

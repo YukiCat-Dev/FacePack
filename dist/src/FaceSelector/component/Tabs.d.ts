@@ -10,6 +10,6 @@ export interface TabsProps {
  *
  * @author KotoriK
  */
-declare const Tabs: React.MemoExoticComponent<(props: TabsProps) => JSX.Element>;
+declare const Tabs: React.ForwardRefExoticComponent<TabsProps & React.RefAttributes<HTMLSelectElement>>;
 export default Tabs;
 //# sourceMappingURL=Tabs.d.ts.map

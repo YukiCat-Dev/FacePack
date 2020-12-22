@@ -1,59 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.processTemplate = void 0;
-/* export default class Template {
-    LEFT_BRACKET: string
-    RIGHT_BRACKET: string
-    constructor(left_bracket: string, right_bracket: string, replacePlaceHolder: (str: string) => Promise<string>) {
-        this.replacePlaceHolder = replacePlaceHolder
-        this.LEFT_BRACKET = left_bracket
-        this.RIGHT_BRACKET = right_bracket
-    }
-    replacePlaceHolder: (str: string) => Promise<string>
-    async process(text: string) {
-        let inBracket = false
-        let newText = ""
-        let bracketContent = ""
-        for (const char of text) {
-            switch (char) {
-                case this.LEFT_BRACKET:
-                    if (inBracket) {
-                        if (this.LEFT_BRACKET == this.RIGHT_BRACKET) {
-                            inBracket = false
-                            newText += await this.replacePlaceHolder(bracketContent)
-                            bracketContent = ""
-                        } else {
-                            inBracket = false
-                            newText += `${this.LEFT_BRACKET}${bracketContent}${this.LEFT_BRACKET}`
-                            bracketContent = ""
-                        }
-                    } else {
-                        inBracket = true
-                    }
-                    break
-                case this.RIGHT_BRACKET:
-                    if (inBracket) {
-                        inBracket = false
-                        newText += await this.replacePlaceHolder(bracketContent)
-                        bracketContent = ""
-                    } else {
-                        newText += char
-                    }
-                    break
-                default:
-                    if (inBracket) {
-                        bracketContent += char
-                    } else {
-                        newText += char
-                    }
-            }
-        }
-        if (bracketContent != '') {
-            newText += this.LEFT_BRACKET + bracketContent
-        }
-        return newText
-    }
-} */
 function processTemplate(left_bracket, right_bracket, replacePlaceHolder, str) {
     let inBracket = false, newText = "", bracketContent = "";
     for (const char of str) {
@@ -85,6 +32,23 @@ function processTemplate(left_bracket, right_bracket, replacePlaceHolder, str) {
                     newText += char;
                 }
                 break;
+            case ' ':
+            case '\n':
+            case '\r':
+            case '\t':
+            case '\v':
+            case '\f':
+                //跳过空白字符
+                //取消状态并放回字符
+                if (inBracket) {
+                    inBracket = false;
+                    newText += `${left_bracket}${bracketContent}${char}`;
+                    bracketContent = "";
+                }
+                else {
+                    newText += char;
+                }
+                break;
             default:
                 if (inBracket) {
                     bracketContent += char;
@@ -94,10 +58,15 @@ function processTemplate(left_bracket, right_bracket, replacePlaceHolder, str) {
                 }
         }
     }
+    //for end
     if (bracketContent != '') {
         newText += left_bracket + bracketContent;
+        inBracket = false;
+    }
+    if (inBracket) {
+        newText += left_bracket;
     }
     return newText;
 }
 exports.processTemplate = processTemplate;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidGVtcGxhdGUuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi9zcmMvdXRpbC90ZW1wbGF0ZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFBQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztJQW9ESTtBQUNKLFNBQWdCLGVBQWUsQ0FBQyxZQUFvQixFQUFFLGFBQXFCLEVBQUUsa0JBQTJDLEVBQUUsR0FBVztJQUNqSSxJQUFJLFNBQVMsR0FBRyxLQUFLLEVBQUUsT0FBTyxHQUFHLEVBQUUsRUFBRSxjQUFjLEdBQUcsRUFBRSxDQUFBO0lBQ3hELEtBQUssTUFBTSxJQUFJLElBQUksR0FBRyxFQUFFO1FBQ3BCLFFBQVEsSUFBSSxFQUFFO1lBQ1YsS0FBSyxZQUFZO2dCQUNiLElBQUksU0FBUyxFQUFFO29CQUNYLElBQUksWUFBWSxJQUFJLGFBQWEsRUFBRTt3QkFDL0IsU0FBUyxHQUFHLEtBQUssQ0FBQTt3QkFDakIsT0FBTyxJQUFJLGtCQUFrQixDQUFDLGNBQWMsQ0FBQyxDQUFBO3dCQUM3QyxjQUFjLEdBQUcsRUFBRSxDQUFBO3FCQUN0Qjt5QkFBTTt3QkFDSCxTQUFTLEdBQUcsS0FBSyxDQUFBO3dCQUNqQixPQUFPLElBQUksR0FBRyxZQUFZLEdBQUcsY0FBYyxHQUFHLFlBQVksRUFBRSxDQUFBO3dCQUM1RCxjQUFjLEdBQUcsRUFBRSxDQUFBO3FCQUN0QjtpQkFDSjtxQkFBTTtvQkFDSCxTQUFTLEdBQUcsSUFBSSxDQUFBO2lCQUNuQjtnQkFDRCxNQUFLO1lBQ1QsS0FBSyxhQUFhO2dCQUNkLElBQUksU0FBUyxFQUFFO29CQUNYLFNBQVMsR0FBRyxLQUFLLENBQUE7b0JBQ2pCLE9BQU8sSUFBSSxrQkFBa0IsQ0FBQyxjQUFjLENBQUMsQ0FBQTtvQkFDN0MsY0FBYyxHQUFHLEVBQUUsQ0FBQTtpQkFDdEI7cUJBQU07b0JBQ0gsT0FBTyxJQUFJLElBQUksQ0FBQTtpQkFDbEI7Z0JBQ0QsTUFBSztZQUNUO2dCQUNJLElBQUksU0FBUyxFQUFFO29CQUNYLGNBQWMsSUFBSSxJQUFJLENBQUE7aUJBQ3pCO3FCQUFNO29CQUNILE9BQU8sSUFBSSxJQUFJLENBQUE7aUJBQ2xCO1NBQ1I7S0FDSjtJQUNELElBQUksY0FBYyxJQUFJLEVBQUUsRUFBRTtRQUN0QixPQUFPLElBQUksWUFBWSxHQUFHLGNBQWMsQ0FBQTtLQUMzQztJQUNELE9BQU8sT0FBTyxDQUFBO0FBQ2xCLENBQUM7QUF4Q0QsMENBd0NDIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidGVtcGxhdGUuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi9zcmMvdXRpbC90ZW1wbGF0ZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFBQSxTQUFnQixlQUFlLENBQUMsWUFBb0IsRUFBRSxhQUFxQixFQUFFLGtCQUEyQyxFQUFFLEdBQVc7SUFDakksSUFBSSxTQUFTLEdBQUcsS0FBSyxFQUFFLE9BQU8sR0FBRyxFQUFFLEVBQUUsY0FBYyxHQUFHLEVBQUUsQ0FBQTtJQUN4RCxLQUFLLE1BQU0sSUFBSSxJQUFJLEdBQUcsRUFBRTtRQUNwQixRQUFRLElBQUksRUFBRTtZQUNWLEtBQUssWUFBWTtnQkFDYixJQUFJLFNBQVMsRUFBRTtvQkFDWCxJQUFJLFlBQVksSUFBSSxhQUFhLEVBQUU7d0JBQy9CLFNBQVMsR0FBRyxLQUFLLENBQUE7d0JBQ2pCLE9BQU8sSUFBSSxrQkFBa0IsQ0FBQyxjQUFjLENBQUMsQ0FBQTt3QkFDN0MsY0FBYyxHQUFHLEVBQUUsQ0FBQTtxQkFDdEI7eUJBQU07d0JBQ0gsU0FBUyxHQUFHLEtBQUssQ0FBQTt3QkFDakIsT0FBTyxJQUFJLEdBQUcsWUFBWSxHQUFHLGNBQWMsR0FBRyxZQUFZLEVBQUUsQ0FBQTt3QkFDNUQsY0FBYyxHQUFHLEVBQUUsQ0FBQTtxQkFDdEI7aUJBQ0o7cUJBQU07b0JBQ0gsU0FBUyxHQUFHLElBQUksQ0FBQTtpQkFDbkI7Z0JBQ0QsTUFBSztZQUNULEtBQUssYUFBYTtnQkFDZCxJQUFJLFNBQVMsRUFBRTtvQkFDWCxTQUFTLEdBQUcsS0FBSyxDQUFBO29CQUNqQixPQUFPLElBQUksa0JBQWtCLENBQUMsY0FBYyxDQUFDLENBQUE7b0JBQzdDLGNBQWMsR0FBRyxFQUFFLENBQUE7aUJBQ3RCO3FCQUFNO29CQUNILE9BQU8sSUFBSSxJQUFJLENBQUE7aUJBQ2xCO2dCQUNELE1BQUs7WUFDVCxLQUFLLEdBQUcsQ0FBQztZQUNULEtBQUssSUFBSSxDQUFDO1lBQ1YsS0FBSyxJQUFJLENBQUM7WUFDVixLQUFLLElBQUksQ0FBQztZQUNWLEtBQUssSUFBSSxDQUFDO1lBQ1YsS0FBSyxJQUFJO2dCQUNMLFFBQVE7Z0JBQ1IsV0FBVztnQkFDWCxJQUFJLFNBQVMsRUFBRTtvQkFDWCxTQUFTLEdBQUcsS0FBSyxDQUFBO29CQUNqQixPQUFPLElBQUksR0FBRyxZQUFZLEdBQUcsY0FBYyxHQUFHLElBQUksRUFBRSxDQUFBO29CQUNwRCxjQUFjLEdBQUcsRUFBRSxDQUFBO2lCQUN0QjtxQkFBTTtvQkFDSCxPQUFPLElBQUksSUFBSSxDQUFBO2lCQUNsQjtnQkFDRCxNQUFLO1lBRVQ7Z0JBQ0ksSUFBSSxTQUFTLEVBQUU7b0JBQ1gsY0FBYyxJQUFJLElBQUksQ0FBQTtpQkFDekI7cUJBQU07b0JBQ0gsT0FBTyxJQUFJLElBQUksQ0FBQTtpQkFDbEI7U0FDUjtLQUNKO0lBQ0QsU0FBUztJQUNULElBQUksY0FBYyxJQUFJLEVBQUUsRUFBRTtRQUN0QixPQUFPLElBQUksWUFBWSxHQUFHLGNBQWMsQ0FBQTtRQUN4QyxTQUFTLEdBQUcsS0FBSyxDQUFBO0tBQ3BCO0lBQ0QsSUFBSSxTQUFTLEVBQUU7UUFDWCxPQUFPLElBQUksWUFBWSxDQUFBO0tBQzFCO0lBQ0QsT0FBTyxPQUFPLENBQUE7QUFDbEIsQ0FBQztBQTlERCwwQ0E4REMifQ==

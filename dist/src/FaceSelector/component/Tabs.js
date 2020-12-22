@@ -3,17 +3,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const react_1 = __importDefault(require("react"));
+const jsx_runtime_1 = require("react/jsx-runtime");
+const react_1 = require("react");
 const Tab_1 = __importDefault(require("./Tab"));
+const react_jss_1 = require("react-jss");
+const clsx_1 = __importDefault(require("clsx"));
+const style_1 = __importDefault(require("../style"));
+const useStyles = react_jss_1.createUseStyles({
+    root: {
+        width: "100%", border: 0, fontWeight: 'bold'
+    }
+});
 /**
  * 选项卡的一行标签（一行Tab
  *
  * @author KotoriK
  */
-const Tabs = react_1.default.memo((props) => {
-    return (react_1.default.createElement("div", null, props.facePackages.map((value, index) => {
-        return (react_1.default.createElement(Tab_1.default, { key: value.id, pos: index, name: value.name, selected: index === props.selectedPos, onClick: (id) => props.onSelected(id) }));
-    })));
+const Tabs = react_1.forwardRef(function Tabs(props, ref) {
+    return (jsx_runtime_1.jsx("select", Object.assign({ ref: ref, className: clsx_1.default(useStyles().root, style_1.default().bgWhiteBlur), onChange: (e) => props.onSelected(e.target.value) }, { children: react_1.useMemo(() => props.facePackages.map((value, index) => jsx_runtime_1.jsx(Tab_1.default, { pos: index, name: value.name, selected: index === props.selectedPos }, value.id)), [props.facePackages]) }), void 0));
 });
 exports.default = Tabs;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVGFicy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NyYy9GYWNlU2VsZWN0b3IvY29tcG9uZW50L1RhYnMudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7O0FBQUEsa0RBQTBCO0FBQzFCLGdEQUF3QjtBQVF4Qjs7OztHQUlHO0FBQ0gsTUFBTSxJQUFJLEdBQUMsZUFBSyxDQUFDLElBQUksQ0FBQyxDQUFDLEtBQWUsRUFBQyxFQUFFO0lBQ3JDLE9BQU8sQ0FBQywyQ0FDSCxLQUFLLENBQUMsWUFBWSxDQUFDLEdBQUcsQ0FBQyxDQUFDLEtBQUssRUFBQyxLQUFLLEVBQUUsRUFBRTtRQUNwQyxPQUFPLENBQUMsOEJBQUMsYUFBRyxJQUFDLEdBQUcsRUFBRSxLQUFLLENBQUMsRUFBRSxFQUFFLEdBQUcsRUFBRSxLQUFLLEVBQUUsSUFBSSxFQUFFLEtBQUssQ0FBQyxJQUFJLEVBQUUsUUFBUSxFQUFFLEtBQUssS0FBRyxLQUFLLENBQUMsV0FBVyxFQUFFLE9BQU8sRUFBRSxDQUFDLEVBQVUsRUFBQyxFQUFFLENBQUEsS0FBSyxDQUFDLFVBQVUsQ0FBQyxFQUFFLENBQUMsR0FBRyxDQUFDLENBQUE7SUFDbEosQ0FBQyxDQUFDLENBQ0EsQ0FBQyxDQUFBO0FBQ1gsQ0FBQyxDQUFDLENBQUE7QUFDRixrQkFBZSxJQUFJLENBQUEifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiVGFicy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NyYy9GYWNlU2VsZWN0b3IvY29tcG9uZW50L1RhYnMudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7OztBQUFBLGlDQUFvRDtBQUNwRCxnREFBd0I7QUFFeEIseUNBQTRDO0FBQzVDLGdEQUF3QjtBQUN4QixxREFBdUM7QUFNdkMsTUFBTSxTQUFTLEdBQUcsMkJBQWUsQ0FBQztJQUM5QixJQUFJLEVBQUU7UUFDRixLQUFLLEVBQUUsTUFBTSxFQUFFLE1BQU0sRUFBRSxDQUFDLEVBQUUsVUFBVSxFQUFFLE1BQU07S0FDL0M7Q0FDSixDQUFDLENBQUE7QUFDRjs7OztHQUlHO0FBQ0gsTUFBTSxJQUFJLEdBQ04sa0JBQVUsQ0FDTixTQUFTLElBQUksQ0FBQyxLQUFLLEVBQUUsR0FBRztJQUNwQixPQUFPLENBQ0gsNENBQVEsR0FBRyxFQUFFLEdBQUcsRUFBRSxTQUFTLEVBQUUsY0FBSSxDQUFDLFNBQVMsRUFBRSxDQUFDLElBQUksRUFBRSxlQUFlLEVBQUUsQ0FBQyxXQUFXLENBQUMsRUFBRSxRQUFRLEVBQUUsQ0FBQyxDQUFDLEVBQUUsRUFBRSxDQUFDLEtBQUssQ0FBQyxVQUFVLENBQUMsQ0FBQyxDQUFDLE1BQU0sQ0FBQyxLQUFZLENBQUMsZ0JBQ3ZJLGVBQU8sQ0FBQyxHQUFFLEVBQUUsQ0FBQSxLQUFLLENBQUMsWUFBWSxDQUFDLEdBQUcsQ0FBQyxDQUFDLEtBQUssRUFBRSxLQUFLLEVBQUUsRUFBRSxDQUFDLGtCQUFDLGFBQUcsSUFBZ0IsR0FBRyxFQUFFLEtBQUssRUFBRSxJQUFJLEVBQUUsS0FBSyxDQUFDLElBQUksRUFDbEcsUUFBUSxFQUFFLEtBQUssS0FBSyxLQUFLLENBQUMsV0FBVyxJQUR1QixLQUFLLENBQUMsRUFBRSxDQUMzQixDQUM1QyxFQUFDLENBQUMsS0FBSyxDQUFDLFlBQVksQ0FBQyxDQUFDLFlBQ2xCLENBQ1osQ0FBQTtBQUNMLENBQUMsQ0FBQyxDQUFBO0FBRVYsa0JBQWUsSUFBSSxDQUFBIn0=

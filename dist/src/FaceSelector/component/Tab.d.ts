@@ -4,7 +4,6 @@ export interface TabProps extends BaseComponentProps {
     pos: number;
     name: string;
     selected: boolean;
-    onClick: (id: number) => void;
 }
 /**
  *选项卡的单个标签

@@ -18,8 +18,6 @@ export interface TableViewProps extends BaseComponentProps {
     facePackage: FacePackage;
     onImageSelected: (face_pos: number) => void;
 }
-export default class TableView extends React.Component<TableViewProps> {
-    handleImageClick(e: any, pos: number): void;
-    render(): JSX.Element;
-}
+declare const TableView: React.ForwardRefExoticComponent<TableViewProps & React.RefAttributes<HTMLDivElement>>;
+export default TableView;
 //# sourceMappingURL=TableView.d.ts.map

@@ -16,6 +16,6 @@ export interface IndicatorProps extends BaseComponentProps {
  * @param {IndicatorProps} props
  * @returns
  */
-declare const Indicator: (props: IndicatorProps) => JSX.Element;
+declare const Indicator: ({ level, description, style, className }: IndicatorProps) => JSX.Element;
 export default Indicator;
 //# sourceMappingURL=Indicator.d.ts.map
