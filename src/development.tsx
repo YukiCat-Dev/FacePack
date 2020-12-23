@@ -20,7 +20,7 @@ import DefaultFacePack from './DefaultFacePacksImporter'
                         },
                     },
                 ],
-            }
+            },style:{width:200}
     }).render().switchHide()
 
     let display = new FaceDisplay(facePacks)

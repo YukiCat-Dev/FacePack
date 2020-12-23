@@ -54,7 +54,7 @@ export default abstract class AbstractDeployer {
 export interface AbstractDeployerOptions {
 
     /**
- * 为FaceSelector附加的class
+ * FaceSelector主体的class，会替换默认class
  *
  */
     className?: string

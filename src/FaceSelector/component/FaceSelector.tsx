@@ -3,11 +3,12 @@ import TableView from './TableView';
 import { FacePackage, Face } from '../../FacePackage';
 import Tabs from './Tabs';
 import Peak from './Peak';
-import { OptionsGeneric, Modifier } from '@popperjs/core'
+import { Modifier, OptionsGeneric } from '@popperjs/core'
 import BaseComponentProps from './BaseComponentProps';
 import useGenericStyle, { mainHeight } from '../style';
 import clsx from 'clsx';
 import { usePopper } from 'react-popper'
+import FlexboxView from './FlexboxView';
 export type TModifier = Partial<Modifier<any, any>>
 export interface FaceSelectorProps extends BaseComponentProps {
     /**
@@ -38,6 +39,10 @@ export interface FaceSelectorProps extends BaseComponentProps {
      * 指示是否加载表情
      */
     loadContent:boolean
+    /**
+     * 使用哪种网格，默认为flex
+     */
+    grid?:'table'|'flex'
 }
 export interface FaceSelectorState {
     /**
@@ -61,7 +66,7 @@ export { Global };
 export function GenericStyle({ children }: { children: (classes: Record<"borderShadow" | "bgWhiteBlur" | "main", string>) => React.ReactElement }) {
     return children(useGenericStyle())
 }
-export default function FaceSelector({ peakPopperOptions, facePacks, style, className, colCount, onFaceSelected, handleHide,loadContent }: FaceSelectorProps) {
+export default function FaceSelector({ peakPopperOptions, facePacks, style, className, colCount, onFaceSelected, handleHide,loadContent,grid }: FaceSelectorProps) {
     const [_nowPackagePos, setPos] = useState(0)
     const [isShowPeak, setShowPeak] = useState(false)
     const [peak_url, set_url] = useState<string>()
@@ -77,6 +82,7 @@ export default function FaceSelector({ peakPopperOptions, facePacks, style, clas
         handleHide()
     }, [handleHide, onFaceSelected, facePacks, _nowPackagePos])
     useEffect(() => {
+        //设定内网格高度
        if(loadContent) body.current.style.height = mainHeight - head.current.clientHeight + 'px'
     },[loadContent])
     let nowPackagePos = _nowPackagePos
@@ -85,7 +91,7 @@ export default function FaceSelector({ peakPopperOptions, facePacks, style, clas
     return (<>
         <GenericStyle>
             {classes => (
-                <div ref={setMain} style={{ ...style }} className={clsx(classes.borderShadow, className, classes.bgWhiteBlur, classes.main)}>
+                <div ref={setMain} style={{ ...style }} className={className || clsx(classes.borderShadow, classes.bgWhiteBlur, classes.main)}>
                     <Tabs facePackages={facePacks}
                         onSelected={(pos) => setPos(pos)} selectedPos={nowPackagePos} ref={head} />
                     <Global.Provider value={useMemo(() => {
@@ -99,8 +105,12 @@ export default function FaceSelector({ peakPopperOptions, facePacks, style, clas
                             hidePeak: () => setShowPeak(false)
                         } as FaceSelectorGlobal
                     }, [set_url, set_caption, setShowPeak, update])}>
-                       {loadContent ? <TableView facePackage={facePacks[nowPackagePos]} colCount={colCount}
-                            onImageSelected={handleFaceSelected} ref={body} />:null} 
+                       {loadContent ? 
+                       grid=="table"?
+                       <TableView ref={body} facePackage={facePacks[nowPackagePos]} colCount={colCount}
+                       onImageSelected={handleFaceSelected} />
+                       :<FlexboxView ref={body} facePackage={facePacks[nowPackagePos]} onImageSelected={handleFaceSelected}/>
+                       :null} 
                     </Global.Provider>
                 </div>)}
         </GenericStyle>
