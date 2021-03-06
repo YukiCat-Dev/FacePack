@@ -1,6 +1,6 @@
 /**部署样板 */
-import { importExternalFacePacks } from './FacePacksImporter'
-import PopcornFaceSelectorDeployer from './FaceSelector/deployer/PopcornFaceSelectorDeployer'
+import { importExternalFacePacks } from '../src/FacePacksImporter'
+import PopcornFaceSelectorDeployer from '../src/FaceSelector/deployer/PopcornFaceSelectorDeployer'
 (async () => {
     const commentArea = document.getElementById('comment') as HTMLTextAreaElement
 /*     const facePacks = DefaultFacePack
