@@ -1,6 +1,6 @@
 import { importExternalFacePacks } from '../src/FacePacksImporter'
-import FaceDisplay from '../src/FaceDisplay/FaceDisplay'
-import PopcornFaceSelectorDeployer from '../src/FaceSelector/deployer/PopcornFaceSelectorDeployer'
+import FaceDisplay from '../src/display/FaceDisplay'
+import PopcornFaceSelectorDeployer from '../src/selector/deployer/PopcornFaceSelectorDeployer'
 (async () => {
     const facepacks = await importExternalFacePacks('https://cdn.jsdelivr.net/gh/YukiCat-Dev/yukicat.facepack/facepacks.json')
     const display = new FaceDisplay(facepacks)

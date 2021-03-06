@@ -1,6 +1,6 @@
-import PopcornFaceSelectorDeployer from '../src/FaceSelector/deployer/PopcornFaceSelectorDeployer'
-import FaceDisplay from '../src/FaceDisplay/FaceDisplay'
-import DefaultFacePack from '../src/DefaultFacePacksImporter'
+import PopcornFaceSelectorDeployer from '../src/selector/deployer/PopcornFaceSelectorDeployer'
+import FaceDisplay from '../src/display/FaceDisplay'
+import DefaultFacePack from './dev_importer'
 (async () => {
     const commentArea = document.getElementById('comment') as HTMLTextAreaElement
     const facePacks = DefaultFacePack as any
