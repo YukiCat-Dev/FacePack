@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "dev": "parcel index.html --out-dir dev",
-    "build": "parcel build src/deploy-display.ts --out-dir dist/bundle --experimental-scope-hoisting && parcel build src/deploy-selector.ts --out-dir dist/bundle --experimental-scope-hoisting",
+    "build": "parcel build src/umd.ts --out-dir dist/umd --experimental-scope-hoisting & tsc",
     "publish": "tsc"
   },
   "repository": {
@@ -36,22 +36,20 @@
   },
   "homepage": "https://github.com/YukiCat-Dev/FacePack#readme",
   "dependencies": {
-    "@popperjs/core": "^2.6.0",
+    "@popperjs/core": "^2.9.0",
     "clsx": "^1.1.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-jss": "^10.5.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-jss": "^10.6.0",
     "react-popper": "^2.2.4"
   },
   "devDependencies": {
     "@types/jest": "^26.0.16",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
     "jest": "^26.6.3",
-    "parcel-bundler": "^1.12.4",
-    "ts-jest": "^26.4.4",
-    "ts-node": "^9.1.0",
-    "typescript": "^4.1.3"
+    "ts-jest": "^26.5.3",
+    "typescript": "^4.2.4"
   },
   "browserslist": [
     "since 2019-06"
