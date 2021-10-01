@@ -39,10 +39,10 @@ const TableView = forwardRef<HTMLDivElement, TableViewProps>(
             </td>), [facePackage])
         const rows: Array<JSX.Element> = useMemo(() => {
             const rowCount = Math.ceil((faces.length / colCount))
-            const array = new Array<JSX.Element>(rowCount)
+            const array = []
             for (let i = 0; i < rowCount; i++) {
                 const start = i * colCount
-                array[i] = <tr key={facePackId + 'r' + i}>{faces.slice(start, start + colCount)}</tr>
+                array.push(<tr key={facePackId + 'r' + i}>{faces.slice(start, start + colCount)}</tr>)
             }
             return array
         }, [faces, colCount])
