@@ -1,12 +1,12 @@
 import BaseComponentProps from './BaseComponentProps';
-import React, { useState, useContext, useCallback } from 'react';
+import { useState, useContext, useCallback, MouseEvent } from 'react';
 import Indicator, { IndicatorProps, IndicateLevel } from './Indicator';
 import { Global } from './FaceSelector'
 export interface FaceViewProps extends BaseComponentProps {
     face_pos: number
     src: string
     alt?: string
-    onClick?: (e: React.MouseEvent<HTMLImageElement, MouseEvent>, pos?: number) => void
+    onClick?: (e: MouseEvent<HTMLImageElement>, pos?: number) => void
     refererPolicy?: ReferrerPolicy,
 }
 /**
@@ -23,11 +23,11 @@ export default function FaceView(props: FaceViewProps) {
     const handleError = useCallback(() => {
         setLoaded(false)
         setShowIndicator({ level: IndicateLevel.ERROR })
-    },[])
+    }, [])
     const handleLoad = useCallback(() => {
         setShowIndicator(null)
         setLoaded(true)
-    },[])
+    }, [])
     return (
         <>
             {showIndicator && <Indicator {...showIndicator} style={{ ...props.style, transition: "opacity 2s ease" }} className={props.className} />}

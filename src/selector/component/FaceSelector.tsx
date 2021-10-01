@@ -1,11 +1,11 @@
-import React, { useState, useCallback, useMemo, useRef, useEffect,createContext } from 'react';
+import { useState, useCallback, useMemo, useRef, useEffect, createContext, } from 'react';
 import TableView from './TableView';
 import { FacePackage, Face } from '../../FacePackage';
 import Tabs from './Tabs';
 import Peak from './Peak';
 import { Modifier, OptionsGeneric } from '@popperjs/core'
 import BaseComponentProps from './BaseComponentProps';
-import useGenericStyle, { mainHeight } from '../style';
+import * as classes from '../style';
 import clsx from 'clsx';
 import { usePopper } from 'react-popper'
 import FlexboxView from './FlexboxView';
@@ -38,11 +38,11 @@ export interface FaceSelectorProps extends BaseComponentProps {
     /**
      * 指示是否加载表情
      */
-    loadContent:boolean
+    loadContent: boolean
     /**
      * 使用哪种网格，默认为flex
      */
-    grid?:'table'|'flex'
+    grid?: 'table' | 'flex'
 }
 export interface FaceSelectorState {
     /**
@@ -63,10 +63,7 @@ export { Global };
  * @param { children }
  * @returns
  */
-export function GenericStyle({ children }: { children: (classes: Record<"borderShadow" | "bgWhiteBlur" | "main", string>) => React.ReactElement }) {
-    return children(useGenericStyle())
-}
-export default function FaceSelector({ peakPopperOptions, facePacks, style, className, colCount, onFaceSelected, handleHide,loadContent,grid }: FaceSelectorProps) {
+export default function FaceSelector({ peakPopperOptions, facePacks, style, className, colCount, onFaceSelected, handleHide, loadContent, grid }: FaceSelectorProps) {
     const [_nowPackagePos, setPos] = useState(0)
     const [isShowPeak, setShowPeak] = useState(false)
     const [peak_url, set_url] = useState<string>()
@@ -83,37 +80,34 @@ export default function FaceSelector({ peakPopperOptions, facePacks, style, clas
     }, [handleHide, onFaceSelected, facePacks, _nowPackagePos])
     useEffect(() => {
         //设定内网格高度
-       if(loadContent) body.current.style.height = mainHeight - head.current.clientHeight + 'px'
-    },[loadContent])
+        if (loadContent) body.current.style.height = classes.mainHeight - head.current.clientHeight + 'px'
+    }, [loadContent])
     let nowPackagePos = _nowPackagePos
     const maxPos = facePacks.length - 1
     if (nowPackagePos > maxPos) nowPackagePos = maxPos //防止prop发生改动带来越界
     return (<>
-        <GenericStyle>
-            {classes => (
-                <div ref={setMain} style={{ ...style }} className={className || clsx(classes.borderShadow, classes.bgWhiteBlur, classes.main)}>
-                    <Tabs facePackages={facePacks}
-                        onSelected={(pos) => setPos(pos)} selectedPos={nowPackagePos} ref={head} />
-                    <Global.Provider value={useMemo(() => {
-                        return {
-                            showPeak: (imgUrl: string, imgCaption: string) => {
-                                set_url(imgUrl)
-                                set_caption(imgCaption)
-                                setShowPeak(true)
-                                if (update) update()
-                            },
-                            hidePeak: () => setShowPeak(false)
-                        } as FaceSelectorGlobal
-                    }, [set_url, set_caption, setShowPeak, update])}>
-                       {loadContent ? 
-                       grid=="table"?
-                       <TableView ref={body} facePackage={facePacks[nowPackagePos]} colCount={colCount}
-                       onImageSelected={handleFaceSelected} />
-                       :<FlexboxView ref={body} facePackage={facePacks[nowPackagePos]} onImageSelected={handleFaceSelected}/>
-                       :null} 
-                    </Global.Provider>
-                </div>)}
-        </GenericStyle>
+        <div ref={setMain} style={{ ...style }} className={className || clsx(classes.borderShadow, classes.bgWhiteBlur, classes.main)}>
+            <Tabs facePackages={facePacks}
+                onSelected={(pos) => setPos(pos)} selectedPos={nowPackagePos} ref={head} />
+            <Global.Provider value={useMemo(() => {
+                return {
+                    showPeak: (imgUrl: string, imgCaption: string) => {
+                        set_url(imgUrl)
+                        set_caption(imgCaption)
+                        setShowPeak(true)
+                        if (update) update()
+                    },
+                    hidePeak: () => setShowPeak(false)
+                } as FaceSelectorGlobal
+            }, [set_url, set_caption, setShowPeak, update])}>
+                {loadContent ?
+                    grid == "table" ?
+                        <TableView ref={body} facePackage={facePacks[nowPackagePos]} colCount={colCount}
+                            onImageSelected={handleFaceSelected} />
+                        : <FlexboxView ref={body} facePackage={facePacks[nowPackagePos]} onImageSelected={handleFaceSelected} />
+                    : null}
+            </Global.Provider>
+        </div>
         <Peak imgCaption={peak_caption} imgUrl={peak_url} ref={setPeak} show={isShowPeak} style={styles.popper} />
     </>)
 }

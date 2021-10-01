@@ -1,5 +1,5 @@
 import { OptionsGeneric } from "@popperjs/core";
-import React, { CSSProperties } from "react";
+import  { CSSProperties } from "react";
 import { render } from 'react-dom';
 import FaceSelector, { TModifier } from '../component/FaceSelector'
 import { FacePackage, Face } from "../../FacePackage";
