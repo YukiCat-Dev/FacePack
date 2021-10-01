@@ -109,11 +109,7 @@
                 "id": "dab",
                 "url": "{nohd}"
             },
-            "poke",
-            {
-                "id": "jumping",
-                "url": "{p_url}hd/{id}{p}jr.gif"
-            }
+            "poke"
         ]
     },
     {
